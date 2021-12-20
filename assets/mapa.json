@@ -1,0 +1,118 @@
+{ "data": [
+    {
+        "id": "aseo_1",
+        "nombre": "Aseo 1",
+        "info": "Aseo principal de la casa",
+        "acciones": {
+            "IR": { "S": "pasillo_1" }
+        }
+    },
+    {
+        "id": "dormitorio_3",
+        "nombre": "Dormitorio 3",
+        "info": "El dormitorio de los padres",
+        "acciones": {
+            "IR": {
+                 "S": "pasillo_2",
+                 "E": "aseo_2"
+            }
+        }
+    },
+    {
+        "id": "aseo_2",
+        "nombre": "Aseo 2",
+        "info": "Aseo de los padres",
+        "acciones": {
+            "IR": {
+                "O": "dormitorio_3"
+            }
+        }
+    },
+    {
+        "id": "espejo",
+        "nombre": "Espejo",
+        "info": "Espejo del baño del dormitorio",
+        "acciones": {}
+    },
+    {
+        "id": "entrada",
+        "nombre": "Entrada",
+        "info": "Pasillo de entrada a la casa",
+        "acciones": {
+        }
+    },
+    {
+        "id": "salon",
+        "nombre": "Salon",
+        "info": "Salon",
+        "acciones": {
+        }
+    },
+    {
+        "id": "pasillo_1",
+        "nombre": "Pasillo 1",
+        "info": "Lado izquierdo de un largo pasillo",
+        "acciones": {
+            "IR": {
+                "N": "aseo_1",
+                "S": "dormitorio_2",
+                "E": "pasillo_2",
+                "O": "salon"
+            }
+        }
+    },
+    {
+        "id": "pasillo_2",
+        "nombre": "Pasillo 1",
+        "info": "Lado derecho de un largo pasillo",
+        "acciones": {
+            "IR": {
+                "N": "dormitorio_2",
+                "S": "dormitorio_2",
+                "O": "pasillo_1"
+            }
+        }
+    },
+    {
+        "id": "cocina",
+        "nombre": "Cocina",
+        "info": "La cocina",
+        "acciones": {}
+    },
+    {
+        "id": "terraza",
+        "nombre": "Terraza",
+        "info": "Terraza",
+        "acciones": {}
+    },
+    {
+        "id": "dormitorio_1",
+        "nombre": "Dormitorio 1",
+        "info": "Tu dormitorio",
+        "acciones": {}
+    },
+    {
+        "id": "dormitorio_2",
+        "nombre": "Dormitorio 2",
+        "info": "Dormitorio de tu hermana",
+        "acciones": {}
+    },
+    {
+        "id": "almacen",
+        "nombre": "Almacen",
+        "info": "Cuarto pequeño que sirve como almacen",
+        "acciones": {}
+    },
+    {
+        "id": "consola",
+        "nombre": "consola",
+        "info": "consola magnavox odyssey, usandola se accede a la pantalla del pong",
+        "acciones": {}
+    },
+    {
+        "id": "cielo",
+        "nombre": "consola",
+        "info": "consola magnavox odyssey, usandola se accede a la pantalla del pong",
+        "acciones": {}
+    }
+]}

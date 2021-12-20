@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "keyboard.h": "c",
+        "rooms.h": "c",
+        "string.h": "c"
+    }
+}

@@ -17,12 +17,14 @@ void _game_action_turn_on(TAction* action, TRoom* room) {
         return;
     }
     
-    if (room->id == ROOM_ID_INITIAL && param == ACTION_PARAM_TURN_ON_LIGHT) {
+    if (param == ACTION_PARAM_TURN_ON_LIGHT) {
         man_msg_clear();
         man_history_addWarning(
             man_msg_concat(" -> ...y la luz se hizo")
         );
 
-        man_rooms_setCurrentRoom(ROOM_ID_DORMITORIO_1);
+        if (room->id == ROOM_ID_INITIAL) {
+            man_rooms_setCurrentRoom(ROOM_ID_DORMITORIO_1);
+        }
     }
 }

@@ -1,20 +1,27 @@
 #include <cpctelera.h>
 #include <man/rooms/rooms.h>
 
+#include <sys/debug/debug.h>
+
 const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
     {   // ROOM_ASEO_1 
-        "Aseo principal\0", 
-        "Te encuentras en el aseo principal de la casa.\0",
+        "Aseo principal", 
+        "Te encuentras en el aseo principal de la casa.",
         {{ NO_EXIT, ROOM_PASI_1, NO_EXIT, NO_EXIT }}
     },
     {   // ROOM_PASI_1
-        "Pasillo (ESTE)\0",
-        "Lado este del pasillo, nada de particular.\0",
-        {{ ROOM_ASEO_1, ROOM_DORM_1, NO_EXIT, NO_EXIT }}
+        "Pasillo (ESTE)",
+        "Lado ESTE del pasillo, nada de particular.",
+        {{ ROOM_ASEO_1, ROOM_DORM_1, NO_EXIT, ROOM_PASI_2 }}
+    },
+    {   // ROOM_PASI_2
+        "Pasillo (OESTE)",
+        "Lado OESTE del pasillo, nada de particular.",
+        {{ NO_EXIT, NO_EXIT, ROOM_PASI_1, NO_EXIT }}
     },
     {   // ROOM_DORM_1
-        "Tu dormitorio\0",
-        "Tu habitacion esta hecha un desastre, como siempre.\0",
+        "Tu dormitorio",
+        "Tu habitacion esta hecha un desastre, como siempre.",
         {{ ROOM_PASI_1, NO_EXIT, NO_EXIT, NO_EXIT }}
     }
 };
@@ -32,5 +39,8 @@ TRoom* man_rooms_getCurrentRoom() {
 }
 
 void man_rooms_setCurrentRoom(u8 index) {
-    currentRoom = rooms + index;
+    currentRoom = rooms;
+    for(u8 i = index; i > 0; --i) {
+        currentRoom++;
+    }
 }

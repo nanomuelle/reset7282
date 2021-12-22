@@ -14,8 +14,8 @@ typedef struct {
 
 extern void man_prompt_init(void);
 extern void man_prompt_reset(void);
-extern void man_prompt_typeChar(char);
-extern void man_prompt_delChar(void);
+extern void man_prompt_typeChar(u8);
+// extern void man_prompt_delChar(void);
 extern TPrompt* man_prompt_getPrompt(void);
 
 #endif

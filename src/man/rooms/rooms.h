@@ -8,7 +8,8 @@
 
 #define ROOM_ASEO_1     0
 #define ROOM_PASI_1     1
-#define ROOM_DORM_1     2
+#define ROOM_PASI_2     2
+#define ROOM_DORM_1     3
 
 typedef enum {
     DIR_N = 0,

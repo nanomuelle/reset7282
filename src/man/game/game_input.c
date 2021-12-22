@@ -1,22 +1,20 @@
 #include <man/game/game.h>
 #include <man/prompt/prompt.h>
-#include <man/action/action.h>
 #include <sys/input/input.h>
+#include <sys/render/render.h>
 
 void man_game_input(void) {
-    u8 key = sys_input_waitKey();
-    cpct_disableFirmware();
+    u8 key = 0x00;
+    TPrompt* prompt = man_prompt_getPrompt();
 
-    if (key == KEY_DEL) {
-        man_prompt_delChar();
-        return;
+    while (key != KEY_ENTER) {
+        sys_render_renderPrompt(prompt);
+
+        key = sys_input_waitKey();
+        cpct_disableFirmware();
+
+        if (key != KEY_ENTER) {
+            man_prompt_typeChar(key);
+        }
     }
-
-    if (key == KEY_ENTER) {
-        TPrompt *prompt = man_prompt_getPrompt();
-        man_action_parse(prompt->buffer);
-        return;
-    }
-
-    man_prompt_typeChar(key);
 }

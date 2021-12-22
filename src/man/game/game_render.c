@@ -15,6 +15,6 @@ void man_game_render(void) {
     }
 
     sys_render_renderRoom(room);
-    // sys_render_renderHistory(history);
+    sys_render_renderHistory(history);
     sys_render_renderPrompt(prompt);
 }

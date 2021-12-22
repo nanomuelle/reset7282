@@ -6,7 +6,7 @@
 #include <man/history/history.h>
 
 #define PROMPT_X 0
-#define PROMPT_Y 190
+#define PROMPT_Y 180
 #define PROMPT_CHAR '?'
 #define PROMPT_CURSOR_CHAR 0x8F
 

@@ -31,6 +31,6 @@ typedef struct {
 
 extern void   man_rooms_init          (void);
 extern TRoom* man_rooms_getCurrentRoom(void);
-extern void   man_rooms_setCurrentRoom(u8);
+extern TRoom* man_rooms_setCurrentRoom(u8);
 
 #endif

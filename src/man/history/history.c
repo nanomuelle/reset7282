@@ -44,8 +44,19 @@ void copyTxtToLastLine(const u8* txt, u8 pen) {
     line->txt[HISTORY_LINE_SIZE - 1] = 0;
 }
 
-void man_history_addLine(const u8* txt, u8 pen) {
+void _addLine(const u8* txt, u8 pen) {
     scrollUpLines();
     copyTxtToLastLine(txt, pen);
 }
 
+void man_history_addInfo(const u8* txt) {
+    _addLine(txt, 1);
+}
+
+void man_history_addWarning(const u8* txt) {
+    _addLine(txt, 3);
+}
+
+void man_history_addError(const u8* txt) {
+    _addLine(txt, 2);
+}

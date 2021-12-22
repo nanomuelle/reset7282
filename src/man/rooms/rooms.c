@@ -38,9 +38,11 @@ TRoom* man_rooms_getCurrentRoom() {
     return currentRoom;
 }
 
-void man_rooms_setCurrentRoom(u8 index) {
+TRoom* man_rooms_setCurrentRoom(u8 index) {
     currentRoom = rooms;
     for(u8 i = index; i > 0; --i) {
         currentRoom++;
     }
+
+    return currentRoom;
 }

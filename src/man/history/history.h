@@ -5,7 +5,7 @@
 
 #define HISTORY_NUM_LINES 5
 #define HISTORY_LAST_LINE (HISTORY_NUM_LINES - 1)
-#define HISTORY_LINE_SIZE 30
+#define HISTORY_LINE_SIZE 40
 
 typedef struct {
     u8 pen;
@@ -18,6 +18,8 @@ typedef struct {
 
 extern void man_history_init(void);
 extern THistory *man_history_getHistory(void);
-extern void man_history_addLine(const u8*, u8);
+extern void man_history_addError(const u8* txt);
+extern void man_history_addWarning(const u8* txt);
+extern void man_history_addInfo(const u8* txt);
 
 #endif

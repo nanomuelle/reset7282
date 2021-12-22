@@ -23,19 +23,19 @@ void renderExits(TRoom *room) {
 
     printMsg("SALIDAS: ", x, y, 1);
     x = 69;
-    c = room->outs.direction[DIR_N] != NO_EXIT ? 'N' : ' ';
+    c = room->outs.direction[OUT_N] != NO_EXIT ? 'N' : ' ';
     printChar(c, x, y);
 
     x += offset;
-    c = room->outs.direction[DIR_S] != NO_EXIT ? 'S' : ' ';
+    c = room->outs.direction[OUT_S] != NO_EXIT ? 'S' : ' ';
     printChar(c, x, y);
 
     x += offset;
-    c = room->outs.direction[DIR_E] != NO_EXIT ? 'E' : ' ';
+    c = room->outs.direction[OUT_E] != NO_EXIT ? 'E' : ' ';
     printChar(c, x, y);
 
     x += offset;
-    c = room->outs.direction[DIR_O] != NO_EXIT ? 'O' : ' ';
+    c = room->outs.direction[OUT_O] != NO_EXIT ? 'O' : ' ';
     printChar(c, x, y);
 }
 

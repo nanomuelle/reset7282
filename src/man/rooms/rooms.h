@@ -15,21 +15,21 @@ typedef enum {
 } TRoomIdEnum;
 
 typedef enum {
-    DIR_N = 0,
-    DIR_S,
-    DIR_E,
-    DIR_O
-} TRoomDirectionsEnum;
+    OUT_N = 0,
+    OUT_S,
+    OUT_E,
+    OUT_O
+} TRoomOutsEnum;
 
 typedef struct {
-    u8 direction[4];
+    TRoomOutsEnum direction[4];
 } TRoomOuts;
 
 typedef struct {
     const TRoomIdEnum id;
     const u8* name;
     const u8* txt;
-    const TRoomOuts outs;
+    const TRoomOuts outs;   // salidas
 } TRoom;
 
 // PRIVATE

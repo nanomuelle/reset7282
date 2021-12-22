@@ -25,11 +25,6 @@ TAction* _parsePrompt(void) {
 void man_game_update(void) {
     TAction *action = _parsePrompt();
 
-    sys_debug_info("man_game_update -> action type", 0, 190);
-    sys_debug_waitKey();
-    sys_debug_number(action->type, 0, 190);
-    sys_debug_waitKey();
-    
     _game_execute_action(action, man_rooms_getCurrentRoom());
     _updateHistory(action);
 

@@ -20,8 +20,8 @@ typedef struct {
 
 typedef struct {
     u8* txt;
-    TActionType type;
-} TActionUserInputToActionTypeMap;
+    TAction action;
+} TUserInputToActionMap;
 
 extern void sys_action_init(void);
 extern TAction* sys_action_parse(u8 *);

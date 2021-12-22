@@ -13,14 +13,15 @@
 
 TAction action;
 
-const TActionUserInputToActionTypeMap userInputToActionTypeMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
-    { "ir", ACTION_TYPE_GO },
-    { "n", ACTION_TYPE_GO },
-    { "s", ACTION_TYPE_GO },
-    { "e", ACTION_TYPE_GO },
-    { "o", ACTION_TYPE_GO },
-    { "buscar", ACTION_TYPE_SEARCH },
-    { "explorar", ACTION_TYPE_SEARCH },
+const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
+    { "ir",         { ACTION_TYPE_GO    , DIR_UNKNOWN       } },
+    { "n",          { ACTION_TYPE_GO    , DIR_N             } },
+    { "s",          { ACTION_TYPE_GO    , DIR_S             } },
+    { "e",          { ACTION_TYPE_GO    , DIR_E             } },
+    { "o",          { ACTION_TYPE_GO    , DIR_O             } },
+    { "buscar",     { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } },
+    { "explorar",   { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } },
+    NULL
 };
 
 u8 _isEqualString(const u8* str1, const u8* str2) {
@@ -43,18 +44,26 @@ u8* _ignoreWhiteSpaces(u8* str) {
     return str;
 }
 
-u8 _copyNextWord(u8* src, u8* dst) {
-    u8* dstPtr = dst;
+//
+// copy next word in dst buffer ignoring initial whitespaces
+//
+// INPUTS:
+//   src ptr to origin
+//   dst ptr to destiny buffer
+// OUTPUT:
+//   ptr pointing to start of next word
+u8* _copyNextWord(u8* src, u8* dst) {
+    src = _ignoreWhiteSpaces(src);
 
     // copy until find an space or a null
     while(*src != 0 && *src != ASCII_SPACE) {
-        *dstPtr = *src;
-        ++dstPtr;
+        *dst = *src;
+        ++dst;
         ++src;
     }
-    *dstPtr = 0;
+    *dst = 0;
 
-    return dstPtr - dst;
+    return src;
 }
 
 //
@@ -68,31 +77,18 @@ u8 _copyNextWord(u8* src, u8* dst) {
 //
 u8* _parseActionType(u8* userInput, TAction *action) {
     u8 buffer[PROMPT_BUFFER_SIZE];
-    u8* bufferPtr = buffer;
-    u8* userInputPtr = userInput;
 
-    // ignore initial whitespaces
-    userInputPtr = _ignoreWhiteSpaces(userInputPtr);
-
-    // copy until find an space or a null
-    userInputPtr += _copyNextWord(userInputPtr, buffer);
+    userInput = _copyNextWord(userInput, buffer);
 
     for (u8 i = 0; i < ACTION_USERINPUT_TO_TYPE_SIZE; i++) {
-        TActionUserInputToActionTypeMap *itemMap = &userInputToActionTypeMap[i];
+        TUserInputToActionMap *itemMap = &userInputToActionMap[i];
         if (_isEqualString(itemMap->txt, buffer)) {
-            action->type = itemMap->type;
+            cpct_memcpy(action, &(itemMap->action), sizeof(TAction));
             break;
         }
     }
 
-    ++userInputPtr;
-
-    sys_debug_info("_parseType", 0, 190);
-    sys_debug_waitKey();
-    sys_debug_info(userInputPtr, 0, 190);
-    sys_debug_waitKey();
-
-    return userInputPtr;
+    return userInput;
 }
 
 //
@@ -106,21 +102,9 @@ u8* _parseActionType(u8* userInput, TAction *action) {
 //
 void _parseActionParam(u8* userInput, TAction *action) {
     u8 buffer[PROMPT_BUFFER_SIZE];
-    u8* bufferPtr = buffer;
-    u8* userInputPtr = userInput;
-
-    action->param1 = ACTION_NULL_PARAM;
-
-    // ignore initial whitespaces
-    _ignoreWhiteSpaces(userInputPtr);
 
     // copy until find an space or a null
-    _copyNextWord(userInputPtr, buffer);
-
-    sys_debug_info("_parseParam", 0, 190);
-    sys_debug_waitKey();
-    sys_debug_info(userInput, 0, 190);
-    sys_debug_waitKey();
+    _copyNextWord(userInput, buffer);
 
     // TODO delegar en cada tipo de action de alguna manera
     if (action->type == ACTION_TYPE_GO) {
@@ -134,16 +118,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
             action->param1 = DIR_E;
         } else if (userParam == ASCII_o) {
             action->param1 = DIR_O;
-        } else {
-            // TODO
-            // marcar la accion con un error de parametro desconocido en vez 
-            //  de cambiar a accion desconocida con idea de dar al usuario
-            //  info de que el parametro es lo que falta o falla
-            // currentAction->type = ACTION_UNKNOWN;
-            action->param1 = DIR_UNKNOWN;
-            // return;
         }
-        return;
     }
 }
 

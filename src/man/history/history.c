@@ -1,4 +1,3 @@
-#include <string.h>
 #include <man/history/history.h>
 
 THistory history;

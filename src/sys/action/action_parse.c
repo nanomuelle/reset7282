@@ -1,4 +1,3 @@
-#include <string.h>
 #include <cpctelera.h>
 
 #include <man/prompt/prompt.h>
@@ -20,8 +19,7 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "e",          { ACTION_TYPE_GO    , DIR_E             } },
     { "o",          { ACTION_TYPE_GO    , DIR_O             } },
     { "buscar",     { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } },
-    { "explorar",   { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } },
-    NULL
+    { "explorar",   { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } }
 };
 
 u8 _isEqualString(const u8* str1, const u8* str2) {

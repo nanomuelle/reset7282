@@ -1,4 +1,3 @@
-#include <string.h>
 #include <cpctelera.h>
 
 #include <man/rooms/rooms.h>
@@ -7,7 +6,6 @@
 #include <man/msg/msg.h>
 
 #include <sys/action/action.h>
-#include <sys/debug/debug.h>
 
 typedef struct {
     u8 *description;

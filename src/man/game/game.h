@@ -2,7 +2,7 @@
 #define RESET_MAN_GAME
 
     #include <cpctelera.h>
-    #include <sys/action/action.h>
+    #include <sys/parser/parser.h>
     #include <man/rooms/rooms.h>
 
     #define KEY_DEL   0x7F

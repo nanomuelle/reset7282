@@ -1,7 +1,9 @@
-#ifndef RESET_SYS_ACTION
-#define RESET_SYS_ACTION
+#ifndef RESET_SYS_PARSER
+#define RESET_SYS_PARSER
 
 #include <cpctelera.h>
+
+#define PARSER_BUFFER_SIZE 40
 
 typedef enum {
     ACTION_TYPE_GO = 0,
@@ -48,8 +50,13 @@ typedef struct {
     TAction action;
 } TUserInputToActionMap;
 
-extern void sys_action_init(void);
-extern TAction* sys_action_parse(u8 *);
-extern const u8* sys_action_getActionName(TAction *);
+// PRIVATE
+extern void _sys_parser_parseParamGo(u8* userInput, TAction *action);
+extern void _sys_parser_parseParamTurnOn(u8* userInput, TAction *action);
+
+// PUBLIC
+extern void sys_parser_init(void);
+extern TAction* sys_parser_parseAction(u8 *);
+extern const u8* sys_parser_getActionName(TAction *);
 
 #endif

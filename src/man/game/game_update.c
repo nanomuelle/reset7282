@@ -2,14 +2,13 @@
 #include <man/rooms/rooms.h>
 #include <man/history/history.h>
 
-#include <sys/action/action.h>
+#include <sys/parser/parser.h>
 #include <sys/render/render.h>
-
-#include <sys/debug/debug.h>
 
 TAction* _parsePrompt(void) {
     TPrompt *prompt = man_prompt_getPrompt();
-    return sys_action_parse(prompt->buffer);
+    man_history_addInfo(prompt->buffer);
+    return sys_parser_parseAction(prompt->buffer);
 }
 
 void man_game_update(void) {

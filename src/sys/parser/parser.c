@@ -1,5 +1,5 @@
 #include<cpctelera.h>
-#include<sys/action/action.h>
+#include <sys/parser/parser.h>
 
 #include <sys/debug/debug.h>
 
@@ -10,11 +10,12 @@ typedef struct {
 const TActionDefinition actionDefs[] = {
     { "ir" },
     { "buscar"},
+    { "encender" },
     { "orden desconocida" }
 };
 
-const u8* sys_action_getActionName(TAction* action) {    
+const u8* sys_parser_getActionName(TAction* action) {    
     return actionDefs[action->type].name;
 }
 
-void sys_action_init(void) {}
+void sys_parser_init(void) {}

@@ -1,6 +1,7 @@
 #ifndef RESET_MAN_ROOMS
 #define RESET_MAN_ROOMS
 
+#include <stdio.h>
 #include <cpctelera.h>
 
 #define ROOMS_MAX_ROOMS 20

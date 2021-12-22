@@ -1,7 +1,6 @@
 #include <cpctelera.h>
 
 #include <man/prompt/prompt.h>
-#include <man/rooms/rooms.h>
 
 #include <sys/action/action.h>
 #include <sys/ascii/ascii.h>
@@ -12,16 +11,16 @@
 TAction action;
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
-    { "ir",         { ACTION_TYPE_GO     , ACTION_PARAM_UNKNOWN } },
-    { "n",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_N   } },
-    { "s",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_S   } },
-    { "e",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_E   } },
-    { "o",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_O   } },
-    { "buscar",     { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
-    { "mirar",      { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
-    { "explorar",   { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
-    { "luz",        { ACTION_TYPE_TURN_ON, ACTION_PARAM_TURN_ON_LIGHT } },
-    { "encender",   { ACTION_TYPE_TURN_ON, ACTION_PARAM_UNKNOWN       } },
+    { "ir",         { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_UNKNOWN }}},
+    { "n",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_N       }}},
+    { "s",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_S       }}},
+    { "e",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_E       }}},
+    { "o",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_O       }}},
+    { "buscar",     { ACTION_TYPE_SEARCH , { .search_param = ACTION_PARAM_SEARCH_UNKNOWN  }}},
+    { "mirar",      { ACTION_TYPE_SEARCH , { .search_param = ACTION_PARAM_SEARCH_UNKNOWN  }}},
+    { "explorar",   { ACTION_TYPE_SEARCH , { .search_param = ACTION_PARAM_SEARCH_UNKNOWN  }}},
+    { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT   }}},
+    { "encender",   { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_UNKNOWN }}},
 };
 
 //
@@ -69,13 +68,15 @@ void _parseActionParam(u8* userInput, TAction *action) {
         u8 userParam = buffer[0];
 
         if (userParam == ASCII_n) {
-            action->param1 = DIR_N;
+            action->param1.go_param = ACTION_PARAM_GO_N;
         } else if (userParam == ASCII_s) {
-            action->param1 = DIR_S;
+            action->param1.go_param = ACTION_PARAM_GO_S;
         } else if (userParam == ASCII_e) {
-            action->param1 = DIR_E;
+            action->param1.go_param = ACTION_PARAM_GO_E;
         } else if (userParam == ASCII_o) {
-            action->param1 = DIR_O;
+            action->param1.go_param = ACTION_PARAM_GO_O;
+        } else {
+            action->param1.go_param = ACTION_PARAM_GO_UNKNOWN;
         }
     }
 }
@@ -83,10 +84,12 @@ void _parseActionParam(u8* userInput, TAction *action) {
 TAction *sys_action_parse(u8* buffer) {
     u8* paramPtr;
     action.type = ACTION_TYPE_UNKNOWN;
-    action.param1 = ACTION_PARAM_UNKNOWN;
+    action.param1.unknown_param = ACTION_PARAM_UNKNOWN;
 
     paramPtr = _parseActionType(buffer, &action);
-    _parseActionParam(paramPtr, &action);
+    if (action.param1.unknown_param == ACTION_PARAM_UNKNOWN) {
+        _parseActionParam(paramPtr, &action);
+    }
 
     return &action;
 }

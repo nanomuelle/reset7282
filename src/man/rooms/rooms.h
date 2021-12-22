@@ -16,8 +16,7 @@ typedef enum {
     DIR_N = 0,
     DIR_S,
     DIR_E,
-    DIR_O,
-    DIR_UNKNOWN = 0xFF
+    DIR_O
 } TRoomDirectionsEnum;
 
 typedef struct {

@@ -4,18 +4,25 @@
 #include <man/rooms/rooms.h>
 #include <man/history/history.h>
 #include <man/rooms/rooms.h>
+#include <man/msg/msg.h>
 
 #include <sys/action/action.h>
-
 #include <sys/debug/debug.h>
 
-void _game_action_go(TAction* action, TRoom* room) {    
+typedef struct {
+    u8 *description;
+} TDirDescription;
+
+const TDirDescription _dirDescriptions[4] = {
+    {" n"}, {" s"}, {" e"}, {" o"}
+};
+
+void _game_action_go(TAction* action, TRoom* room) {
     TRoomDirectionsEnum dir = action->param1;
     u8 roomIndex;
-    u8* dirAsString[] = {" n", " s", " e", " o"};
-    u8 msg[40] = "";
 
-    strcat(msg, sys_action_getActionName(action));
+    man_msg_clear();
+    man_msg_concat(sys_action_getActionName(action));
 
     if (dir == DIR_UNKNOWN) {
         man_history_addInfo("ir ?");
@@ -23,11 +30,12 @@ void _game_action_go(TAction* action, TRoom* room) {
         return;
     }
 
-    strcat(msg, dirAsString[action->param1]);
-    man_history_addInfo(msg);
+    man_history_addInfo(
+        man_msg_concat(_dirDescriptions[action->param1].description)
+    );
 
     roomIndex = room->outs.direction[dir];
-    if (roomIndex == NO_EXIT) {        
+    if (roomIndex == NO_EXIT) {
         man_history_addWarning(" -> por ahi no hay salida");
         return;
     }
@@ -35,14 +43,10 @@ void _game_action_go(TAction* action, TRoom* room) {
     {
         TRoom *room = man_rooms_setCurrentRoom(roomIndex);
 
-        cpct_memset(msg, 0, 40);
-        strcat(msg, " -> ");
-        strcat(msg, room->name);
-        man_history_addWarning(msg);
+        man_msg_clear();
+        man_msg_concat(" -> ");
+        man_history_addWarning(
+            man_msg_concat(room->name)
+        );
     }
-
-
-    // // TODO: deberiamos crear un man_game_setNextRoom
-    // //  en vez de acceder directamente a otro manager
-    // //  para delegar en game la logica??
 }

@@ -4,8 +4,9 @@
 
 u8 msg[MAN_MSG_MSG_SIZE];
 
-void man_msg_clear(void) {
+u8* man_msg_clear(void) {
     cpct_memset(msg, 0, MAN_MSG_MSG_SIZE);
+    return msg;
 }
 
 u8* man_msg_getPtr() {

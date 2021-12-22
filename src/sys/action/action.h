@@ -3,19 +3,28 @@
 
 #include <cpctelera.h>
 
-#define ACTION_NULL_PARAM 0xFF
-
-
 typedef enum {
     ACTION_TYPE_GO = 0,
     ACTION_TYPE_SEARCH,
+    ACTION_TYPE_TURN_ON,
     ACTION_TYPE_UNKNOWN,
     ACTION_TYPE_NULL = 0xFF
 } TActionType;
 
+typedef enum {
+    ACTION_PARAM_DIR_N = 0,
+    ACTION_PARAM_DIR_S,
+    ACTION_PARAM_DIR_E,
+    ACTION_PARAM_DIR_O,
+
+    ACTION_PARAM_TURN_ON_LIGHT,
+
+    ACTION_PARAM_UNKNOWN
+} TParamEnum;
+
 typedef struct {
     TActionType type;
-    u8 param1;
+    TParamEnum param1;
 } TAction;
 
 typedef struct {

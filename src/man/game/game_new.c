@@ -3,5 +3,5 @@
 
 void man_game_new(void) {
     man_game_init();
-    man_rooms_setCurrentRoom(ROOM_DORM_1);
+    man_rooms_setCurrentRoom(ROOM_INITIAL);
 }

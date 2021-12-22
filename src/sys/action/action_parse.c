@@ -5,64 +5,24 @@
 
 #include <sys/action/action.h>
 #include <sys/ascii/ascii.h>
+#include <sys/str/str.h>
 
-#include <sys/debug/debug.h>
-
-#define ACTION_USERINPUT_TO_TYPE_SIZE 7
+#define ACTION_USERINPUT_TO_TYPE_SIZE 10
 
 TAction action;
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
-    { "ir",         { ACTION_TYPE_GO    , DIR_UNKNOWN       } },
-    { "n",          { ACTION_TYPE_GO    , DIR_N             } },
-    { "s",          { ACTION_TYPE_GO    , DIR_S             } },
-    { "e",          { ACTION_TYPE_GO    , DIR_E             } },
-    { "o",          { ACTION_TYPE_GO    , DIR_O             } },
-    { "buscar",     { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } },
-    { "explorar",   { ACTION_TYPE_SEARCH, ACTION_NULL_PARAM } }
+    { "ir",         { ACTION_TYPE_GO     , ACTION_PARAM_UNKNOWN } },
+    { "n",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_N   } },
+    { "s",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_S   } },
+    { "e",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_E   } },
+    { "o",          { ACTION_TYPE_GO     , ACTION_PARAM_DIR_O   } },
+    { "buscar",     { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
+    { "mirar",      { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
+    { "explorar",   { ACTION_TYPE_SEARCH , ACTION_PARAM_UNKNOWN } },
+    { "luz",        { ACTION_TYPE_TURN_ON, ACTION_PARAM_TURN_ON_LIGHT } },
+    { "encender",   { ACTION_TYPE_TURN_ON, ACTION_PARAM_UNKNOWN       } },
 };
-
-u8 _isEqualString(const u8* str1, const u8* str2) {
-    u8 *char1 = str1;
-    u8 *char2 = str2;
-
-    while (*char1 == *char2) {
-        if (*char1 == 0) {
-            return 1; // true
-        }
-        ++char1;
-        ++char2;
-    }
-
-    return 0; // false
-}
-
-u8* _ignoreWhiteSpaces(u8* str) {
-    while(*str == ASCII_SPACE) ++str;
-    return str;
-}
-
-//
-// copy next word in dst buffer ignoring initial whitespaces
-//
-// INPUTS:
-//   src ptr to origin
-//   dst ptr to destiny buffer
-// OUTPUT:
-//   ptr pointing to start of next word
-u8* _copyNextWord(u8* src, u8* dst) {
-    src = _ignoreWhiteSpaces(src);
-
-    // copy until find an space or a null
-    while(*src != 0 && *src != ASCII_SPACE) {
-        *dst = *src;
-        ++dst;
-        ++src;
-    }
-    *dst = 0;
-
-    return src;
-}
 
 //
 // INPUT:
@@ -76,11 +36,11 @@ u8* _copyNextWord(u8* src, u8* dst) {
 u8* _parseActionType(u8* userInput, TAction *action) {
     u8 buffer[PROMPT_BUFFER_SIZE];
 
-    userInput = _copyNextWord(userInput, buffer);
+    userInput = sys_str_copyNextWord(userInput, buffer);
 
     for (u8 i = 0; i < ACTION_USERINPUT_TO_TYPE_SIZE; i++) {
         TUserInputToActionMap *itemMap = &userInputToActionMap[i];
-        if (_isEqualString(itemMap->txt, buffer)) {
+        if (sys_str_isEqual(itemMap->txt, buffer)) {
             cpct_memcpy(action, &(itemMap->action), sizeof(TAction));
             break;
         }
@@ -102,7 +62,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
     u8 buffer[PROMPT_BUFFER_SIZE];
 
     // copy until find an space or a null
-    _copyNextWord(userInput, buffer);
+    sys_str_copyNextWord(userInput, buffer);
 
     // TODO delegar en cada tipo de action de alguna manera
     if (action->type == ACTION_TYPE_GO) {
@@ -123,7 +83,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
 TAction *sys_action_parse(u8* buffer) {
     u8* paramPtr;
     action.type = ACTION_TYPE_UNKNOWN;
-    action.param1 = ACTION_NULL_PARAM;
+    action.param1 = ACTION_PARAM_UNKNOWN;
 
     paramPtr = _parseActionType(buffer, &action);
     _parseActionParam(paramPtr, &action);

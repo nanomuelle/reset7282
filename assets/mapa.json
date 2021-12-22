@@ -1,5 +1,13 @@
 { "data": [
     {
+        "id": "start",
+        "nombre": "Tu dormitorio",
+        "info": "Todo esta oscuro, no ves nada. ¿Que haces?",
+        "acciones": {
+            "ENCENDER": { "LUZ": "dormitario_1"}
+        }
+    },
+    {
         "id": "aseo_1",
         "nombre": "Aseo 1",
         "info": "Aseo principal de la casa",

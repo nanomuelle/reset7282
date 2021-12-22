@@ -6,10 +6,11 @@
 #define ROOMS_MAX_ROOMS 4
 #define NO_EXIT 0xFF
 
-#define ROOM_ASEO_1     0
-#define ROOM_PASI_1     1
-#define ROOM_PASI_2     2
-#define ROOM_DORM_1     3
+#define ROOM_INITIAL      0
+#define ROOM_ASEO_1       1
+#define ROOM_PASILLO_1    2
+#define ROOM_PASILLO_2    3
+#define ROOM_DORMITORIO_1 4
 
 typedef enum {
     DIR_N = 0,

@@ -25,10 +25,10 @@ void _game_action_go(TAction* action, TRoom* room) {
     {
         TRoom *room = man_rooms_setCurrentRoom(roomId);
 
-        man_msg_clear();
-        man_msg_concat(" -> ");
-        man_history_addWarning(
-            man_msg_concat(room->name)
-        );
+        // man_msg_clear();
+        // man_msg_concat(" -> ");
+        // man_history_addWarning(
+        //     man_msg_concat(room->name)
+        // );
     }
 }

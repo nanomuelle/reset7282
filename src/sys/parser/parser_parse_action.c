@@ -8,9 +8,7 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 12
-
-TAction action;
+#define ACTION_USERINPUT_TO_TYPE_SIZE 14
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
     { "ir",         { ACTION_TYPE_GO     , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
@@ -18,14 +16,18 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "s",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_S       }}},
     { "e",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_E       }}},
     { "o",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_O       }}},
+    { "inventario", { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "i",          { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "buscar",     { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "mirar",      { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "explorar",   { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
-    { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT   }}},
+    { "coger",      { ACTION_TYPE_TAKE   , { .unknown_param = ACTION_PARAM_TAKE_UNKNOWN }}},
+    { "raqueta",    { ACTION_TYPE_TAKE   , { .take_param = ACTION_PARAM_TAKE_RAQUETA }}},
+    { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT }}},
     { "encender",   { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
-    { "inventario", { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
-    { "i",          { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
 };
+
+TAction action;
 
 //
 // INPUT:
@@ -70,6 +72,10 @@ void _parseActionParam(u8* userInput, TAction *action) {
     switch(action->type) {
         case ACTION_TYPE_GO:
             _sys_parser_parseParamGo(buffer, action);
+            break;
+
+        case ACTION_TYPE_TAKE:
+            _sys_parser_parseParamTake(buffer, action);
             break;
 
         case ACTION_TYPE_TURN_ON:

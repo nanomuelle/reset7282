@@ -27,4 +27,6 @@ extern TObj* man_objs_getPtr(void);
 extern TObj* man_objs_getObj(TObjEnum id);
 extern TObj** man_objs_getInRoom(TRoom *room);
 
+extern const u8* OBJ_NAME_RAQUETA;
+
 #endif

@@ -7,9 +7,10 @@
 
 typedef enum {
     ACTION_TYPE_GO = 0,
-    ACTION_TYPE_SEARCH,
-    ACTION_TYPE_TURN_ON,
     ACTION_TYPE_INVENTORY,
+    ACTION_TYPE_SEARCH,
+    ACTION_TYPE_TAKE,
+    ACTION_TYPE_TURN_ON,
     ACTION_TYPE_UNKNOWN
 } TActionType;
 
@@ -34,11 +35,17 @@ typedef enum {
     ACTION_PARAM_TURN_ON_UNKNOWN
 } TParamTurnOnEnum;
 
+typedef enum {
+    ACTION_PARAM_TAKE_RAQUETA,
+    ACTION_PARAM_TAKE_UNKNOWN
+} TParamTakeEnum;
+
 typedef union {
-    TParamUnknownEnum unknown_param;
     TParamGoEnum go_param;
     TParamSearchEnum search_param;
+    TParamTakeEnum take_param;
     TParamTurnOnEnum turn_on_param;
+    TParamUnknownEnum unknown_param;
 } TParam;
 
 typedef struct {
@@ -52,7 +59,8 @@ typedef struct {
 } TUserInputToActionMap;
 
 // PRIVATE
-extern void _sys_parser_parseParamGo(u8* userInput, TAction *action);
+extern void _sys_parser_parseParamGo    (u8* userInput, TAction *action);
+extern void _sys_parser_parseParamTake  (u8* userInput, TAction *action);
 extern void _sys_parser_parseParamTurnOn(u8* userInput, TAction *action);
 
 // PUBLIC

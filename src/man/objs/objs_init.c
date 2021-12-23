@@ -1,5 +1,7 @@
 #include <man/objs/objs.h>
 
+const u8* OBJ_NAME_RAQUETA = "raqueta";
+
 const TObj _initial_objs[MAN_OBJS_SIZE] = {
     { OBJ_ID_RAQUETA, "raqueta", ROOM_ID_DORMITORIO_1 },
     { OBJ_ID_CONSOLA, "consola", ROOM_ID_DORMITORIO_1 },

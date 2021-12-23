@@ -5,9 +5,10 @@
 
 const TActionRunner _runners[] = {
     _game_action_go,
-    _game_action_search,
-    _game_action_turn_on,
     _game_action_inventory,
+    _game_action_search,
+    _game_action_take,
+    _game_action_turn_on,
     _game_action_unknown
 };
 

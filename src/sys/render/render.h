@@ -12,7 +12,7 @@
 
 ////////// PRIVATE
 extern void printMsg(const char* msg, u8 x, u8 y, u8 pen);
-extern void printChar(u16 ascii, u8 x, u8 y);
+extern void printChar(u16 ascii, u8 x, u8 y, u8 pen);
 
 ////////// PUBLIC
 extern void sys_render_init(void);

@@ -41,6 +41,7 @@ extern TRoom _rooms[ROOMS_MAX_ROOMS];
 extern void   man_rooms_init          (void);
 extern TRoom* man_rooms_getRoomsPtr   (void);
 extern TRoom* man_rooms_getCurrentRoom(void);
-extern TRoom* man_rooms_setCurrentRoom(TRoomIdEnum);
+extern TRoom* man_rooms_setCurrentRoom(TRoomIdEnum id);
+extern TRoom* man_rooms_getRoom       (TRoomIdEnum id);
 
 #endif

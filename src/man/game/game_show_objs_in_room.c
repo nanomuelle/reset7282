@@ -11,10 +11,7 @@ u8 _game_show_objs_in_room(TRoom *room) {
 
     while ( (*obj) != 0) {
         u8 *msg = man_msg_clear();
-        man_msg_concat("-> ");
-        man_history_addWarning( 
-            man_msg_concat( (*obj)->name )
-        );
+        man_history_addResponse( (*obj)->name );
         ++obj;
         ++count;
     }

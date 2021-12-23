@@ -14,13 +14,13 @@ void sys_debug_info(const u8* str, u8 x, u8 y) {
     buffer[39] = 0;
 
     printMsg(buffer, 0, y, 0);
-    printMsg(str, x, y, 1);
+    printMsg(str, x, y, 2);
 
     sys_debug_waitKey();
 }
 
 void sys_debug_char(u16 ascii, u8 x, u8 y) {
-    printChar(ascii, x, y);
+    printChar(ascii, x, y, 2);
     sys_debug_waitKey();
 }
 

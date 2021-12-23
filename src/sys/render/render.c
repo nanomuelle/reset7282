@@ -8,10 +8,10 @@ void printMsg(const char* msg, u8 x, u8 y, u8 pen) {
    cpct_drawStringM1(msg, video_memory_ptr);
 }
 
-void printChar(u16 ascii, u8 x, u8 y) {
+void printChar(u16 ascii, u8 x, u8 y, u8 pen) {
    u8* video_memory_ptr;  // Pointer to video memory
    video_memory_ptr = cpct_getScreenPtr(CPCT_VMEM_START, x, y);
-   cpct_setDrawCharM1(3, 0);
+   cpct_setDrawCharM1(pen, 0);
    cpct_drawCharM1(video_memory_ptr, ascii);
 }
 
@@ -24,19 +24,19 @@ void renderExits(TRoom *room) {
     printMsg("SALIDAS: ", x, y, 1);
     x = 69;
     c = room->outs.direction[OUT_N] != NO_EXIT ? 'N' : ' ';
-    printChar(c, x, y);
+    printChar(c, x, y, 3);
 
     x += offset;
     c = room->outs.direction[OUT_S] != NO_EXIT ? 'S' : ' ';
-    printChar(c, x, y);
+    printChar(c, x, y, 3);
 
     x += offset;
     c = room->outs.direction[OUT_E] != NO_EXIT ? 'E' : ' ';
-    printChar(c, x, y);
+    printChar(c, x, y, 3);
 
     x += offset;
     c = room->outs.direction[OUT_O] != NO_EXIT ? 'O' : ' ';
-    printChar(c, x, y);
+    printChar(c, x, y, 3);
 }
 
 void sys_render_renderRoom(TRoom *room) {
@@ -46,8 +46,8 @@ void sys_render_renderRoom(TRoom *room) {
 }
 
 void sys_render_renderPrompt(TPrompt *prompt) {
-    printChar(PROMPT_CHAR, PROMPT_X, PROMPT_Y);
+    printChar(PROMPT_CHAR, PROMPT_X, PROMPT_Y, 2);
     printMsg(prompt->buffer, PROMPT_X + 3, PROMPT_Y, 1);
-    printChar(PROMPT_CURSOR_CHAR, PROMPT_X + 3 + prompt->cursor_pos * 2, PROMPT_Y);
+    printChar(PROMPT_CURSOR_CHAR, PROMPT_X + 3 + prompt->cursor_pos * 2, PROMPT_Y, 2);
 }
 

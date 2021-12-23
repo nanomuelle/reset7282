@@ -7,7 +7,7 @@
 
 TAction* _parsePrompt(void) {
     TPrompt *prompt = man_prompt_getPrompt();
-    man_history_addInfo(prompt->buffer);
+    man_history_addUserInput(prompt->buffer);
     return sys_parser_parseAction(prompt->buffer);
 }
 

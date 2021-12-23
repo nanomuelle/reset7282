@@ -7,7 +7,7 @@ void man_game_render(void) {
 
     TRoom* room = man_rooms_getCurrentRoom();
     TPrompt* prompt = man_prompt_getPrompt();
-    THistory* history = man_history_getHistory();
+    THistory* history = man_history_getHistoryPtr();
 
     if (room != lastRoom) {
         sys_render_clearScreen();

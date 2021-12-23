@@ -12,23 +12,18 @@ void _game_action_go(TAction* action, TRoom* room) {
     u8 roomId;
 
     if (dir == ACTION_PARAM_GO_UNKNOWN) {
-        man_history_addWarning("-> ir hacia donde?");
+        man_history_addResponse("ir hacia donde?");
         return;
     }
 
     roomId = room->outs.direction[dir];
     if (roomId == NO_EXIT) {
-        man_history_addWarning("-> por ahi no hay salida");
+        man_history_addResponse("por ahi no hay salida");
         return;
     }
 
     {
         TRoom *room = man_rooms_setCurrentRoom(roomId);
-
-        // man_msg_clear();
-        // man_msg_concat("-> ");
-        // man_history_addWarning(
-        //     man_msg_concat(room->name)
-        // );
+        // man_history_addResponse(room->name);
     }
 }

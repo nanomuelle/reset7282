@@ -6,6 +6,6 @@
 void _game_action_inventory(TAction* action, TRoom* room) {
     u8 count = _game_show_objs_in_room(ROOM_ID_INVENTARIO);
     if (count == 0) {
-        man_history_addWarning("-> no tienes nada");
+        man_history_addResponse("no tienes nada");
     }
 }

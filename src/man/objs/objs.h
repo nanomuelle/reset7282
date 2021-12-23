@@ -24,6 +24,8 @@ extern TObj _objs[MAN_OBJS_SIZE];
 // PUBLIC
 extern void man_objs_init(void);
 extern TObj* man_objs_getPtr(void);
+extern u8 man_objs_isInRoom(TObjEnum objId, TRoomIdEnum roomId);
+extern void man_objs_moveToRoom(TObjEnum objId, TRoomIdEnum roomId);
 extern TObj* man_objs_getObj(TObjEnum id);
 extern TObj** man_objs_getInRoom(TRoom *room);
 

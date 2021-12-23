@@ -6,5 +6,5 @@
 #include <sys/parser/parser.h>
 
 void _game_action_unknown(TAction* action, TRoom* room) {
-    man_history_addError("ERROR: comando desconocido");
+    man_history_addError("comando desconocido");
 }

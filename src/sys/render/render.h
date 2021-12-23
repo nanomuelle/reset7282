@@ -5,9 +5,29 @@
 #include <man/prompt/prompt.h>
 #include <man/history/history.h>
 
-#define PROMPT_X 0
-#define PROMPT_Y 180
-#define PROMPT_CHAR ':'
+#define LINE_HEIGHT 10
+
+#define ROOM_NAME_X     0
+#define ROOM_NAME_Y     0
+#define ROOM_NAME_W     51 // bytes
+#define ROOM_PEN        3
+
+#define OUTS_LABEL_X    52
+#define OUTS_LABEL_Y    ROOM_NAME_Y
+#define OUTS_LABEL_PEN  1
+
+#define OUTS_X          69
+#define OUTS_Y          ROOM_NAME_Y
+#define OUTS_KERNEL     3   // separacion entre caracteres en bytes
+
+#define ROOM_TXT_Y      30
+#define ROOM_TXT_X      8
+#define ROOM_TXT_COLS   30
+#define ROOM_TXT_PEN    1
+
+#define PROMPT_X        0
+#define PROMPT_Y        180
+#define PROMPT_CHAR     ':'
 #define PROMPT_CURSOR_CHAR 0x8F
 
 ////////// PRIVATE

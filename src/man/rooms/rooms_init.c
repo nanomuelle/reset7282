@@ -3,7 +3,7 @@
 const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
     {   ROOM_ID_INITIAL,
         "Tu dormitorio",
-        "Despiertas con el TECLADO clavado en la cara. No ves absolutamente nada.                                                \xAEQue haces?",
+        "Despiertas pasadas unas horas.\x0dNo ves nada.\x0d\x0d\xAEQue haces?",
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }}
     },
     {

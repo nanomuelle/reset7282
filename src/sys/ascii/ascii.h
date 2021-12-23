@@ -31,5 +31,6 @@
 #define ASCII_z 0x7A
 
 #define ASCII_DEL 0x7F
+#define ASCII_RETURN 0x0d
 
 #endif

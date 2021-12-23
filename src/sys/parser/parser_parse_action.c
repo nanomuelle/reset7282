@@ -8,7 +8,7 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 10
+#define ACTION_USERINPUT_TO_TYPE_SIZE 12
 
 TAction action;
 
@@ -23,6 +23,8 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "explorar",   { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT   }}},
     { "encender",   { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "inventario", { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "i",          { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
 };
 
 //

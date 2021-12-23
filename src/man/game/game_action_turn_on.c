@@ -13,14 +13,14 @@ void _game_action_turn_on(TAction* action, TRoom* room) {
     TParamTurnOnEnum param = action->param1.turn_on_param;
 
     if (param == ACTION_PARAM_TURN_ON_UNKNOWN) {
-        man_history_addError(" -> no se como encender eso");
+        man_history_addError("-> no se como encender eso");
         return;
     }
     
     if (param == ACTION_PARAM_TURN_ON_LIGHT) {
         man_msg_clear();
         man_history_addWarning(
-            man_msg_concat(" -> ...y la luz se hizo")
+            man_msg_concat("-> ... y la luz se hizo")
         );
 
         if (room->id == ROOM_ID_INITIAL) {

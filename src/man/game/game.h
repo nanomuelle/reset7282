@@ -11,12 +11,15 @@
     typedef void (*TActionRunner)(TAction*, TRoom*);
 
 // PRIVATE
-    extern void _game_execute_action(TAction *, TRoom *);
+    extern void _game_execute_action    (TAction *, TRoom *);
 
-    extern void _game_action_go(TAction *, TRoom *);
-    extern void _game_action_search(TAction *, TRoom *);
-    extern void _game_action_turn_on(TAction *, TRoom *);
-    extern void _game_action_unknown(TAction *, TRoom *);
+    extern void _game_action_go         (TAction *, TRoom *);
+    extern void _game_action_search     (TAction *, TRoom *);
+    extern void _game_action_turn_on    (TAction *, TRoom *);
+    extern void _game_action_inventory  (TAction *, TRoom *);
+    extern void _game_action_unknown    (TAction *, TRoom *);
+
+    extern u8 _game_show_objs_in_room(TRoom *);
 
 // PUBLIC
     extern void man_game_init(void);

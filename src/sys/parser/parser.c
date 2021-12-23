@@ -3,19 +3,20 @@
 
 #include <sys/debug/debug.h>
 
-typedef struct {
-    u8* name;
-} TActionDefinition;
+// typedef struct {
+//     u8* name;
+// } TActionDefinition;
 
-const TActionDefinition actionDefs[] = {
-    { "ir" },
-    { "buscar"},
-    { "encender" },
-    { "orden desconocida" }
-};
+// const TActionDefinition actionDefs[] = {
+//     { "ir" },
+//     { "buscar"},
+//     { "encender" },
+//     { "inventario"},
+//     { "orden desconocida" }
+// };
 
-const u8* sys_parser_getActionName(TAction* action) {    
-    return actionDefs[action->type].name;
-}
+// const u8* sys_parser_getActionName(TAction* action) {    
+//     return actionDefs[action->type].name;
+// }
 
 void sys_parser_init(void) {}

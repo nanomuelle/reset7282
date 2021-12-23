@@ -6,6 +6,12 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         "Despiertas con el TECLADO clavado en la cara. No ves absolutamente nada.                                                \xAEQue haces?",
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }}
     },
+    {
+        ROOM_ID_INVENTARIO,
+        "",
+        "",
+        {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }}
+    },
     {   ROOM_ID_ASEO_1, 
         "Aseo principal", 
         "Te encuentras en el aseo principal de la casa.",

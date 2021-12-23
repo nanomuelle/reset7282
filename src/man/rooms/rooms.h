@@ -8,10 +8,11 @@
 
 typedef enum RoomIdEnum {
     ROOM_ID_INITIAL,        // 0
-    ROOM_ID_ASEO_1,         // 1
-    ROOM_ID_PASILLO_1,      // 2
-    ROOM_ID_PASILLO_2,      // 3
-    ROOM_ID_DORMITORIO_1    // 4
+    ROOM_ID_INVENTARIO,     // 1
+    ROOM_ID_ASEO_1,         // 2
+    ROOM_ID_PASILLO_1,      // 3
+    ROOM_ID_PASILLO_2,      // 4
+    ROOM_ID_DORMITORIO_1    // 5
 } TRoomIdEnum;
 
 typedef enum RoomOutEnum {

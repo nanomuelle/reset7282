@@ -9,6 +9,7 @@ typedef enum {
     ACTION_TYPE_GO = 0,
     ACTION_TYPE_SEARCH,
     ACTION_TYPE_TURN_ON,
+    ACTION_TYPE_INVENTORY,
     ACTION_TYPE_UNKNOWN
 } TActionType;
 
@@ -57,6 +58,6 @@ extern void _sys_parser_parseParamTurnOn(u8* userInput, TAction *action);
 // PUBLIC
 extern void sys_parser_init(void);
 extern TAction* sys_parser_parseAction(u8 *);
-extern const u8* sys_parser_getActionName(TAction *);
+// extern const u8* sys_parser_getActionName(TAction *);
 
 #endif

@@ -15,8 +15,6 @@ TObj** man_objs_getInRoom(TRoom *room) {
 
     _clearObjsInRoomBuffer();
     for(u8 i = 0; i < MAN_OBJS_SIZE; i++) {
-        sys_debug_info(obj->name, 0, 190);
-        sys_debug_number(obj->roomId, 0, 190);
         if (obj->roomId == room->id) {
             *dst = obj;
             ++dst;

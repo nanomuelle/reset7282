@@ -25,10 +25,7 @@ void printChar(u16 ascii, u8 x, u8 y, u8 pen) {
 }
 
 void _wait() {
-    cpct_waitVSYNC();
-    cpct_waitVSYNC();
-    cpct_waitVSYNC();
-    cpct_waitVSYNC();
+    cpct_waitHalts(10);
 }
 
 void printInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen) {    

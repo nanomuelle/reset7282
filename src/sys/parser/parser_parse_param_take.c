@@ -3,6 +3,8 @@
 
 #include <man/objs/objs.h>
 
+#include <sys/debug/debug.h>
+
 void _sys_parser_parseParamTake(u8* userInput, TAction *action) {
     u8 buffer[PARSER_BUFFER_SIZE];
 

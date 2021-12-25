@@ -21,7 +21,7 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "buscar",     { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "mirar",      { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "explorar",   { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
-    { "coger",      { ACTION_TYPE_TAKE   , { .unknown_param = ACTION_PARAM_TAKE_UNKNOWN }}},
+    { "coger",      { ACTION_TYPE_TAKE   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "raqueta",    { ACTION_TYPE_TAKE   , { .take_param = ACTION_PARAM_TAKE_RAQUETA }}},
     { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT }}},
     { "encender",   { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},

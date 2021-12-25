@@ -46,10 +46,30 @@ void _update_headerLine() {
     cpct_memset(pmem, c, 80);
 }
 
+void _update_roomTxtBox() {
+    u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y);
+    u8 ch = cpct_px2byteM1(3, 3, 3, 3);
+    u8 cvl = cpct_px2byteM1(0, 0, 3, 3);
+    u8 cvr = cpct_px2byteM1(3, 3, 0, 0);
+
+    cpct_drawSolidBox(pmem                     , ch, ROOM_TXT_BOX_W / 2, 2);
+    cpct_drawSolidBox(pmem + ROOM_TXT_BOX_W / 2, ch, ROOM_TXT_BOX_W / 2, 2);
+
+    cpct_drawSolidBox(pmem, cvl, 1, ROOM_TXT_BOX_H);
+
+    pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1, ROOM_TXT_BOX_Y);
+    cpct_drawSolidBox(pmem, cvr, 1, ROOM_TXT_BOX_H);
+
+    pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X - 4, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H);
+    cpct_drawSolidBox(pmem                     , ch, (ROOM_TXT_BOX_W + 8) / 2, 2);
+    cpct_drawSolidBox(pmem + (ROOM_TXT_BOX_W + 8) / 2, ch, (ROOM_TXT_BOX_W + 8) / 2, 2);
+}
+
 void _render_updateRoom(TRoom *room) {
     _update_roomName(room);
     _update_roomOutsLabel();
     _update_roomOuts(room);
     _update_headerLine();
     _update_roomTxt(room);
+    _update_roomTxtBox();
 }

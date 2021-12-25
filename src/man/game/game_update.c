@@ -11,8 +11,9 @@ TAction* _parsePrompt(void) {
     return sys_parser_parseAction(prompt->buffer);
 }
 
-void man_game_update(void) {
+TAction* man_game_update(void) {
     TAction *action = _parsePrompt();
     _game_execute_action(action, man_rooms_getCurrentRoom());
     man_prompt_reset();
+    return action;
 }

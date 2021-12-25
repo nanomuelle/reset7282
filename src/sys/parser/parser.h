@@ -18,7 +18,7 @@ typedef enum {
     ACTION_PARAM_UNKNOWN = 0xff
 } TParamUnknownEnum;
 
-typedef enum {
+typedef enum ParamGoEnum {
     ACTION_PARAM_GO_N,
     ACTION_PARAM_GO_S,
     ACTION_PARAM_GO_E,

@@ -4,6 +4,7 @@
 #include <man/rooms/rooms.h>
 #include <man/prompt/prompt.h>
 #include <man/history/history.h>
+#include <sys/parser/parser.h>
 
 #define LINE_HEIGHT 10
 
@@ -24,21 +25,35 @@
 #define ROOM_TXT_X      8
 #define ROOM_TXT_COLS   30
 #define ROOM_TXT_PEN    1
-
+#define ROOM_TXT_W      (2 + (ROOM_TXT_COLS * 8 / 4))
+#define ROOM_TXT_H      60
 #define PROMPT_X        0
 #define PROMPT_Y        180
 #define PROMPT_CHAR     ':'
 #define PROMPT_CURSOR_CHAR 0x8F
 
+#define SYS_RENDER_ROOM_SCROLL_IX   1   // BYTES
+
 ////////// PRIVATE
-extern void printMsg(const char* msg, u8 x, u8 y, u8 pen);
-extern void printChar(u16 ascii, u8 x, u8 y, u8 pen);
+extern void _render_clearScreen();
+
+extern void _render_printMsg(const char* msg, u8 x, u8 y, u8 pen);
+extern void _render_printChar(u16 ascii, u8 x, u8 y, u8 pen);
+extern void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen);
+
+extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h);
+
+extern void _render_clearRoom(TAction *action);
+extern void _render_clearRoomTxt();
+extern void _render_scroolRoomTxt(TParamGoEnum dir);
+
+extern void _render_updateRoom(TRoom *);
+extern void _render_updateHistory(THistory *);
+
 
 ////////// PUBLIC
 extern void sys_render_init(void);
-extern void sys_render_renderRoom(TRoom *);
-extern void sys_render_renderPrompt(TPrompt *);
-extern void sys_render_renderHistory(THistory *);
-extern void sys_render_clearScreen();
+extern void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt);
+extern void sys_render_updatePrompt(TPrompt *prompt);
 
 #endif

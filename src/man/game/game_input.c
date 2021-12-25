@@ -8,7 +8,7 @@ void man_game_input(void) {
     TPrompt* prompt = man_prompt_getPrompt();
 
     while (key != KEY_ENTER) {
-        sys_render_renderPrompt(prompt);
+        sys_render_updatePrompt(prompt);
 
         key = sys_input_waitKey();
         cpct_disableFirmware();

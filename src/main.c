@@ -82,13 +82,14 @@
 #include <man/game/game.h>
 
 void main(void) {
+    TAction *action = 0x00;
     man_game_init();
     man_game_new();
-    man_game_render();
+//    man_game_render(0x00);
 
     while(1) {
+        man_game_render(action);
         man_game_input();
-        man_game_update();
-        man_game_render();
+        action = man_game_update();
     }
 }

@@ -22,15 +22,21 @@ typedef enum RoomOutEnum {
     OUT_O
 } TRoomOutsEnum;
 
+typedef enum RoomExploredEnum {
+    NOT_EXPLORED = 0,
+    EXPLORED
+} TExploredEnum;
+
 typedef struct RoomOutsStruct {
     TRoomOutsEnum direction[4];
 } TRoomOuts;
 
 typedef struct RoomStruct {
-    const TRoomIdEnum id;
-    const u8* name;
-    const u8* txt;
+    const TRoomIdEnum id;   // id
+    const u8* name;         // nombre
+    const u8* txt;          // descripcion
     const TRoomOuts outs;   // salidas
+    TExploredEnum explored; // indicador de habitacion explorada
 } TRoom;
 
 // PRIVATE

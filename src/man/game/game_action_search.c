@@ -10,4 +10,5 @@ void _game_action_search(TAction* action, TRoom* room) {
     if (count == 0) {
         man_history_addResponse("no encuentras nada");
     }
+    room->explored = EXPLORED;
 }

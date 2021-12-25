@@ -35,7 +35,7 @@
 #define ROOM_TXT_BOX_H  (ROOM_TXT_H + 4 * ROOM_TXT_BOX_PADDING)
 
 #define PROMPT_X        0
-#define PROMPT_Y        180
+#define PROMPT_Y        178
 #define PROMPT_CHAR     ':'
 #define PROMPT_CURSOR_CHAR 0x8F
 
@@ -47,6 +47,8 @@ extern void _render_clearScreen();
 extern void _render_printMsg(const char* msg, u8 x, u8 y, u8 pen);
 extern void _render_printChar(u16 ascii, u8 x, u8 y, u8 pen);
 extern void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen);
+
+extern void _render_printObjsInRoom(TRoom *room, u8 x, u8 y, u8 pen);
 
 extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h);
 

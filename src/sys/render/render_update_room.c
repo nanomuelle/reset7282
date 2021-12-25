@@ -1,8 +1,6 @@
 #include <sys/render/render.h>
 #include <sys/ascii/ascii.h>
 
-
-
 void _update_roomName(TRoom *room) {
     _render_clearBox(ROOM_NAME_X, ROOM_NAME_Y, ROOM_NAME_W, LINE_HEIGHT);
     _render_printMsg(room->name, ROOM_NAME_X, ROOM_NAME_Y, ROOM_PEN);
@@ -65,11 +63,36 @@ void _update_roomTxtBox() {
     cpct_drawSolidBox(pmem + (ROOM_TXT_BOX_W + 8) / 2, ch, (ROOM_TXT_BOX_W + 8) / 2, 2);
 }
 
+
+void _update_roomObjs(TRoom *room) {
+    // TODO solo mostrar objs si la habitacion ha sido explorada
+    _render_clearBox(
+        ROOM_TXT_BOX_X,
+        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2,
+        ROOM_TXT_BOX_W / 2,
+        10
+    );
+    _render_clearBox(
+        ROOM_TXT_BOX_X + ROOM_TXT_BOX_W / 2,
+        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2,
+        ROOM_TXT_BOX_W / 2,
+        10
+    );
+
+    _render_printObjsInRoom(room, ROOM_TXT_BOX_X + ROOM_TXT_BOX_W, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2, 1);
+}
+
 void _render_updateRoom(TRoom *room) {
+    // header
     _update_roomName(room);
     _update_roomOutsLabel();
     _update_roomOuts(room);
     _update_headerLine();
+
+    // txt
     _update_roomTxt(room);
     _update_roomTxtBox();
+
+    // objs
+    _update_roomObjs(room);
 }

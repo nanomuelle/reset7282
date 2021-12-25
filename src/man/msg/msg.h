@@ -4,7 +4,9 @@
 
     #define MAN_MSG_MSG_SIZE 40
 
+//  PUBLIC
     extern u8* man_msg_clear(void);
     extern u8* man_msg_getPtr(void);
     extern u8* man_msg_concat(u8* str);
+    extern u8 man_msg_getLength();
 #endif

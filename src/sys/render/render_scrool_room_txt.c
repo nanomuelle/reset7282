@@ -121,17 +121,17 @@ void _scroolRoomTxtS() {
 void _render_scroolRoomTxt(TParamGoEnum dir) {
     switch(dir) {
         case ACTION_PARAM_GO_N:
-            _scroolRoomTxtN();            
+            _scroolRoomTxtN();
         break;
-        
+
         case ACTION_PARAM_GO_S:
             _scroolRoomTxtS();
         break;
-        
+
         case ACTION_PARAM_GO_E:
             _scroolRoomTxtE();
         break;
-        
+
         case ACTION_PARAM_GO_O:
             _scroolRoomTxtO();
         break;

@@ -2,14 +2,6 @@
 #include <sys/memory/memory.h>
 
 #include <sys/debug/debug.h>
-//
-//
-//   1 2 3 4 5 6 7 8
-//       h o l a       STEP 0: src = 5, dst = 6, w = 4
-//         h o l       STEP 1: src = 5, dst = 6, w = 3
-//           h o       STEP 2: src = 5, dst = 6, w = 2
-//             h       STEP 2: src = 5, dst = 6, w = 1
-//                     STEP 2: src = 5, dst = 6, w = 2
 
 void _scroolRoomTxtE() {
     u8 h = 0;
@@ -49,12 +41,91 @@ void _scroolRoomTxtO() {
     }
 }
 
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y      X X X X
+//  Y+1    Y Y Y Y
+//  Y+2    Z Z Z Z
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y
+//  Y+1    X X X X
+//  Y+2    Y Y Y Y
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y
+//  Y+1
+//  Y+2    X X X X
+//
+void _scroolRoomTxtN() {
+    u8 bottom = ROOM_TXT_Y + ROOM_TXT_H;
+    u8 h = ROOM_TXT_H + 1;
+    while (h > 0) {
+        u8 lines = h;
+        while (lines > 0) {
+            u8 *src = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_X, bottom - 1);
+            u8 *dst = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_X, bottom);
+
+            sys_mem_memcpy(dst, src, ROOM_TXT_W);
+            --bottom;
+            --lines;
+        }
+        bottom = ROOM_TXT_Y + ROOM_TXT_H;
+        --h;
+    }
+}
+
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y      X X X X
+//  Y+1    Y Y Y Y
+//  Y+2    Z Z Z Z
+//  Y+3
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y      Y Y Y Y
+//  Y+1    Z Z Z Z
+//  Y+2
+//  Y+3
+//
+//       1 2 3 4 5 6 7 8
+//  Y-1
+//  Y      Z Z Z Z
+//  Y+1
+//  Y+2
+//  Y+3
+//
+void _scroolRoomTxtS() {
+    u8 top = ROOM_TXT_Y;
+    u8 h = ROOM_TXT_H + 1;
+    while (h > 0) {
+        u8 lines = h;
+        while (lines > 0) {
+            u8 *dst = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_X, top);
+            u8 *src = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_X, top + 1);
+
+            sys_mem_memcpy(dst, src, ROOM_TXT_W);
+            ++top;
+            --lines;
+        }
+        top = ROOM_TXT_Y;
+        --h;
+    }
+}
+
 void _render_scroolRoomTxt(TParamGoEnum dir) {
     switch(dir) {
-        case ACTION_PARAM_GO_N:            
+        case ACTION_PARAM_GO_N:
+            _scroolRoomTxtN();            
         break;
         
         case ACTION_PARAM_GO_S:
+            _scroolRoomTxtS();
         break;
         
         case ACTION_PARAM_GO_E:

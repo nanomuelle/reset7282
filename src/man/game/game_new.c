@@ -5,5 +5,5 @@ void man_game_new(void) {
     man_game_init();
     man_rooms_setCurrentRoom(ROOM_ID_INITIAL);
 
-    cpct_waitVSYNC();
+    _game_action = 0x00;
 }

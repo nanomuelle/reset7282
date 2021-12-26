@@ -87,8 +87,8 @@ void main(void) {
     man_game_new();
 
     while(1) {
-        man_game_render(action);
+        man_game_render();
         man_game_input();
-        action = man_game_update();
+        man_game_update();
     }
 }

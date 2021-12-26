@@ -16,6 +16,9 @@
 
     typedef void (*TActionRunner)(TAction*, TRoom*);
 
+// PRIVATE DATA
+    extern TAction* _game_action;
+
 // PRIVATE
     extern void _game_execute_action    (TAction *, TRoom *);
 
@@ -34,6 +37,6 @@
     extern void man_game_init(void);
     extern void man_game_new(void);
     extern void man_game_input(void);
-    extern TAction* man_game_update(void);
-    extern void man_game_render(TAction* action);
+    extern void man_game_update(void);
+    extern void man_game_render(void);
 #endif

@@ -39,4 +39,7 @@
     extern void man_game_input(void);
     extern void man_game_update(void);
     extern void man_game_render(void);
+
+    // conversational game
+    extern void man_game_rendererConversational(void);
 #endif

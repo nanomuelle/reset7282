@@ -40,8 +40,8 @@ typedef struct RoomStruct {
     const TRoomOuts outs;   // salidas
     TExploredEnum explored; // indicador de habitacion explorada
     const TGameFn renderer; // ptr to renderer fn
-    // const TGameFn inputer;  // ptr to input fn
     const TGameFn updater;  // ptr to updater fn
+    const TGameFn inputReader;  // ptr to input fn
 } TRoom;
 
 // PRIVATE

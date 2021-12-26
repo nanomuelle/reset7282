@@ -8,7 +8,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     },
     {   // not a real room, es el almacen de objetos que tiene el usuario
         ROOM_ID_INVENTARIO,
@@ -18,6 +19,7 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         EXPLORED,
         0x00, // no renderer
         0x00, // no updater
+        0x00, // no input reader
     },
     {   ROOM_ID_ASEO_1, 
         "Aseo principal", 
@@ -25,7 +27,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ NO_EXIT, ROOM_ID_PASILLO_1, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     },
     {   ROOM_ID_PASILLO_1,
         "Pasillo (ESTE)",
@@ -33,7 +36,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ ROOM_ID_ASEO_1, ROOM_ID_DORMITORIO_1, NO_EXIT, ROOM_ID_PASILLO_2 }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     },
     {   ROOM_ID_PASILLO_2,
         "Pasillo (OESTE)",
@@ -41,7 +45,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ NO_EXIT, NO_EXIT, ROOM_ID_PASILLO_1, NO_EXIT }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     },
     {   ROOM_ID_DORMITORIO_1,
         "Tu dormitorio",
@@ -49,7 +54,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ ROOM_ID_PASILLO_1, NO_EXIT, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     },
     {
         ROOM_ID_PONG,
@@ -58,7 +64,8 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED,
         man_game_rendererConversational,
-        man_game_updaterConversational
+        man_game_updaterConversational,
+        man_game_inputReaderConversational
     }
 };
 

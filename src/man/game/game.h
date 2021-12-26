@@ -21,6 +21,7 @@
     extern void _game_action_take       (TAction *, TRoom *);
     extern void _game_action_turn_on    (TAction *, TRoom *);
     extern void _game_action_unknown    (TAction *, TRoom *);
+    extern void _game_action_use        (TAction *, TRoom *);
 
     extern u8 _game_show_objs_in_room(TRoom *);
 

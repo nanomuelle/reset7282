@@ -12,7 +12,8 @@ typedef enum {
     ACTION_TYPE_SEARCH,
     ACTION_TYPE_TAKE,
     ACTION_TYPE_TURN_ON,
-    ACTION_TYPE_UNKNOWN
+    ACTION_TYPE_UNKNOWN,
+    ACTION_TYPE_USE
 } TActionType;
 
 typedef enum {

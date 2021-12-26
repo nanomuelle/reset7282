@@ -8,7 +8,7 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 15
+#define ACTION_USERINPUT_TO_TYPE_SIZE 16
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
     { "ir",         { ACTION_TYPE_GO     , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
@@ -30,6 +30,8 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "encender",   { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "dar",        { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "luz",        { ACTION_TYPE_TURN_ON, { .obj_param = OBJ_ID_LIGHT }}},
+
+    { "usar",       { ACTION_TYPE_USE    , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
 };
 
 TAction action;
@@ -81,6 +83,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
 
         case ACTION_TYPE_TAKE:
         case ACTION_TYPE_TURN_ON:
+        case ACTION_TYPE_USE:
             _sys_parser_parseParamObj(buffer, action);
             break;
     }

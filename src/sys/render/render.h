@@ -48,7 +48,7 @@ extern void _render_printMsg(const char* msg, u8 x, u8 y, u8 pen);
 extern void _render_printChar(u16 ascii, u8 x, u8 y, u8 pen);
 extern void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen);
 
-extern void _render_printObjsInRoom(TRoom *room, u8 x, u8 y, u8 pen);
+extern void _render_printObjsInRoom(const TRoom *room, const u8 x, const u8 y);
 
 extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h);
 

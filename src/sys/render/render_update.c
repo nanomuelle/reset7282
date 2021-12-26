@@ -2,7 +2,7 @@
 
 void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt) {
     static TRoom* _lastRoom = 0;
-    
+
     if (_lastRoom != room) {
         _render_clearRoom(action);
         _lastRoom = room;
@@ -18,6 +18,6 @@ void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt 
         u8 c = cpct_px2byteM1(2, 2, 0, 0);
         cpct_memset(pmem, c, 80);
 
-        _render_printObjsInRoom(inventory, 79, PROMPT_Y + 14, 3);
+        _render_printObjsInRoom(inventory, 79, PROMPT_Y + 14);
     }
 }

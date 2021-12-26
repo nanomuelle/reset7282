@@ -17,19 +17,11 @@ u8 _game_takeObjFromRoom(TObjEnum objId, TRoomIdEnum roomId ) {
 }
 
 void _game_action_take(TAction* action, TRoom* room) {
-    TObjEnum objId;
-
-    if (action->param1.take_param == ACTION_PARAM_TAKE_UNKNOWN) {
+    if (action->param1.obj_param == OBJ_ID_NULL) {
         man_history_addError("coger el que?");
     }
 
-    switch(action->param1.take_param) {
-        case ACTION_PARAM_TAKE_RAQUETA:
-            objId = OBJ_ID_RAQUETA;
-        break;
-    }
-
-    if (_game_takeObjFromRoom(objId, room->id)) {
+    if (_game_takeObjFromRoom(action->param1.obj_param, room->id)) {
         TRoom* inventario = man_rooms_getRoom(ROOM_ID_INVENTARIO);
         man_history_addResponse("objeto recogido");
         _game_show_objs_in_room(inventario);

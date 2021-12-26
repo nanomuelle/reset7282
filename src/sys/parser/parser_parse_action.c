@@ -8,7 +8,7 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 14
+#define ACTION_USERINPUT_TO_TYPE_SIZE 15
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
     { "ir",         { ACTION_TYPE_GO     , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
@@ -16,15 +16,20 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "s",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_S       }}},
     { "e",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_E       }}},
     { "o",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_O       }}},
+
     { "inventario", { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "i",          { ACTION_TYPE_INVENTORY, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+
     { "buscar",     { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "mirar",      { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
     { "explorar",   { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
+
     { "coger",      { ACTION_TYPE_TAKE   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
-    { "raqueta",    { ACTION_TYPE_TAKE   , { .take_param = ACTION_PARAM_TAKE_RAQUETA }}},
-    { "luz",        { ACTION_TYPE_TURN_ON, { .turn_on_param = ACTION_PARAM_TURN_ON_LIGHT }}},
+    { "raqueta",    { ACTION_TYPE_TAKE   , { .obj_param = OBJ_ID_RAQUETA }}},
+
     { "encender",   { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "dar",        { ACTION_TYPE_TURN_ON, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "luz",        { ACTION_TYPE_TURN_ON, { .obj_param = OBJ_ID_LIGHT }}},
 };
 
 TAction action;
@@ -75,11 +80,8 @@ void _parseActionParam(u8* userInput, TAction *action) {
             break;
 
         case ACTION_TYPE_TAKE:
-            _sys_parser_parseParamTake(buffer, action);
-            break;
-
         case ACTION_TYPE_TURN_ON:
-            _sys_parser_parseParamTurnOn(buffer, action);
+            _sys_parser_parseParamObj(buffer, action);
             break;
     }
 }

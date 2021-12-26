@@ -2,6 +2,7 @@
 #define RESET_SYS_PARSER
 
 #include <cpctelera.h>
+#include <man/objs/objs.h>
 
 #define PARSER_BUFFER_SIZE 40
 
@@ -43,8 +44,9 @@ typedef enum {
 typedef union {
     TParamGoEnum go_param;
     TParamSearchEnum search_param;
-    TParamTakeEnum take_param;
-    TParamTurnOnEnum turn_on_param;
+    TObjEnum obj_param;
+//    TParamTakeEnum take_param;
+//    TParamTurnOnEnum turn_on_param;
     TParamUnknownEnum unknown_param;
 } TParam;
 
@@ -60,8 +62,7 @@ typedef struct {
 
 // PRIVATE
 extern void _sys_parser_parseParamGo    (u8* userInput, TAction *action);
-extern void _sys_parser_parseParamTake  (u8* userInput, TAction *action);
-extern void _sys_parser_parseParamTurnOn(u8* userInput, TAction *action);
+extern void _sys_parser_parseParamObj   (u8* userInput, TAction *action);
 
 // PUBLIC
 extern void sys_parser_init(void);

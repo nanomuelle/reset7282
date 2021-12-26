@@ -19,6 +19,15 @@ u8 _game_takeObjFromRoom(TObjEnum objId, TRoomIdEnum roomId ) {
 void _game_action_take(TAction* action, TRoom* room) {
     if (action->param1.obj_param == OBJ_ID_NULL) {
         man_history_addError("coger el que?");
+        return;
+    }
+
+    {
+        TObj *obj = man_objs_getObj(action->param1.obj_param);
+        if ( (obj->attrs & OBJ_ATTR_CAN_TAKE) != OBJ_ATTR_CAN_TAKE ) {
+            man_history_addError("no puedo coger eso");
+            return;
+        }
     }
 
     if (_game_takeObjFromRoom(action->param1.obj_param, room->id)) {

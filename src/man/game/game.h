@@ -6,7 +6,7 @@
     #include <sys/parser/parser.h>
     #include <man/rooms/rooms.h>
     #include <sys/render/render.h>
-    
+
     #define KEY_DEL   0x7F
     #define KEY_ENTER 0x0D
 
@@ -31,4 +31,6 @@
     extern void man_game_input(void);
     extern TAction* man_game_update(void);
     extern void man_game_render(TAction* action);
+
+    extern void man_game_playPong(void);
 #endif

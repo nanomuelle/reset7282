@@ -42,8 +42,6 @@
 #define SYS_RENDER_ROOM_SCROLL_IX   1   // BYTES
 
 ////////// PRIVATE
-extern void _render_clearScreen();
-
 extern void _render_printMsg(const char* msg, u8 x, u8 y, u8 pen);
 extern void _render_printChar(u16 ascii, u8 x, u8 y, u8 pen);
 extern void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen);
@@ -62,6 +60,7 @@ extern void _render_updateHistory(THistory *);
 
 ////////// PUBLIC
 extern void sys_render_init(void);
+extern void sys_render_clearScreen(void);
 extern void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt);
 extern void sys_render_updatePrompt(TPrompt *prompt);
 

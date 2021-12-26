@@ -60,7 +60,7 @@ extern void _render_updateHistory(THistory *);
 
 ////////// PUBLIC
 extern void sys_render_init(void);
-extern void sys_render_clearScreen(void);
+extern void sys_render_clearScreen(void) __z88dk_callee;
 extern void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt);
 extern void sys_render_updatePrompt(TPrompt *prompt);
 

@@ -37,6 +37,13 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         "Tu habitacion esta hecha un desastre, como siempre.",
         {{ ROOM_ID_PASILLO_1, NO_EXIT, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED
+    },
+    {
+        ROOM_ID_PONG,
+        "Consola MagnaVox Oddisey",
+        "",
+        {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }},
+        NOT_EXPLORED
     }
 };
 

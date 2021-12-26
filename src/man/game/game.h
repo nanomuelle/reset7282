@@ -10,6 +10,10 @@
     #define KEY_DEL   0x7F
     #define KEY_ENTER 0x0D
 
+    typedef struct MsgStruct {
+        u8* txt;
+    } TMsgStruct;
+
     typedef void (*TActionRunner)(TAction*, TRoom*);
 
 // PRIVATE
@@ -23,7 +27,8 @@
     extern void _game_action_unknown    (TAction *, TRoom *);
     extern void _game_action_use        (TAction *, TRoom *);
 
-    extern u8 _game_show_objs_in_room(TRoom *);
+    extern void _game_playPong(void);
+    extern u8   _game_show_objs_in_room(TRoom *);
 
 // PUBLIC
     extern void man_game_init(void);
@@ -31,6 +36,4 @@
     extern void man_game_input(void);
     extern TAction* man_game_update(void);
     extern void man_game_render(TAction* action);
-
-    extern void man_game_playPong(void);
 #endif

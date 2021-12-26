@@ -12,10 +12,4 @@ void man_game_render(TAction *action) {
     THistory* history = man_history_getHistoryPtr();
 
     sys_render_update(action, room, history, prompt);
-    // if (_lastRoom != room) {
-    //     _render_clearRoom(action);
-    //     _lastRoom = room;
-    // }
-    // _render_updateHistory(history);
-    // sys_render_updatePrompt(prompt);
 }

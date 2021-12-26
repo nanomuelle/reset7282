@@ -1,5 +1,6 @@
 #include <man/game/game.h>
 
 void man_game_render() {
-    man_game_rendererConversational();
+    TRoom* room = man_rooms_getCurrentRoom();
+    room->renderer();
 }

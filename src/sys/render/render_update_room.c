@@ -58,9 +58,9 @@ void _update_roomTxtBox() {
     pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1, ROOM_TXT_BOX_Y);
     cpct_drawSolidBox(pmem, cvr, 1, ROOM_TXT_BOX_H);
 
-    pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X - 4, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H);
-    cpct_drawSolidBox(pmem                     , ch, (ROOM_TXT_BOX_W + 8) / 2, 2);
-    cpct_drawSolidBox(pmem + (ROOM_TXT_BOX_W + 8) / 2, ch, (ROOM_TXT_BOX_W + 8) / 2, 2);
+    pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X - 3, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H);
+    cpct_drawSolidBox(pmem                     , ch, (ROOM_TXT_BOX_W + 6) / 2, 2);
+    cpct_drawSolidBox(pmem + (ROOM_TXT_BOX_W + 6) / 2, ch, (ROOM_TXT_BOX_W + 6) / 2, 2);
 }
 
 void _update_roomObjs(TRoom *room) {
@@ -81,8 +81,8 @@ void _update_roomObjs(TRoom *room) {
     if (room->explored == EXPLORED) {
         _render_printObjsInRoom(
             room,
-            ROOM_TXT_BOX_X + ROOM_TXT_BOX_W,
-            ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2
+            ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,
+            ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 3
         );
     }
 }

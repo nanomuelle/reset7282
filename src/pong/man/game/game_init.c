@@ -6,7 +6,6 @@
 #include <pong/sys/physics/physics.h>
 
 void pong_man_game_init(void) {
-    pong_man_game_init();
     pong_man_entity_init();
 
     pong_sys_render_init();

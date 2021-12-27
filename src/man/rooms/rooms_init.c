@@ -63,9 +63,9 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         "",
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }},
         NOT_EXPLORED,
-        man_game_rendererConversational,
-        man_game_updaterConversational,
-        man_game_inputReaderConversational
+        man_game_rendererPong,
+        man_game_updaterPong,
+        man_game_inputReaderPong
     }
 };
 

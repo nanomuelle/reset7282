@@ -2,16 +2,21 @@
 #define PONG_MAN_ENTITY
 
 #include <cpctelera.h>
+#include <globals.h>
 
 #define PONG_MAN_ENTITY_BUFFER_SIZE 3
 
 typedef struct PongEntityStruct {
-    u8 x;   // position
-    u8 y;
-    u8 w;   // size
-    u8 h;
-    u8 vx;  // velocity
-    u8 vy;
+    i16 x;   // position
+    i16 y;   // byte alto para pintar, 2 bytes para physics
+    u16 w;   // physic size
+    u16 h;
+    i16 vx;   // velocity
+    i16 vy;
+    u8 render_w;    // render size
+    u8 render_h;
+    u8 color;
+    u8 *pmem; // PTR a ultima posicion de memoria en que se pinto
 } TPongEntity;
 
 typedef void (*TPongEntityCallback)(TPongEntity *);

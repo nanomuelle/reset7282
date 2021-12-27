@@ -26,13 +26,13 @@
 #define ROOM_TXT_COLS   30
 #define ROOM_TXT_PEN    1
 #define ROOM_TXT_W      (2 + (ROOM_TXT_COLS * 8 / 4))
-#define ROOM_TXT_H      60
+#define ROOM_TXT_H      70
 
 #define ROOM_TXT_BOX_PADDING 4
 #define ROOM_TXT_BOX_X  (ROOM_TXT_X - ROOM_TXT_BOX_PADDING)
-#define ROOM_TXT_BOX_Y  (ROOM_TXT_Y - 2 * ROOM_TXT_BOX_PADDING)
-#define ROOM_TXT_BOX_W  (ROOM_TXT_W + 2 * ROOM_TXT_BOX_PADDING)
-#define ROOM_TXT_BOX_H  (ROOM_TXT_H + 4 * ROOM_TXT_BOX_PADDING)
+#define ROOM_TXT_BOX_Y  (ROOM_TXT_Y - (2 * ROOM_TXT_BOX_PADDING))
+#define ROOM_TXT_BOX_W  (ROOM_TXT_W + (2 * ROOM_TXT_BOX_PADDING))
+#define ROOM_TXT_BOX_H  (ROOM_TXT_H + (4 * ROOM_TXT_BOX_PADDING))
 
 #define PROMPT_X        0
 #define PROMPT_Y        178
@@ -50,7 +50,6 @@ extern void _render_printObjsInRoom(const TRoom *room, const u8 x, const u8 y);
 
 extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h);
 
-extern void _render_clearRoom(TAction *action);
 extern void _render_clearRoomTxt();
 extern void _render_scroolRoomTxt(TParamGoEnum dir);
 
@@ -64,4 +63,5 @@ extern void sys_render_clearScreen(void) __z88dk_callee;
 extern void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt);
 extern void sys_render_updatePrompt(TPrompt *prompt);
 
+extern void sys_render_clearRoom(TAction *action);
 #endif

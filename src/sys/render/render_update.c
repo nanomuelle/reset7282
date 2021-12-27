@@ -4,7 +4,7 @@ void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt 
     static TRoom* _lastRoom = 0;
 
     if (_lastRoom != room) {
-        _render_clearRoom(action);
+        sys_render_clearRoom(action);
         _lastRoom = room;
     }
     _render_updateRoom(room);

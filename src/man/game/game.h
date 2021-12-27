@@ -6,6 +6,8 @@
     #include <sys/parser/parser.h>
     #include <man/rooms/rooms.h>
     #include <sys/render/render.h>
+    
+    #include <sys/debug/debug.h>
 
     #define KEY_DEL   0x7F
     #define KEY_ENTER 0x0D
@@ -44,4 +46,10 @@
     extern void man_game_inputReaderConversational(void);
     extern void man_game_updaterConversational(void);
     extern void man_game_rendererConversational(void);
+
+    // pong
+    extern void man_game_inputReaderPong(void);
+    extern void man_game_rendererPong(void);
+    extern void man_game_updaterPong(void);
+
 #endif

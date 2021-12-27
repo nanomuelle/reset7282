@@ -15,11 +15,13 @@
 
 #define OUTS_LABEL_X    52
 #define OUTS_LABEL_Y    ROOM_NAME_Y
-#define OUTS_LABEL_PEN  1
+#define OUTS_LABEL_PEN  2
 
 #define OUTS_X          69
 #define OUTS_Y          ROOM_NAME_Y
 #define OUTS_KERNEL     3   // separacion entre caracteres en bytes
+#define OUTS_PEN1       1
+#define OUTS_PEN2       3
 
 #define ROOM_TXT_Y      30
 #define ROOM_TXT_X      8

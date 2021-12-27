@@ -18,20 +18,20 @@ void _update_roomOuts(TRoom *room) {
 
     _render_clearBox( OUTS_X, OUTS_Y, 10, LINE_HEIGHT);
 
-    c = room->outs.direction[OUT_N] != NO_EXIT ? 'N' : ' ';
-    _render_printChar(c, x, y, 3);
+    c = room->outs.direction[OUT_N] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
+    _render_printChar('N', x, y, c);
 
     x += offset;
-    c = room->outs.direction[OUT_S] != NO_EXIT ? 'S' : ' ';
-    _render_printChar(c, x, y, 3);
+    c = room->outs.direction[OUT_S] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
+    _render_printChar('S', x, y, c);
 
     x += offset;
-    c = room->outs.direction[OUT_E] != NO_EXIT ? 'E' : ' ';
-    _render_printChar(c, x, y, 3);
+    c = room->outs.direction[OUT_E] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
+    _render_printChar('E', x, y, c);
 
     x += offset;
-    c = room->outs.direction[OUT_O] != NO_EXIT ? 'O' : ' ';
-    _render_printChar(c, x, y, 3);
+    c = room->outs.direction[OUT_O] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
+    _render_printChar('O', x, y, c);
 }
 
 void _update_roomTxt(TRoom *room) {
@@ -40,7 +40,7 @@ void _update_roomTxt(TRoom *room) {
 
 void _update_headerLine() {
     u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, 0, 10);
-    u8 c = cpct_px2byteM1(2, 2, 0, 0);
+    u8 c = cpct_px2byteM1(3, 0, 0, 0);
     cpct_memset(pmem, c, 80);
 }
 
@@ -90,7 +90,7 @@ void _update_roomObjs(TRoom *room) {
 void _render_updateRoom(TRoom *room) {
     // header
     _update_roomName(room);
-    _update_roomOutsLabel();
+    // _update_roomOutsLabel();
     _update_roomOuts(room);
     _update_headerLine();
 

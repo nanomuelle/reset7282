@@ -21,6 +21,6 @@ void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen) {
 
         // next char position
         ++msg;
-        cpct_waitHalts(2);
+        // cpct_waitHalts(10);
     }
 }

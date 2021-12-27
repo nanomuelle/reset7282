@@ -11,11 +11,11 @@ sys_render_init_asm::
     call 0xBC32      ;; SRC SET INK
 
     ld  a, #2        ;; PEN 2
-    ld  bc, #0x0C0C  ;; RED
+    ld  bc, #0x1919  ;; 
     call 0xBC32      ;; SRC SET INK
 
     ld  a, #3        ;; PEN 3
-    ld  bc, #0x0A0A  ;; CYAN
+    ld  bc, #0x0b0b  ;;
     call 0xBC32      ;; SRC SET INK
 
     ld  bc, #0x0000  ;; BLACK

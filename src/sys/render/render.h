@@ -21,8 +21,7 @@
 #define OUTS_X          69
 #define OUTS_Y          ROOM_NAME_Y
 #define OUTS_KERNEL     3   // separación entre caracteres en bytes
-#define OUTS_PEN1       1
-#define OUTS_PEN2       3
+#define OUTS_PEN        1
 
 #define PROMPT_X        0
 #define PROMPT_Y        178

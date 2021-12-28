@@ -11,48 +11,43 @@ void _update_roomOutsLabel() {
 }
 
 void _update_roomOuts(TRoom *room) {
-    u8 c;
-    u8 y = OUTS_Y;
     u8 x = OUTS_X;
     u8 offset = OUTS_KERNEL;
+    const u16 outChar[] = {'N', 'S', 'E', 'O'};
 
     _render_clearBox( OUTS_X, OUTS_Y, 10, LINE_HEIGHT);
-
-    c = room->outs.direction[OUT_N] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
-    _render_printChar('N', x, y, c);
-
-    x += offset;
-    c = room->outs.direction[OUT_S] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
-    _render_printChar('S', x, y, c);
-
-    x += offset;
-    c = room->outs.direction[OUT_E] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
-    _render_printChar('E', x, y, c);
-
-    x += offset;
-    c = room->outs.direction[OUT_O] != NO_EXIT ? OUTS_PEN1 : OUTS_PEN2;
-    _render_printChar('O', x, y, c);
+    for (TRoomOutsEnum out = OUT_N; out <= OUT_O; out++) {
+        if (room->outs.direction[out] != NO_EXIT) {
+            _render_printChar(outChar[out], x, OUTS_Y, OUTS_PEN);
+        }
+        x += offset;
+    }
 }
 
 void _update_roomTxt(TRoom *room) {
     _render_typeInBox(room->txt, ROOM_TXT_X, ROOM_TXT_Y, ROOM_TXT_COLS, ROOM_TXT_PEN);
 }
 
-void _update_headerLine() {
+void _update_headerLine(TRoom *room) {
     u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, 0, 10);
-    u8 c = cpct_px2byteM1(3, 0, 0, 0);
+    u8 c = man_rooms_isDark(room) 
+        ? cpct_px2byteM1(3, 0, 0, 0)
+        : cpct_px2byteM1(2, 0, 0, 0)
+    ;
     cpct_memset(pmem, c, 80);
 }
 
-void _update_roomTxtBox() {
+void _update_roomTxtBox(TRoom *room) {
     u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y);
     u8 ch = cpct_px2byteM1(3, 3, 3, 3);
     u8 cvl = cpct_px2byteM1(0, 0, 3, 3);
     u8 cvr = cpct_px2byteM1(3, 3, 0, 0);
 
-    cpct_drawSolidBox(pmem                     , ch, ROOM_TXT_BOX_W / 2, 2);
-    cpct_drawSolidBox(pmem + ROOM_TXT_BOX_W / 2, ch, ROOM_TXT_BOX_W / 2, 2);
+    // horizontal lines
+    cpct_drawSolidBox(pmem                     , ch, ROOM_TXT_BOX_W / 2, 1);
+    cpct_drawSolidBox(pmem + ROOM_TXT_BOX_W / 2, ch, ROOM_TXT_BOX_W / 2, 1);
 
+    // vertical lines
     cpct_drawSolidBox(pmem, cvl, 1, ROOM_TXT_BOX_H);
 
     pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1, ROOM_TXT_BOX_Y);
@@ -90,13 +85,14 @@ void _update_roomObjs(TRoom *room) {
 void _render_updateRoom(TRoom *room) {
     // header
     _update_roomName(room);
+
     // _update_roomOutsLabel();
     _update_roomOuts(room);
-    _update_headerLine();
+    _update_headerLine(room);
 
     // txt
     _update_roomTxt(room);
-    _update_roomTxtBox();
+    _update_roomTxtBox(room);
 
     // objs
     _update_roomObjs(room);

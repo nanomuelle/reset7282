@@ -16,7 +16,7 @@ void _game_action_use(TAction* action, TRoom* room) {
     if (action->param1.obj_param == OBJ_ID_NULL) {
         msg = ACTION_USE_MSGS[0];
     } else {
-        // esta en esta habitacion o en el inventario
+        // esta en esta habitación o en el inventario
         TObj *obj = man_objs_getObj(action->param1.obj_param);
         if ( obj->roomId != room->id && obj->roomId != ROOM_ID_INVENTARIO) {
             msg = ACTION_USE_MSGS[1];

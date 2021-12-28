@@ -15,6 +15,12 @@
 #define PONG_WORLD_MAX_Y        ( ( PONG_WORLD_H / 2) - PONG_PX_TO_WORLD(2) )
 
 // ENTITIES
+typedef enum PongEntityIdEnum {
+    PONG_ENTITY_ID_BALL,
+    PONG_ENTITY_ID_LEFT_PADDEL,
+    PONG_ENTITY_ID_RIGHT_PADDEL
+} TPongEntityId;
+
 #define PONG_WORLD_PADDEL_W     ( PONG_PX_TO_WORLD(1) )
 #define PONG_WORLD_PADDEL_H     ( PONG_PX_TO_WORLD(16) )
 

@@ -3,9 +3,9 @@
 
 void _game_playPong(void) {
     TRoom *room = man_rooms_setCurrentRoom(ROOM_ID_PONG);
-    if (!room->explored) {
+    if (!man_rooms_isExplored(room)) {
         pong_man_game_init();
-        room->explored = EXPLORED;
+        man_rooms_setExplored(room);
     }
     
     sys_render_clearRoom(_game_action);

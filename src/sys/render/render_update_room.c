@@ -78,7 +78,7 @@ void _update_roomObjs(TRoom *room) {
         10
     );
 
-    if (room->explored == EXPLORED) {
+    if (man_rooms_isExplored(room)) {
         _render_printObjsInRoom(
             room,
             ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,

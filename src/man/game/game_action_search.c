@@ -6,13 +6,13 @@
 #include <man/objs/objs.h>
 
 void _game_action_search(TAction* action, TRoom* room) {
-    if (room->explored) {
+    if (man_rooms_isExplored(room)) {
         man_history_addResponse("no encuentras nada mas");
     } else {
         u8 count = _game_show_objs_in_room(room);
         if (count == 0) {
             man_history_addResponse("no encuentras nada");
         }
-        room->explored = EXPLORED;
+        man_rooms_setExplored(room);
     }
 }

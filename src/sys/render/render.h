@@ -7,7 +7,7 @@
 #include <man/history/history.h>
 #include <sys/parser/parser.h>
 
-#define LINE_HEIGHT 10
+#define LINE_HEIGHT    10
 
 #define ROOM_NAME_X     0
 #define ROOM_NAME_Y     0
@@ -20,10 +20,9 @@
 
 #define OUTS_X          69
 #define OUTS_Y          ROOM_NAME_Y
-#define OUTS_KERNEL     3   // separacion entre caracteres en bytes
+#define OUTS_KERNEL     3   // separación entre caracteres en bytes
 #define OUTS_PEN1       1
 #define OUTS_PEN2       3
-
 
 #define PROMPT_X        0
 #define PROMPT_Y        178

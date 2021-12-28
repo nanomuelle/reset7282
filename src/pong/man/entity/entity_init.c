@@ -27,8 +27,22 @@ void pong_man_entity_init(void) {
     cpct_memset(_pong_man_entity_buffer, 0, PONG_MAN_ENTITY_BUFFER_SIZE * sizeof(TPongEntity));
 
     // ball
-    _createEntity(0, 0, PONG_SYS_PHYSICS_PX_TO_PHY(1), PONG_SYS_PHYSICS_PX_TO_PHY(4), 200, 160);
+    _createEntity(
+        PONG_WORLD_BALL_X,
+        PONG_WORLD_BALL_Y,
+        PONG_WORLD_BALL_W,
+        PONG_WORLD_BALL_H,
+        PONG_WORLD_BALL_VX,
+        PONG_WORLD_BALL_VY
+    );
 
     // ai paddel
-    _createEntity(PONG_SYS_PHYSICS_MIN_X + PONG_SYS_PHYSICS_PX_TO_PHY(2) , 0, PONG_SYS_PHYSICS_PX_TO_PHY(1), PONG_SYS_PHYSICS_PX_TO_PHY(16), 0, 500);
+    _createEntity(
+        PONG_WORLD_LEFT_PADDEL_X,
+        PONG_WORLD_LEFT_PADDEL_Y,
+        PONG_WORLD_PADDEL_W,
+        PONG_WORLD_PADDEL_H,
+        PONG_WORLD_PADDEL_VX,
+        PONG_WORLD_PADDEL_VY
+    );
 }

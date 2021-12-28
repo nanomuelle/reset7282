@@ -3,6 +3,7 @@
 
 #include <cpctelera.h>
 #include <globals.h>
+#include <pong/pong.h>
 
 #define PONG_MAN_ENTITY_BUFFER_SIZE 3
 

@@ -3,6 +3,8 @@
 #include <pong/sys/render/render.h>
 #include <pong/man/game/game.h>
 
+#include <man/objs/objs.h>
+
 void _createEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16 vy, void* ai) {
     TPongEntity *entity = pong_man_entity_create();
     entity->id = id;
@@ -41,7 +43,7 @@ void pong_man_entity_init(void) {
         0 // no ai
     );
 
-    // ai paddel
+    // left player (ai)
     _createEntity(
         PONG_ENTITY_ID_LEFT_PADDEL,
         PONG_WORLD_LEFT_PADDEL_X,
@@ -52,4 +54,18 @@ void pong_man_entity_init(void) {
         PONG_WORLD_PADDEL_VY,
         pong_man_game_behavior_followBall
     );
+
+    if (man_objs_isInRoom(OBJ_ID_RAQUETA, ROOM_ID_INVENTARIO)) {
+        // right player (user)
+        _createEntity(
+            PONG_ENTITY_ID_RIGHT_PADDEL,
+            PONG_WORLD_RIGHT_PADDEL_X,
+            PONG_WORLD_RIGHT_PADDEL_Y,
+            PONG_WORLD_PADDEL_W,
+            PONG_WORLD_PADDEL_H,
+            0,
+            0,
+            pong_man_game_behavior_userInput
+        );
+    }
 }

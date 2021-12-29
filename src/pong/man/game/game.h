@@ -13,5 +13,6 @@ extern void pong_man_game_init(void);
 extern void pong_man_game_start(void);
 extern void pong_man_game_update(void);
 
-extern void pong_man_game_behavior_followBall(void *);
+extern void pong_man_game_behavior_followBall(void *selfEntity);
+extern void pong_man_game_behavior_userInput(void *selfEntity);
 #endif

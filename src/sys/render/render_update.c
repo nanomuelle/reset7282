@@ -1,11 +1,11 @@
 #include <sys/render/render.h>
 
 void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt *prompt) {
-    static TRoom* _lastRoom = 0;
+    TRoom* lastRoom = man_rooms_getLastRoom();
 
-    if (_lastRoom != room) {
+    if (lastRoom != room) {
         sys_render_clearRoom(action);
-        _lastRoom = room;
+        lastRoom = room;
     }
     _render_updateRoom(room);
     _render_updateHistory(history);

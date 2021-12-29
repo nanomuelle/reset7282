@@ -51,7 +51,7 @@ typedef union {
     TParamUnknownEnum unknown_param;
 } TParam;
 
-typedef struct {
+typedef struct ActionStruct {
     TActionType type;
     TParam param1;
 } TAction;

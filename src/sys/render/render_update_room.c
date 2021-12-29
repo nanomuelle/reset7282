@@ -6,16 +6,16 @@ void _update_roomName(TRoom *room) {
     _render_printMsg(room->name, ROOM_NAME_X, ROOM_NAME_Y, ROOM_PEN);
 }
 
-void _update_roomOutsLabel() {
-    _render_printMsg("SALIDAS:", OUTS_LABEL_X, OUTS_LABEL_Y, OUTS_LABEL_PEN);
-}
+// void _update_roomOutsLabel() {
+//     _render_printMsg("SALIDAS:", OUTS_LABEL_X, OUTS_LABEL_Y, OUTS_LABEL_PEN);
+// }
 
 void _update_roomOuts(TRoom *room) {
     u8 x = OUTS_X;
     u8 offset = OUTS_KERNEL;
     const u16 outChar[] = {'N', 'S', 'E', 'O'};
 
-    _render_clearBox( OUTS_X, OUTS_Y, 10, LINE_HEIGHT);
+    _render_clearBox( OUTS_X, OUTS_Y, 11, LINE_HEIGHT);
     for (TRoomOutsEnum out = OUT_N; out <= OUT_O; out++) {
         if (room->outs.direction[out] != NO_EXIT) {
             _render_printChar(outChar[out], x, OUTS_Y, OUTS_PEN);
@@ -25,6 +25,7 @@ void _update_roomOuts(TRoom *room) {
 }
 
 void _update_roomTxt(TRoom *room) {
+    _render_clearBox( ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y, ROOM_TXT_BOX_W, ROOM_TXT_BOX_H);
     _render_typeInBox(room->txt, ROOM_TXT_X, ROOM_TXT_Y, ROOM_TXT_COLS, ROOM_TXT_PEN);
 }
 

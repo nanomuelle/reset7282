@@ -11,14 +11,14 @@ typedef struct PongEntityStruct {
     TPongEntityId id;   // id
     i16 x;   // position
     i16 y;   // byte alto para pintar, 2 bytes para physics
-    u16 w;   // physic size
-    u16 h;
+    i16 w;   // physic size
+    i16 h;
     i16 vx;   // velocity
     i16 vy;
     u8 render_w;    // render size
     u8 render_h;
     u8 color;
-    u8 *pmem; // PTR a ultima posicion de memoria en que se pinto
+    u8 *pmem; // PTR a ultima posición de memoria en que se pinto
     void (*ai)(void *self);
 } TPongEntity;
 

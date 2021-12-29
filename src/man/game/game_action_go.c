@@ -22,8 +22,5 @@ void _game_action_go(TAction* action, TRoom* room) {
         return;
     }
 
-    {
-        TRoom *room = man_rooms_setCurrentRoom(roomId);
-        // man_history_addResponse(room->name);
-    }
+    man_rooms_setCurrentRoom(roomId);
 }

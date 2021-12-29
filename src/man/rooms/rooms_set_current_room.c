@@ -5,6 +5,7 @@ TRoom* man_rooms_setCurrentRoom(TRoomIdEnum roomId) {
 
     // TODO evitar bucle infinito en caso de que roomId no exista
     while(rooms->id != roomId) ++rooms;
+    _lastRoom = _currentRoom;
     _currentRoom = rooms;
     return rooms;
 }

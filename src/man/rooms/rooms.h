@@ -45,6 +45,7 @@ typedef struct RoomStruct {
 } TRoom;
 
 // PRIVATE
+extern TRoom* _lastRoom;
 extern TRoom* _currentRoom;
 extern TRoom _rooms[ROOMS_MAX_ROOMS];
 
@@ -52,6 +53,7 @@ extern TRoom _rooms[ROOMS_MAX_ROOMS];
 extern void   man_rooms_init          (void);
 extern TRoom* man_rooms_getRoomsPtr   (void);
 extern TRoom* man_rooms_getCurrentRoom(void);
+extern TRoom* man_rooms_getLastRoom   (void);
 extern TRoom* man_rooms_setCurrentRoom(TRoomIdEnum id);
 extern TRoom* man_rooms_getRoom       (TRoomIdEnum id);
 extern u8     man_rooms_isExplored    (TRoom* room);

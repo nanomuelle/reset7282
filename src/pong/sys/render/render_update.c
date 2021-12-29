@@ -21,7 +21,7 @@ void _pong_sys_render_updateOne(TPongEntity *entity) {
             entity->render_h
         );
 
-        // almacena la ultima posicion de memoria en la que se ha pintado
+        // almacena la ultima pos de memoria en la que se ha pintado
         entity->pmem = pmem;
 
     }
@@ -50,6 +50,13 @@ void _pong_sys_render_updateScore() {
     _render_printChar(
         48 + pong_man_score_getLeftPlayer(),
         WORLD_TO_SCREEN_X(-(256 * 3)),
+        WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
+        1
+    );
+
+    _render_printChar(
+        48 + pong_man_score_getRightPlayer(),
+        WORLD_TO_SCREEN_X(256 * 3),
         WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
         1
     );

@@ -25,7 +25,7 @@ typedef enum PongEntityIdEnum {
 #define PONG_WORLD_PADDEL_H     ( PONG_PX_TO_WORLD(16) )
 
 #define PONG_WORLD_PADDEL_VX      ( 0 )
-#define PONG_WORLD_PADDEL_VY      ( 250 )
+#define PONG_WORLD_PADDEL_VY      ( 300 )
 
 #define PONG_WORLD_LEFT_PADDEL_X  ( PONG_WORLD_MIN_X + PONG_PX_TO_WORLD(2) )
 #define PONG_WORLD_LEFT_PADDEL_Y  ( 0 )
@@ -37,7 +37,8 @@ typedef enum PongEntityIdEnum {
 #define PONG_WORLD_BALL_H       ( PONG_PX_TO_WORLD(4) )
 #define PONG_WORLD_BALL_X       ( 0 )
 #define PONG_WORLD_BALL_Y       ( 0 )
-#define PONG_WORLD_BALL_VX      ( 125 )
+#define PONG_WORLD_BALL_VX      ( 100 )
 #define PONG_WORLD_BALL_VY      ( 100 )
+#define PONG_WORLD_BALL_MAX_VY  ( 150 )
 
 #endif

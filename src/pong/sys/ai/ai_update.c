@@ -6,7 +6,7 @@ void _pong_sys_ai_updateOne(TPongEntity *entity) {
     }
 }
 
-#define AI_DELAY 8
+#define AI_DELAY 10
 
 void pong_sys_ai_update() {
     static u8 delay = AI_DELAY;

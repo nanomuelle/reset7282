@@ -8,7 +8,7 @@ void _createEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16 vy,
     entity->id = id;
     entity->x = x;
     entity->y = y;
-    entity->w = w;  // 2 bytes => 4px mode 1
+    entity->w = w + 127;  // 2 bytes => 4px mode 1
     entity->h = h;
     entity->vx = vx;
     entity->vy = vy;

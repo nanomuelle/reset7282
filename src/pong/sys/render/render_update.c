@@ -1,5 +1,6 @@
 #include <pong/sys/render/render.h>
 #include <pong/man/entity/entity.h>
+#include <pong/man/score/score.h>
 #include <sys/render/render.h>
 
 #include <pong/pong.h>
@@ -20,17 +21,19 @@ void _pong_sys_render_updateOne(TPongEntity *entity) {
             entity->render_h
         );
 
-        // paint
-        cpct_drawSolidBox(
-            pmem, 
-            entity->color, 
-            entity->render_w, 
-            entity->render_h
-        );
-
         // almacena la ultima posicion de memoria en la que se ha pintado
         entity->pmem = pmem;
+
     }
+
+    // paint
+    cpct_drawSolidBox(
+        pmem, 
+        entity->color, 
+        entity->render_w, 
+        entity->render_h
+    );
+
 }
 
 void _pong_sys_render_updateNet() {
@@ -43,7 +46,17 @@ void _pong_sys_render_updateNet() {
     cpct_drawSolidBox(pmem, color, 1, PONG_SYS_RENDER_PHY_TO_PX(PONG_WORLD_H) - 2);
 }
 
+void _pong_sys_render_updateScore() {
+    _render_printChar(
+        48 + pong_man_score_getLeftPlayer(),
+        WORLD_TO_SCREEN_X(-(256 * 3)),
+        WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
+        1
+    );
+}
+
 void pong_sys_render_update(void) {
     _pong_sys_render_updateNet();
+    _pong_sys_render_updateScore();
     pong_man_entity_forEach(_pong_sys_render_updateOne);
 }

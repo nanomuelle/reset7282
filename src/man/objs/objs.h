@@ -10,6 +10,7 @@ typedef enum ObjEnum {
     OBJ_ID_LIGHT,
     OBJ_ID_RAQUETA,
     OBJ_ID_CONSOLA,
+    OBJ_ID_DEPORTIVAS,
     OBJ_ID_NULL
 } TObjEnum;
 
@@ -26,13 +27,13 @@ typedef struct ObjStruct {
 extern TObj _objs[MAN_OBJS_SIZE];
 
 // PUBLIC
-extern void man_objs_init(void);
-extern TObj* man_objs_getPtr(void);
-extern u8 man_objs_isInRoom(TObjEnum objId, TRoomIdEnum roomId);
-extern void man_objs_moveToRoom(TObjEnum objId, TRoomIdEnum roomId);
-extern TObj* man_objs_getObj(TObjEnum id);
-extern TObj** man_objs_getInRoom(TRoom *room);
-extern TObj *man_objs_findByName(const u8* objName);
+extern void     man_objs_init(void);
+extern TObj*    man_objs_getPtr(void);
+extern u8       man_objs_isInRoom(TObjEnum objId, TRoomIdEnum roomId);
+extern void     man_objs_moveToRoom(TObjEnum objId, TRoomIdEnum roomId);
+extern TObj*    man_objs_getObj(TObjEnum id);
+extern TObj**   man_objs_getInRoom(TRoom *room);
+extern TObj*    man_objs_findByName(const u8* objName);
 
 // extern const u8* OBJ_NAME_RAQUETA;
 

@@ -84,6 +84,10 @@ void _checkGameOver(void) {
 
     if (pong_man_score_getRightPlayer() == PONG_POINTS_TO_WIN) {
         man_rooms_setCurrentRoom(ROOM_ID_DORMITORIO_1);
+        if (man_objs_isInRoom(OBJ_ID_DEPORTIVAS, ROOM_ID_PONG)) {
+            man_objs_moveToRoom(OBJ_ID_DEPORTIVAS, ROOM_ID_INVENTARIO);
+            man_history_addResponse("Premio: deportivas Nike Cortez.");
+        }
         man_history_addResponse("Has ganado al Pong!");
     }
 }

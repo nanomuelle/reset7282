@@ -3,7 +3,7 @@
 
 #include <sys/debug/debug.h>
 
-void _scroolRoomTxtE() {
+void _scroolRoomTxtO() {
     u8 h = 0;
     u8 w = ROOM_TXT_W - SYS_RENDER_ROOM_SCROLL_IX + SYS_RENDER_ROOM_SCROLL_IX;
     u8 dst_x = ROOM_TXT_X + ROOM_TXT_W - 1;
@@ -23,7 +23,7 @@ void _scroolRoomTxtE() {
     }
 }
 
-void _scroolRoomTxtO() {
+void _scroolRoomTxtE() {
     u8 h = 0;
     u8 w = ROOM_TXT_W;
 

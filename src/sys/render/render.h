@@ -14,14 +14,11 @@
 #define ROOM_NAME_W     51 // bytes
 #define ROOM_PEN        3
 
-#define OUTS_LABEL_X    52
-#define OUTS_LABEL_Y    ROOM_NAME_Y
-#define OUTS_LABEL_PEN  2
-
 #define OUTS_X          69
 #define OUTS_Y          ROOM_NAME_Y
 #define OUTS_KERNEL     3   // separación entre caracteres en bytes
 #define OUTS_PEN        1
+#define OUTS_PEN_DARK   3
 
 #define PROMPT_X        0
 #define PROMPT_Y        178

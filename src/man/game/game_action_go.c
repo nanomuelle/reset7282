@@ -28,7 +28,8 @@ void _game_action_go(TAction* action, TRoom* room) {
 
     if (msg != 0) {
         man_history_addResponse(msg);
-    } else {
-        man_rooms_setCurrentRoom(gotoRoomId);
+        gotoRoomId = room->id;
     }
+
+    man_rooms_setCurrentRoom(gotoRoomId);
 }

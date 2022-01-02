@@ -4,6 +4,8 @@ void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt 
     TRoom* lastRoom = man_rooms_getLastRoom();
 
     if (lastRoom != room) {
+        sys_debug_number((u8) lastRoom, 0, 0);
+        sys_debug_number((u8) room, 0, 10);
         sys_render_clearRoom(action);
     }
 

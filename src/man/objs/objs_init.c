@@ -11,13 +11,13 @@ const TObj _initial_objs[MAN_OBJS_SIZE] = {
     },
     { OBJ_ID_RAQUETA,
         "raqueta",
-        "una raqueta vieja, extraña, parece un palo rectangular hecho de pixels",
+        "es rara, parece un palo rectangular",
         ROOM_ID_DORMITORIO_1,
         OBJ_ATTR_CAN_TAKE
     },
     { OBJ_ID_CONSOLA,
         "consola",
-        "consola Magnavox Odyssey, todo un clasico",
+        "consola Magnavox Odyssey, un clasico",
         ROOM_ID_DORMITORIO_1,
         OBJ_ATTR_CAN_USE
     },
@@ -27,12 +27,12 @@ const TObj _initial_objs[MAN_OBJS_SIZE] = {
         ROOM_ID_PONG,
         OBJ_ATTR_CAN_TAKE
     },
-    { OBJ_ID_NULL   , "null 3" , "", 0xff                , 0x00 },
-    { OBJ_ID_NULL   , "null 4" , "", 0xff                , 0x00 },
-    { OBJ_ID_NULL   , "null 5" , "", 0xff                , 0x00 },
-    { OBJ_ID_NULL   , "null 6" , "", 0xff                , 0x00 },
-    { OBJ_ID_NULL   , "null 7" , "", 0xff                , 0x00 },
-    { OBJ_ID_NULL   , "null 8" , "", 0xff                , 0x00 }
+    { OBJ_ID_NULL   , "null 3" , "null", 0xff                , 0x00 },
+    { OBJ_ID_NULL   , "null 4" , "null", 0xff                , 0x00 },
+    { OBJ_ID_NULL   , "null 5" , "null", 0xff                , 0x00 },
+    { OBJ_ID_NULL   , "null 6" , "null", 0xff                , 0x00 },
+    { OBJ_ID_NULL   , "null 7" , "null", 0xff                , 0x00 },
+    { OBJ_ID_NULL   , "null 8" , "null", 0xff                , 0x00 }
 };
 
 void man_objs_init(void) {

@@ -24,6 +24,7 @@
 // PRIVATE
     extern void _game_execute_action    (TAction *, TRoom *);
 
+    extern void _game_action_examine    (TAction *, TRoom *);
     extern void _game_action_go         (TAction *, TRoom *);
     extern void _game_action_inventory  (TAction *, TRoom *);
     extern void _game_action_search     (TAction *, TRoom *);

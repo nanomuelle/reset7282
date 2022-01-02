@@ -7,7 +7,8 @@
 #define PARSER_BUFFER_SIZE 40
 
 typedef enum {
-    ACTION_TYPE_GO = 0,
+    ACTION_TYPE_EXAMINE = 0,
+    ACTION_TYPE_GO,
     ACTION_TYPE_INVENTORY,
     ACTION_TYPE_SEARCH,
     ACTION_TYPE_TAKE,
@@ -25,26 +26,26 @@ typedef enum ParamGoEnum {
     ACTION_PARAM_GO_S,
     ACTION_PARAM_GO_E,
     ACTION_PARAM_GO_O,
-    ACTION_PARAM_GO_UNKNOWN
+//     ACTION_PARAM_GO_UNKNOWN
 } TParamGoEnum;
 
-typedef enum {
-    ACTION_PARAM_SEARCH_UNKNOWN
-} TParamSearchEnum;
+// typedef enum {
+//     ACTION_PARAM_SEARCH_UNKNOWN
+// } TParamSearchEnum;
 
-typedef enum {
-    ACTION_PARAM_TURN_ON_LIGHT,
-    ACTION_PARAM_TURN_ON_UNKNOWN
-} TParamTurnOnEnum;
+// typedef enum {
+//     ACTION_PARAM_TURN_ON_LIGHT,
+//     ACTION_PARAM_TURN_ON_UNKNOWN
+// } TParamTurnOnEnum;
 
-typedef enum {
-    ACTION_PARAM_TAKE_RAQUETA,
-    ACTION_PARAM_TAKE_UNKNOWN
-} TParamTakeEnum;
+// typedef enum {
+//     ACTION_PARAM_TAKE_RAQUETA,
+//     ACTION_PARAM_TAKE_UNKNOWN
+// } TParamTakeEnum;
 
 typedef union {
     TParamGoEnum go_param;
-    TParamSearchEnum search_param;
+//    TParamSearchEnum search_param;
     TObjEnum obj_param;
 //    TParamTakeEnum take_param;
 //    TParamTurnOnEnum turn_on_param;

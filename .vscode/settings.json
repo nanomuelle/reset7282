@@ -5,6 +5,7 @@
         "string.h": "c",
         "prompt.h": "c",
         "typeindex": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "parser.h": "c"
     }
 }

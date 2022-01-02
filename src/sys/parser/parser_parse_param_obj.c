@@ -10,7 +10,7 @@ void _sys_parser_parseParamObj(u8* userInput, TAction *action) {
     TObj *obj;
 
     sys_str_copyNextWord(userInput, buffer);
-
+    sys_debug_info(buffer, 0, 0);
     obj = man_objs_findByName(buffer);
     if (obj != 0x00) {
         action->param1.obj_param = obj->id;

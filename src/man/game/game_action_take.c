@@ -18,7 +18,7 @@ u8 _game_takeObjFromRoom(TObjEnum objId, TRoomIdEnum roomId ) {
 
 void _game_action_take(TAction* action, TRoom* room) {
     if (action->param1.obj_param == OBJ_ID_NULL) {
-        man_history_addError("coger el que?");
+        man_history_addError("\xAEcoger el que?");
         return;
     }
 

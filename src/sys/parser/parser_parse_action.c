@@ -8,9 +8,11 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 16
+#define ACTION_USERINPUT_TO_TYPE_SIZE 17
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
+    { "examinar",   { ACTION_TYPE_EXAMINE, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+
     { "ir",         { ACTION_TYPE_GO     , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
     { "n",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_N       }}},
     { "s",          { ACTION_TYPE_GO     , { .go_param = ACTION_PARAM_GO_S       }}},
@@ -39,7 +41,7 @@ TAction action;
 //
 // INPUT:
 //   u8 *userInput -> puntero a la texto escrito por el usuario
-//   TAction *action -> puntero a la accion en la que se guardara el typo
+//   TAction *action -> puntero a la accion en la que se guardara el tipo
 //
 // OUTPUT:
 //   escribe en action->type en tipo de action
@@ -49,7 +51,6 @@ u8* _parseActionType(u8* userInput, TAction *action) {
     u8 buffer[PROMPT_BUFFER_SIZE];
 
     userInput = sys_str_copyNextWord(userInput, buffer);
-
     for (u8 i = 0; i < ACTION_USERINPUT_TO_TYPE_SIZE; i++) {
         TUserInputToActionMap *itemMap = &userInputToActionMap[i];
         if (sys_str_isEqual(itemMap->txt, buffer)) {
@@ -81,6 +82,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
             _sys_parser_parseParamGo(buffer, action);
             break;
 
+        case ACTION_TYPE_EXAMINE:
         case ACTION_TYPE_TAKE:
         case ACTION_TYPE_TURN_ON:
         case ACTION_TYPE_USE:
@@ -98,6 +100,7 @@ TAction *sys_parser_parseAction(u8* buffer) {
 
     if (action.param1.unknown_param == ACTION_PARAM_UNKNOWN) {
         _parseActionParam(paramPtr, &action);
+        sys_debug_number(action.param1.obj_param, 0, 0);
     }
 
     return &action;

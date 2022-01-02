@@ -13,6 +13,6 @@ void _sys_parser_parseParamGo(u8* userInput, TAction *action) {
     } else if (userParam == ASCII_o) {
         action->param1.go_param = ACTION_PARAM_GO_O;
     } else {
-        action->param1.go_param = ACTION_PARAM_GO_UNKNOWN;
+        action->param1.go_param = ACTION_PARAM_UNKNOWN;
     }
 }

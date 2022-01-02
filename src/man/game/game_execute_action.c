@@ -4,6 +4,7 @@
 #include <sys/debug/debug.h>
 
 const TActionRunner _runners[] = {
+    _game_action_examine,
     _game_action_go,
     _game_action_inventory,
     _game_action_search,

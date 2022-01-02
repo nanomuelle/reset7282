@@ -16,10 +16,12 @@ typedef enum ObjEnum {
 
 #define OBJ_ATTR_CAN_TAKE 0x01 // 0b00000001
 #define OBJ_ATTR_CAN_USE  0x02 // 0x00000010
+
 typedef struct ObjStruct {
     const   TObjEnum    id;        // identificador del objeto
     const   u8*         name;      // nombre del objeto
-            TRoomIdEnum roomId;    // habitacion en la que se encuentra el objeto
+    const   u8*         description; // descripcion del objeto
+            TRoomIdEnum roomId;    // habitación en la que se encuentra el objeto
             u8          attrs;     // atributos
 } TObj;
 

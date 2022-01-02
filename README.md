@@ -14,13 +14,17 @@ Aventura conversacional
 
 ## Game technical docs
 
-Objetos:
+Main objects:
 ```js
     [
         {
             id: 'raqueta',
             info: 'necesario para poder jugar a pong'
         },
+        {
+            id: 'consola',
+            info: 'Magnabox Odyssey, necesaria para jugar al Pong'
+        }
         {
             id: 'rana',
             info: 'rana saltadora geyper'

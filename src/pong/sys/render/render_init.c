@@ -61,7 +61,7 @@ void pong_sys_render_init(void) {
     while (x > WORLD_TO_SCREEN_X(PONG_WORLD_MIN_X + PONG_WORLD_ODYSSEY_LETTER_WIDTH)) {
         --x;
         cpct_waitHalts(10);
-        // cpct_waitVSYNC();
+        cpct_waitVSYNC();
         _render_clearRoomTxt();
         _pong_sys_render_odyssey(x, y);
     };

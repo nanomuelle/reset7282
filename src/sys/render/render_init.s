@@ -18,7 +18,7 @@ sys_render_init_asm::
     ld  bc, #0x0b0b  ;;
     call 0xBC32      ;; SRC SET INK
 
-    ld  bc, #0x0000  ;; BLACK
+    ld  bc, #0x0a0a  ;; BLACK
     call 0xBC38      ;; SRC SET BORDER
 
     ret

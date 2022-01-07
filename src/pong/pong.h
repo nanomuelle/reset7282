@@ -14,6 +14,11 @@
 #define PONG_WORLD_MIN_Y        ((i16) ((-PONG_WORLD_H / 2) + PONG_PX_TO_WORLD(2)) )
 #define PONG_WORLD_MAX_Y        ((i16) (( PONG_WORLD_H / 2) - PONG_PX_TO_WORLD(2)) )
 
+// ODYSSEY TITLE
+
+#define PONG_WORLD_ODYSSEY_LETTER_WIDTH     ((i16) PONG_PX_TO_WORLD( 4)) // 16 PX = 4 bytes
+#define PONG_WORLD_ODYSSEY_LETTER_HEIGHT    ((i16) PONG_PX_TO_WORLD(24))
+
 // ENTITIES
 typedef enum PongEntityIdEnum {
     PONG_ENTITY_ID_NULL = 0,

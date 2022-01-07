@@ -3,10 +3,10 @@
 
 void _render_updateHistory(THistory *history) {
     u8 x = 1;
-    u8 y = 120;
+    u8 y = ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + LINE_HEIGHT;
 
     for(u8 i=0; i < HISTORY_NUM_LINES; i++) {
         _render_printMsg(history->lines[i].txt, x, y, history->lines[i].pen);
-        y += 10;
+        y += LINE_HEIGHT;
     }
 }

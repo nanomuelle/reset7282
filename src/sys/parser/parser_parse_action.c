@@ -100,7 +100,6 @@ TAction *sys_parser_parseAction(u8* buffer) {
 
     if (action.param1.unknown_param == ACTION_PARAM_UNKNOWN) {
         _parseActionParam(paramPtr, &action);
-        sys_debug_number(action.param1.obj_param, 0, 0);
     }
 
     return &action;

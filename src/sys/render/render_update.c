@@ -4,8 +4,6 @@ void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt 
     TRoom* lastRoom = man_rooms_getLastRoom();
 
     if (lastRoom != room) {
-        sys_debug_number((u8) lastRoom, 0, 0);
-        sys_debug_number((u8) room, 0, 10);
         sys_render_clearRoom(action);
     }
 
@@ -16,10 +14,10 @@ void sys_render_update(TAction *action, TRoom *room, THistory *history, TPrompt 
     // objs en inventario
     {
         TRoom *inventory = man_rooms_getRoom(ROOM_ID_INVENTARIO);
-        u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, PROMPT_X, PROMPT_Y + 12);
+        u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, PROMPT_X, PROMPT_Y + LINE_HEIGHT);
         u8 c = cpct_px2byteM1(2, 2, 0, 0);
         cpct_memset(pmem, c, 80);
 
-        _render_printObjsInRoom(inventory, 79, PROMPT_Y + 14);
+        _render_printObjsInRoom(inventory, 79, PROMPT_Y + LINE_HEIGHT);
     }
 }

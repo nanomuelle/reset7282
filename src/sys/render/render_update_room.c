@@ -33,7 +33,7 @@ void _update_roomTxt(TRoom *room) {
 }
 
 void _update_headerLine(TRoom *room) {
-    u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, 0, 10);
+    u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, 0, LINE_HEIGHT);
     u8 c = man_rooms_isDark(room) 
         ? cpct_px2byteM1(3, 0, 0, 0)
         : cpct_px2byteM1(2, 0, 0, 0)
@@ -63,25 +63,18 @@ void _update_roomTxtBox(TRoom *room) {
 }
 
 void _update_roomObjs(TRoom *room) {
-    // TODO solo mostrar objs si la habitacion ha sido explorada
     _render_clearBox(
-        ROOM_TXT_BOX_X,
-        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2,
-        ROOM_TXT_BOX_W / 2,
-        10
-    );
-    _render_clearBox(
-        ROOM_TXT_BOX_X + ROOM_TXT_BOX_W / 2,
-        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 2,
-        ROOM_TXT_BOX_W / 2,
-        10
+        ROOM_TXT_BOX_X + 1,
+        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT,
+        ROOM_TXT_BOX_W - 2,
+        LINE_HEIGHT
     );
 
     if (man_rooms_isExplored(room)) {
         _render_printObjsInRoom(
             room,
             ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,
-            ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H + 3
+            ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT
         );
     }
 }
@@ -92,7 +85,7 @@ void _render_updateRoom(TRoom *room) {
 
     // _update_roomOutsLabel();
     _update_roomOuts(room);
-    _update_headerLine(room);
+    // _update_headerLine(room);
 
     // txt
     _update_roomTxt(room);

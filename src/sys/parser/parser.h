@@ -12,6 +12,7 @@ typedef enum {
     ACTION_TYPE_INVENTORY,
     ACTION_TYPE_SEARCH,
     ACTION_TYPE_TAKE,
+    ACTION_TYPE_TURN_OFF,
     ACTION_TYPE_TURN_ON,
     ACTION_TYPE_UNKNOWN,
     ACTION_TYPE_USE
@@ -26,29 +27,11 @@ typedef enum ParamGoEnum {
     ACTION_PARAM_GO_S,
     ACTION_PARAM_GO_E,
     ACTION_PARAM_GO_O,
-//     ACTION_PARAM_GO_UNKNOWN
 } TParamGoEnum;
-
-// typedef enum {
-//     ACTION_PARAM_SEARCH_UNKNOWN
-// } TParamSearchEnum;
-
-// typedef enum {
-//     ACTION_PARAM_TURN_ON_LIGHT,
-//     ACTION_PARAM_TURN_ON_UNKNOWN
-// } TParamTurnOnEnum;
-
-// typedef enum {
-//     ACTION_PARAM_TAKE_RAQUETA,
-//     ACTION_PARAM_TAKE_UNKNOWN
-// } TParamTakeEnum;
 
 typedef union {
     TParamGoEnum go_param;
-//    TParamSearchEnum search_param;
     TObjEnum obj_param;
-//    TParamTakeEnum take_param;
-//    TParamTurnOnEnum turn_on_param;
     TParamUnknownEnum unknown_param;
 } TParam;
 
@@ -69,6 +52,5 @@ extern void _sys_parser_parseParamObj   (u8* userInput, TAction *action);
 // PUBLIC
 extern void sys_parser_init(void);
 extern TAction* sys_parser_parseAction(u8 *);
-// extern const u8* sys_parser_getActionName(TAction *);
 
 #endif

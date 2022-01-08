@@ -16,7 +16,7 @@
         u8* txt;
     } TMsgStruct;
 
-    typedef void (*TActionRunner)(TAction*, TRoom*);
+    typedef void (*TActionRunnerFn)(TAction*, TRoom*);
 
 // PRIVATE DATA
     extern TAction* _game_action;
@@ -29,6 +29,7 @@
     extern void _game_action_inventory  (TAction *, TRoom *);
     extern void _game_action_search     (TAction *, TRoom *);
     extern void _game_action_take       (TAction *, TRoom *);
+    extern void _game_action_turn_off   (TAction *, TRoom *);
     extern void _game_action_turn_on    (TAction *, TRoom *);
     extern void _game_action_unknown    (TAction *, TRoom *);
     extern void _game_action_use        (TAction *, TRoom *);

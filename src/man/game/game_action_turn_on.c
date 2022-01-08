@@ -20,7 +20,7 @@ void _game_action_turn_on(TAction* action, TRoom* room) {
 
     if (action->param1.obj_param == OBJ_ID_LIGHT) {
         if (man_rooms_isDark(room)) {
-            man_rooms_unsetDark(room);
+            man_rooms_switchDark(room);
             man_history_addResponse(ACTION_TURN_ON_MSG[1]);
         } else {
             man_history_addResponse(ACTION_TURN_ON_MSG[2]);

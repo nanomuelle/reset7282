@@ -71,6 +71,6 @@ extern TRoom* man_rooms_getRoom       (TRoomIdEnum id);
 extern u8     man_rooms_isExplored    (TRoom* room);
 extern u8     man_rooms_isDark        (TRoom* room);
 extern void   man_rooms_setExplored   (TRoom* room);
-extern void   man_rooms_unsetDark     (TRoom* room);
+extern void   man_rooms_switchDark    (TRoom* room);
 
 #endif

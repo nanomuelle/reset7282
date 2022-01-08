@@ -7,8 +7,16 @@
 #include <sys/parser/parser.h>
 
 u8 _game_takeObjFromRoom(TObjEnum objId, TRoomIdEnum roomId ) {
-    // Si el objeto no esta en la habitacion, no lo podemos coger
+    TRoom *room;
+
+    // Si el objeto no esta en la habitación, no lo podemos coger
     if (!man_objs_isInRoom(objId, roomId)) {
+        return 0;
+    }
+
+    // la habitación debe estar explorada y con luz
+    room = man_rooms_getRoom(roomId);
+    if (!man_rooms_isExplored(room) || man_rooms_isDark(room)) {
         return 0;
     }
 
@@ -35,6 +43,6 @@ void _game_action_take(TAction* action, TRoom* room) {
         man_history_addResponse("objeto recogido");
         _game_show_objs_in_room(inventario);
     } else {
-        man_history_addResponse("ese objeto no esta aqui");
+        man_history_addResponse("no veo eso por aqui");
     }
 }

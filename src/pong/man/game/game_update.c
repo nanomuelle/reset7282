@@ -28,7 +28,7 @@ void _bounceBall(TPongEntity *ball, TPongEntity *paddel) {
         vx += 5;
     }
 
-    vy += (paddel->vy / 4);
+    vy += (paddel->vy >> 2); // vy += paddel->vy / 4
     if (vy > PONG_WORLD_BALL_MAX_VY) {
         vy = PONG_WORLD_BALL_MAX_VY;
     } else if (vy < -PONG_WORLD_BALL_MAX_VY) {
@@ -78,7 +78,7 @@ void _checkScore(TPongEntity *ball) {
 void _checkGameOver(void) {
     if (pong_man_score_getLeftPlayer() == PONG_POINTS_TO_WIN) {
         man_rooms_setCurrentRoom(ROOM_ID_DORMITORIO_1);
-        man_history_addResponse("La perdido al Pong!");
+        man_history_addResponse("Has perdido al Pong!");
         return;
     }
 

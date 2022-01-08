@@ -65,7 +65,7 @@ void pong_sys_render_init(void) {
         _render_clearRoomTxt();
         _pong_sys_render_odyssey(x, y);
     };
-    x = WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_TILE_PONG_W)) / 2);
+    x = WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_TILE_PONG_W)) >> 1);
     _pong_sys_render_pong(x, y);
 
     _pong_sys_render_menu();

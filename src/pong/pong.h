@@ -4,15 +4,15 @@
 #include <globals.h>
 
 // WORLD
-#define PONG_PX_TO_WORLD(px)    ( 256 * px ) // PX TO PHYSICS UNITS
+#define PONG_PX_TO_WORLD(px)    ( px << 8 ) // PX TO PHYSICS UNITS
 
 #define PONG_WORLD_W            ((i16) PONG_PX_TO_WORLD( ROOM_TXT_BOX_W ) )
 #define PONG_WORLD_H            ((i16) PONG_PX_TO_WORLD( ROOM_TXT_BOX_H ) )
 
-#define PONG_WORLD_MIN_X        ((i16) ((-PONG_WORLD_W / 2) + PONG_PX_TO_WORLD(1)) )
-#define PONG_WORLD_MAX_X        ((i16) (( PONG_WORLD_W / 2) - PONG_PX_TO_WORLD(1)) )
-#define PONG_WORLD_MIN_Y        ((i16) ((-PONG_WORLD_H / 2) + PONG_PX_TO_WORLD(2)) )
-#define PONG_WORLD_MAX_Y        ((i16) (( PONG_WORLD_H / 2) - PONG_PX_TO_WORLD(2)) )
+#define PONG_WORLD_MIN_X        ((i16) ((-PONG_WORLD_W >> 1) + PONG_PX_TO_WORLD(1)) )
+#define PONG_WORLD_MAX_X        ((i16) (( PONG_WORLD_W >> 1) - PONG_PX_TO_WORLD(1)) )
+#define PONG_WORLD_MIN_Y        ((i16) ((-PONG_WORLD_H >> 1) + PONG_PX_TO_WORLD(2)) )
+#define PONG_WORLD_MAX_Y        ((i16) (( PONG_WORLD_H >> 1) - PONG_PX_TO_WORLD(2)) )
 
 // ODYSSEY TITLE
 
@@ -44,9 +44,9 @@ typedef enum PongEntityIdEnum {
 #define PONG_WORLD_BALL_X       ( 0 )
 #define PONG_WORLD_BALL_Y       ( 0 )
 #define PONG_WORLD_BALL_VX      ( -100 )
-#define PONG_WORLD_BALL_VY      ( 100 )
-#define PONG_WORLD_BALL_MAX_VX  ( 300 )
-#define PONG_WORLD_BALL_MAX_VY  ( 300 )
+#define PONG_WORLD_BALL_VY      (  48 )
+#define PONG_WORLD_BALL_MAX_VX  ( 400 )
+#define PONG_WORLD_BALL_MAX_VY  ( 400 )
 
 #define PONG_POINTS_TO_WIN      ( 3 )
 #endif

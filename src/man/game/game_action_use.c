@@ -1,4 +1,4 @@
-#include <cpctelera.h>
+#include <types.h>
 
 #include <man/game/game.h>
 #include <man/history/history.h>

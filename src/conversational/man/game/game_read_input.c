@@ -1,9 +1,10 @@
+#include <conversational/man/game/game.h>
 #include <man/game/game.h>
 #include <man/prompt/prompt.h>
 #include <sys/input/input.h>
 #include <sys/render/render.h>
 
-void man_game_inputReaderConversational(void) {
+void conversational_man_game_readInput(void) {
     u8 key = 0x00;
     TPrompt* prompt = man_prompt_getPrompt();
 

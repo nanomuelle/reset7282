@@ -1,3 +1,4 @@
+#include <conversational/man/game/game.h>
 #include <man/game/game.h>
 #include <man/rooms/rooms.h>
 #include <man/history/history.h>
@@ -11,7 +12,7 @@ TAction* _parsePrompt(void) {
     return sys_parser_parseAction(prompt->buffer);
 }
 
-void man_game_updaterConversational(void) {
+void conversational_man_game_update(void) {
     _game_action = _parsePrompt();
     _game_execute_action(_game_action, man_rooms_getCurrentRoom());
     man_prompt_reset();

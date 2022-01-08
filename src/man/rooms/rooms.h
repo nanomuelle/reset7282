@@ -1,7 +1,7 @@
 #ifndef RESET_MAN_ROOMS
 #define RESET_MAN_ROOMS
 
-#include <cpctelera.h>
+#include <global/reset_types.h>
 
 #define ROOMS_MAX_ROOMS 20
 #define NO_EXIT 0xFF
@@ -53,9 +53,7 @@ typedef struct RoomStruct {
     const u8* txtDark;          // descripcion sin luz
     const TRoomOuts outs;       // salidas
     u8    state;                // state of the room, bit masked
-    const TGameFn renderer;     // ptr to renderer fn
-    const TGameFn updater;      // ptr to updater fn
-    const TGameFn inputReader;  // ptr to input fn
+    const TGameHandlers *gameHandlers; // game handlers
 } TRoom;
 
 // PRIVATE

@@ -44,13 +44,13 @@
     extern void man_game_render(void);
 
     // conversational game
-    extern void man_game_inputReaderConversational(void);
-    extern void man_game_updaterConversational(void);
-    extern void man_game_rendererConversational(void);
+//    extern void man_game_inputReaderConversational(void);
+//    extern void man_game_updaterConversational(void);
+//    extern void man_game_rendererConversational(void);
 
     // pong
-    extern void man_game_inputReaderPong(void);
-    extern void man_game_rendererPong(void);
-    extern void man_game_updaterPong(void);
+    // extern void man_game_inputReaderPong(void);
+    // extern void man_game_rendererPong(void);
+    // extern void man_game_updaterPong(void);
 
 #endif

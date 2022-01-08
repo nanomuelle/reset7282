@@ -1,10 +1,11 @@
+#include <conversational/man/game/game.h>
 #include <man/game/game.h>
 
 #include <man/prompt/prompt.h>
 #include <man/history/history.h>
 #include <sys/render/render.h>
 
-void man_game_rendererConversational(void) {
+void conversational_man_game_render(void) {
     TRoom* room = man_rooms_getCurrentRoom();
     TPrompt* prompt = man_prompt_getPrompt();
     THistory* history = man_history_getHistoryPtr();

@@ -3,7 +3,6 @@
 
 void pong_man_game_behavior_userInput(void *me) {
     i16 vy = 0;
-    cpct_scanKeyboard_f();
     if (cpct_isKeyPressed(Key_Q)) {
         vy = -PONG_WORLD_PADDEL_VY;
     } else if (cpct_isKeyPressed(Key_A)) {

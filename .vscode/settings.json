@@ -6,6 +6,7 @@
         "prompt.h": "c",
         "typeindex": "c",
         "typeinfo": "c",
-        "parser.h": "c"
+        "parser.h": "c",
+        "types.h": "c"
     }
 }

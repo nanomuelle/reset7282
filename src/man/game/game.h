@@ -9,8 +9,10 @@
     
     #include <sys/debug/debug.h>
 
-    #define KEY_DEL   0x7F
-    #define KEY_ENTER 0x0D
+    #define KEY_DEL   (0x7F)
+    #define KEY_ENTER (0x0D)
+
+    #define MAX_OBJS_IN_ROOM  (3)
 
     typedef struct MsgStruct {
         u8* txt;
@@ -24,6 +26,7 @@
 // PRIVATE
     extern void _game_execute_action    (TAction *, TRoom *);
 
+    extern void _game_action_drop       (TAction *, TRoom *);
     extern void _game_action_examine    (TAction *, TRoom *);
     extern void _game_action_go         (TAction *, TRoom *);
     extern void _game_action_inventory  (TAction *, TRoom *);

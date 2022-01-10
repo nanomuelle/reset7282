@@ -8,9 +8,12 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 18
+#define ACTION_USERINPUT_TO_TYPE_SIZE 20
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
+    { "dejar",      { ACTION_TYPE_DROP   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+    { "soltar",     { ACTION_TYPE_DROP   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
+
     { "examinar",   { ACTION_TYPE_EXAMINE, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
 
     { "ir",         { ACTION_TYPE_GO     , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
@@ -84,6 +87,7 @@ void _parseActionParam(u8* userInput, TAction *action) {
             _sys_parser_parseParamGo(buffer, action);
             break;
 
+        case ACTION_TYPE_DROP:
         case ACTION_TYPE_EXAMINE:
         case ACTION_TYPE_TAKE:
         case ACTION_TYPE_TURN_OFF:

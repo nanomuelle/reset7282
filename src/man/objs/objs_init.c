@@ -29,17 +29,17 @@ const TObj _initial_objs[MAN_OBJS_SIZE] = {
     },
     { OBJ_ID_DEPORTIVAS,
         "deportivas",
-        "unas Nike Cortez de 1972, \xAEquien no ha deseado unas?",
+        "unas Nike Cortez de 1972",
         ROOM_ID_PONG,
         OBJ_ATTR_CAN_TAKE,
         g_tile_obj_deportivas,
     },
-    { OBJ_ID_NULL   , "null 3" , "null", 0xff                , 0x00, 0x0000 },
-    { OBJ_ID_NULL   , "null 4" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 5" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 6" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 7" , "null", 0xff                , 0x00, 0x0000 },
-    { OBJ_ID_NULL   , "null 8" , "null", 0xff                , 0x00, 0x0000 }
+    { OBJ_ID_NULL   , "null 8" , "null", 0xff                , 0x00, 0x0000 },
+    { OBJ_ID_NULL   , "null 9" , "null", 0xff                , 0x00, 0x0000 },
+    { OBJ_ID_NULL   , "null 10" , "null", 0xff                , 0x00, 0x0000 }
 };
 
 void man_objs_init(void) {

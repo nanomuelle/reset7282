@@ -8,9 +8,10 @@ typedef struct ActionRunnerStruct {
     const TActionRunnerFn runner;
 } TActionRunner;
 
-#define NUM_ACTION_RUNNERS 9
+#define NUM_ACTION_RUNNERS 10
 
 const TActionRunner _actionRunners[NUM_ACTION_RUNNERS] = {
+    { ACTION_TYPE_DROP, _game_action_drop },
     { ACTION_TYPE_EXAMINE, _game_action_examine },
     { ACTION_TYPE_GO, _game_action_go },
     { ACTION_TYPE_INVENTORY, _game_action_inventory },

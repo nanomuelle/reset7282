@@ -12,6 +12,8 @@ Aventura conversacional
 - cpct_rvm -a => launch last .dsk build with Retro Virtual Machine
 - cpct_winape => launch last .dsk build with WinApe
 
+# Tools
+- https://www.piskelapp.com/p/create/sprite
 ## Game technical docs
 
 Main objects:

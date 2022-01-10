@@ -3,8 +3,8 @@
 
 #include<cpctelera.h>
 
-#define PROMPT_BUFFER_SIZE 38 // bytes
-#define PROMPT_BUFFER_NUM_TYPABLE_CHARS (PROMPT_BUFFER_SIZE - 1)
+#define PROMPT_BUFFER_SIZE 28 // bytes
+#define PROMPT_BUFFER_NUM_TYPABLE_CHARS (PROMPT_BUFFER_SIZE - 2)
 // #define CHAR_SPACING 2 // BYTES
 
 typedef struct {

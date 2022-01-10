@@ -1,7 +1,6 @@
 #include <cpctelera.h>
 
 #include <man/game/game.h> // TODO: se necesita solo para el KEY_DEL que habra que pasar a otro include
-
 #include <man/prompt/prompt.h>
 
 TPrompt prompt;

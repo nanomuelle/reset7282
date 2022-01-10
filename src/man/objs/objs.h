@@ -23,6 +23,7 @@ typedef struct ObjStruct {
     const   u8*         description; // descripcion del objeto
             TRoomIdEnum roomId;    // habitación en la que se encuentra el objeto
             u8          attrs;     // atributos
+    const   u8*         sprite;    // sprite para pintar en la habitación
 } TObj;
 
 // PRIVATE

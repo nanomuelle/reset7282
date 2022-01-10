@@ -1,5 +1,6 @@
 #include <sys/render/render.h>
 #include <sys/ascii/ascii.h>
+#include <assets/lightbulb.h>
 
 void _update_roomName(TRoom *room) {
     _render_clearBox(ROOM_NAME_X, ROOM_NAME_Y, ROOM_NAME_W, LINE_HEIGHT);
@@ -63,29 +64,27 @@ void _update_roomTxtBox(TRoom *room) {
 }
 
 void _update_roomObjs(TRoom *room) {
-    _render_clearBox(
-        ROOM_TXT_BOX_X + 1,
-        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT,
-        ROOM_TXT_BOX_W - 2,
-        LINE_HEIGHT
+    // TODO: buscar objetos que están everywhere y pintarlos de arriba abajo
+    // lightbulb
+    u8* lightbulb = man_rooms_isDark(room) ? g_tile_lightbulb_0 : g_tile_lightbulb_1;
+
+    cpct_drawSprite(
+        lightbulb,
+        cpct_getScreenPtr(CPCT_VMEM_START, 0, ROOM_TXT_BOX_Y),
+        G_TILE_LIGHTBULB_0_W, G_TILE_LIGHTBULB_0_H
     );
 
-    if (man_rooms_isExplored(room)) {
-        _render_printObjsInRoom(
-            room,
-            ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,
-            ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT
-        );
-    }
+    _render_printObjsInRoom(
+        room,
+        ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,
+        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT
+    );
 }
 
 void _render_updateRoom(TRoom *room) {
     // header
     _update_roomName(room);
-
-    // _update_roomOutsLabel();
     _update_roomOuts(room);
-    // _update_headerLine(room);
 
     // txt
     _update_roomTxt(room);

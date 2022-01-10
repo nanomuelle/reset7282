@@ -21,8 +21,8 @@
 #define OUTS_PEN_DARK   3
 
 #define ROOM_TXT_Y      20
-#define ROOM_TXT_X      8
-#define ROOM_TXT_COLS   31
+#define ROOM_TXT_X      10 // 8
+#define ROOM_TXT_COLS   30 // 31
 #define ROOM_TXT_PEN    1
 #define ROOM_TXT_W      (2 + (ROOM_TXT_COLS * 8 / 4))
 #define ROOM_TXT_H      100 // 70

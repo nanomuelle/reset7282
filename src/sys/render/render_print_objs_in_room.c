@@ -24,7 +24,7 @@ void _render_printObjsInRoom(const TRoom *room, const u8 x, const u8 y) {
         24 * 2
     );
 
-    if (man_rooms_isExplored(room)) {
+    if (man_rooms_isExplored(room) && !man_rooms_isDark(room)) {
         TObj *(*obj) = man_objs_getInRoom(room);
         while ( (*obj) != 0) {
             u8* msg = man_msg_clear();

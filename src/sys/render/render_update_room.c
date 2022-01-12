@@ -74,11 +74,7 @@ void _update_roomObjs(TRoom *room) {
         G_TILE_LIGHTBULB_0_W, G_TILE_LIGHTBULB_0_H
     );
 
-    _render_printObjsInRoom(
-        room,
-        ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1,
-        ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H - LINE_HEIGHT
-    );
+    _render_printObjsInRoom(room);
 }
 
 void _render_updateRoom(TRoom *room) {

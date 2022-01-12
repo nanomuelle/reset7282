@@ -8,7 +8,7 @@
 
 #include <sys/debug/debug.h>
 
-#define ACTION_USERINPUT_TO_TYPE_SIZE 20
+#define ACTION_USERINPUT_TO_TYPE_SIZE 19
 
 const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] = {
     { "dejar",      { ACTION_TYPE_DROP   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
@@ -30,7 +30,7 @@ const TUserInputToActionMap userInputToActionMap[ACTION_USERINPUT_TO_TYPE_SIZE] 
     { "explorar",   { ACTION_TYPE_SEARCH , { .unknown_param = ACTION_PARAM_UNKNOWN  }}},
 
     { "coger",      { ACTION_TYPE_TAKE   , { .unknown_param = ACTION_PARAM_UNKNOWN }}},
-    { "raqueta",    { ACTION_TYPE_TAKE   , { .obj_param = OBJ_ID_RAQUETA }}},
+//     { "raqueta",    { ACTION_TYPE_TAKE   , { .obj_param = OBJ_ID_RAQUETA }}},
 
     { "apagar",     { ACTION_TYPE_TURN_OFF, { .unknown_param = ACTION_PARAM_UNKNOWN }}},
 

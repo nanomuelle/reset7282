@@ -72,7 +72,7 @@ const TRoom initial_rooms[ROOMS_MAX_ROOMS] = {
         "",
         "",
         {{ NO_EXIT, NO_EXIT, NO_EXIT, NO_EXIT }},
-        ROOM_STATE_DEFAULT | ROOM_STATE_DARK,
+        ROOM_STATE_DEFAULT,
         &pongGame,
     },
     {   ROOM_ID_DORMITORIO_2,

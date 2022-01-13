@@ -1,10 +1,7 @@
 #include "obj_consola.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// u8* const g_tile_tileset[1] = { 
-// 	g_tile_obj_consola
-// };
-// Tile g_tile_obj_consola: 24x24 pixels, 6x24 bytes.
-const u8 g_tile_obj_consola[6 * 24] = {
+// Tile g_sprite_obj_consola: 24x24 pixels, 6x24 bytes.
+const u8 g_sprite_obj_consola[6 * 24] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x33, 0xff, 0xff, 0xdd, 0x00,

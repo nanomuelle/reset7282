@@ -28,7 +28,8 @@
 ##
 
 ## 16 colours palette
-#PALETTE=0 1 2 3 6 9 11 12 13 15 16 18 20 24 25 26
+## PALETTE=0 1 2 3 6 9 11 12 13 15 16 18 20 24 25 26
+PALETTE=0 26 25 11
 
 ## Default values
 #$(eval $(call IMG2SP, SET_MODE        , 0                  ))  { 0, 1, 2 }
@@ -40,6 +41,25 @@
 #$(eval $(call IMG2SP, SET_PALETTE_FW  , $(PALETTE)         ))
 #$(eval $(call IMG2SP, CONVERT_PALETTE , $(PALETTE), g_palette ))
 #$(eval $(call IMG2SP, CONVERT         , img.png , w, h, array, palette, tileset))
+
+$(eval $(call IMG2SP,SET_MODE,1))
+$(eval $(call IMG2SP,SET_MASK,none))
+$(eval $(call IMG2SP,SET_FOLDER,src/assets))
+$(eval $(call IMG2SP,SET_EXTRAPAR,))
+$(eval $(call IMG2SP,SET_IMG_FORMAT,sprites))
+$(eval $(call IMG2SP,SET_OUTPUT,c))
+$(eval $(call IMG2SP,SET_PALETTE_FW,$(PALETTE)))
+$(eval $(call IMG2SP,CONVERT_PALETTE,$(PALETTE),g_palette))
+
+## room objects
+$(eval $(call IMG2SP,CONVERT,assets/lightbulb.png,24,24,g_sprite_lightbulb,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_consola.png,24,24,g_sprite_obj_consola,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_deportivas.png,24,24,g_sprite_obj_deportivas,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_sprite_obj_paddel,,))
+
+## breakout sprites
+$(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,8,g_sprite_breakout_paddel,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_ball.png,4,4,g_sprite_breakout_ball,,))
 
 ##
 ## OLD MACROS (For compatibility)

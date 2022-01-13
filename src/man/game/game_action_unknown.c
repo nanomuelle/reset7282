@@ -7,4 +7,7 @@
 
 void _game_action_unknown(TAction* action, TRoom* room) {
     man_history_addError("comando desconocido");
+
+    // DEBUG!!!!! BORRAR ESTO DE AQUI CUANDO TERMINE EL BREAKOUT
+    _game_playBreakout();
 }

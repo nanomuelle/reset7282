@@ -66,12 +66,12 @@ void _update_roomTxtBox(TRoom *room) {
 void _update_roomObjs(TRoom *room) {
     // TODO: buscar objetos que están everywhere y pintarlos de arriba abajo
     // lightbulb
-    u8* lightbulb = man_rooms_isDark(room) ? g_tile_lightbulb_0 : g_tile_lightbulb_1;
+    u8* lightbulb = man_rooms_isDark(room) ? g_sprite_lightbulb_0 : g_sprite_lightbulb_1;
 
     cpct_drawSprite(
         lightbulb,
         cpct_getScreenPtr(CPCT_VMEM_START, 0, ROOM_TXT_BOX_Y),
-        G_TILE_LIGHTBULB_0_W, G_TILE_LIGHTBULB_0_H
+        G_SPRITE_LIGHTBULB_0_W, G_SPRITE_LIGHTBULB_0_H
     );
 
     _render_printObjsInRoom(room);

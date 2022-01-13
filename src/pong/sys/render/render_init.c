@@ -34,38 +34,38 @@ void _pong_sys_render_odyssey(u8 x, u8 y) {
 void _pong_sys_render_menu(void) {
     _render_printMsg(
         "Q - move up", 
-        WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
-        WORLD_TO_SCREEN_Y((i16) 256 * 0),
+        PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
+        PONG_WORLD_TO_SCREEN_Y((i16) 256 * 0),
         1
     );
 
     _render_printMsg(
         "A - move down", 
-        WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
-        WORLD_TO_SCREEN_Y((i16) 256 * 10),
+        PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
+        PONG_WORLD_TO_SCREEN_Y((i16) 256 * 10),
         1
     );
 
     _render_printMsg(
         "PRESS ANY KEY TO START", 
-        WORLD_TO_SCREEN_X((i16) -256 * 2 * 11),
-        WORLD_TO_SCREEN_Y((i16) 256 * 30),
+        PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 11),
+        PONG_WORLD_TO_SCREEN_Y((i16) 256 * 30),
         1
     );
 
 }
 void pong_sys_render_init(void) {
-    u8 x = WORLD_TO_SCREEN_X((i16) - (3.5 * PONG_WORLD_ODYSSEY_LETTER_WIDTH));
-    u8 y = WORLD_TO_SCREEN_Y(- 2 * PONG_WORLD_ODYSSEY_LETTER_HEIGHT);
+    u8 x = PONG_WORLD_TO_SCREEN_X((i16) - (3.5 * PONG_WORLD_ODYSSEY_LETTER_WIDTH));
+    u8 y = PONG_WORLD_TO_SCREEN_Y(- 2 * PONG_WORLD_ODYSSEY_LETTER_HEIGHT);
     _pong_sys_render_odyssey(x, y);
-    while (x > WORLD_TO_SCREEN_X(PONG_WORLD_MIN_X + PONG_WORLD_ODYSSEY_LETTER_WIDTH)) {
+    while (x > PONG_WORLD_TO_SCREEN_X(PONG_WORLD_MIN_X + PONG_WORLD_ODYSSEY_LETTER_WIDTH)) {
         --x;
         cpct_waitHalts(10);
         cpct_waitVSYNC();
         _render_clearRoomTxt();
         _pong_sys_render_odyssey(x, y);
     };
-    x = WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_TILE_PONG_W)) >> 1);
+    x = PONG_WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_TILE_PONG_W)) >> 1);
     _pong_sys_render_pong(x, y);
 
     _pong_sys_render_menu();

@@ -3,10 +3,8 @@
 #define _ASSETS_OBJ_DEPORTIVAS_H_
 
 #include <types.h>
-// extern u8* const g_tile_tileset[1];
-
-#define G_TILE_OBJ_DEPORTIVAS_W 6
-#define G_TILE_OBJ_DEPORTIVAS_H 24
-extern const u8 g_tile_obj_deportivas[6 * 24];
+#define G_SPRITE_OBJ_DEPORTIVAS_W 6
+#define G_SPRITE_OBJ_DEPORTIVAS_H 24
+extern const u8 g_sprite_obj_deportivas[6 * 24];
 
 #endif

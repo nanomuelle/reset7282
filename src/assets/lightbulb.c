@@ -1,10 +1,7 @@
 #include "lightbulb.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// u8* const g_tile_tileset[2] = { 
-// 	g_tile_lightbulb_0, g_tile_lightbulb_1
-// };
-// Tile g_tile_lightbulb_0: 24x24 pixels, 6x24 bytes.
-const u8 g_tile_lightbulb_0[6 * 24] = {
+// Tile g_sprite_lightbulb_0: 24x24 pixels, 6x24 bytes.
+const u8 g_sprite_lightbulb_0[6 * 24] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -31,8 +28,8 @@ const u8 g_tile_lightbulb_0[6 * 24] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-// Tile g_tile_lightbulb_1: 24x24 pixels, 6x24 bytes.
-const u8 g_tile_lightbulb_1[6 * 24] = {
+// Tile g_sprite_lightbulb_1: 24x24 pixels, 6x24 bytes.
+const u8 g_sprite_lightbulb_1[6 * 24] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

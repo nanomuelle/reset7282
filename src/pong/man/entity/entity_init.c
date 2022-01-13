@@ -5,7 +5,7 @@
 
 #include <man/objs/objs.h>
 
-void _createEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16 vy, void* ai) {
+void _createPongEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16 vy, void* ai) {
     TPongEntity *entity = pong_man_entity_create();
     entity->id = id;
     entity->x = x;
@@ -19,8 +19,8 @@ void _createEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16 vy,
     entity->render_h = HI(entity->h);
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START,
-        WORLD_TO_SCREEN_X(x),
-        WORLD_TO_SCREEN_Y(y)
+        PONG_WORLD_TO_SCREEN_X(x),
+        PONG_WORLD_TO_SCREEN_Y(y)
     );
     entity->ai = ai;
 }
@@ -32,7 +32,7 @@ void pong_man_entity_init(void) {
     cpct_memset(_pong_man_entity_buffer, 0, PONG_MAN_ENTITY_BUFFER_SIZE * sizeof(TPongEntity));
 
     // ball
-    _createEntity(
+    _createPongEntity(
         PONG_ENTITY_ID_BALL,
         PONG_WORLD_BALL_X,
         PONG_WORLD_BALL_Y,
@@ -44,7 +44,7 @@ void pong_man_entity_init(void) {
     );
 
     // left player (ai)
-    _createEntity(
+    _createPongEntity(
         PONG_ENTITY_ID_LEFT_PADDEL,
         PONG_WORLD_LEFT_PADDEL_X,
         PONG_WORLD_LEFT_PADDEL_Y,
@@ -57,7 +57,7 @@ void pong_man_entity_init(void) {
 
     if (man_objs_isInRoom(OBJ_ID_RAQUETA, ROOM_ID_INVENTARIO)) {
         // right player (user)
-        _createEntity(
+        _createPongEntity(
             PONG_ENTITY_ID_RIGHT_PADDEL,
             PONG_WORLD_RIGHT_PADDEL_X,
             PONG_WORLD_RIGHT_PADDEL_Y,

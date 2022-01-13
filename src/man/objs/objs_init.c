@@ -18,28 +18,28 @@ const TObj _initial_objs[MAN_OBJS_SIZE] = {
         "es rara, parece un palo rectangular",
         ROOM_ID_DORMITORIO_1,
         OBJ_ATTR_CAN_TAKE,
-        g_tile_obj_paddel
+        g_sprite_obj_paddel
     },
     { OBJ_ID_CONSOLA,
         "consola",
         "consola Magnavox Odyssey, un clasico",
         ROOM_ID_DORMITORIO_1,
         OBJ_ATTR_CAN_USE,
-        g_tile_obj_consola
+        g_sprite_obj_consola
     },
     { OBJ_ID_DEPORTIVAS,
         "deportivas",
         "unas Nike Cortez de 1972",
         ROOM_ID_PONG,
         OBJ_ATTR_CAN_TAKE,
-        g_tile_obj_deportivas,
+        g_sprite_obj_deportivas,
     },
     { OBJ_ID_NULL   , "null 5" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 6" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 7" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 8" , "null", 0xff                , 0x00, 0x0000 },
     { OBJ_ID_NULL   , "null 9" , "null", 0xff                , 0x00, 0x0000 },
-    { OBJ_ID_NULL   , "null 10" , "null", 0xff                , 0x00, 0x0000 }
+    { OBJ_ID_NULL   , "null 10" , "null", 0xff               , 0x00, 0x0000 }
 };
 
 void man_objs_init(void) {

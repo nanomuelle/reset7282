@@ -8,8 +8,8 @@
 void _pong_sys_render_updateOne(TPongEntity *entity) {
     u8* pmem = cpct_getScreenPtr(
         CPCT_VMEM_START, 
-        WORLD_TO_SCREEN_X(entity->x), 
-        WORLD_TO_SCREEN_Y(entity->y)
+        PONG_WORLD_TO_SCREEN_X(entity->x), 
+        PONG_WORLD_TO_SCREEN_Y(entity->y)
     );
 
     // delete
@@ -40,8 +40,8 @@ void _pong_sys_render_updateNet() {
     u8 color = cpct_px2byteM1(0, 1, 1, 0);
     u8 *pmem = cpct_getScreenPtr(
         CPCT_VMEM_START,
-        WORLD_TO_SCREEN_X(0),
-        WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y)
+        PONG_WORLD_TO_SCREEN_X(0),
+        PONG_WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y)
     );
     cpct_drawSolidBox(pmem, color, 1, PONG_SYS_RENDER_PHY_TO_PX(PONG_WORLD_H) - 2);
 }
@@ -49,15 +49,15 @@ void _pong_sys_render_updateNet() {
 void _pong_sys_render_updateScore() {
     _render_printChar(
         48 + pong_man_score_getLeftPlayer(),
-        WORLD_TO_SCREEN_X(-(256 * 3)),
-        WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
+        PONG_WORLD_TO_SCREEN_X(-(256 * 3)),
+        PONG_WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
         1
     );
 
     _render_printChar(
         48 + pong_man_score_getRightPlayer(),
-        WORLD_TO_SCREEN_X(256 * (3 - 1)),
-        WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
+        PONG_WORLD_TO_SCREEN_X(256 * (3 - 1)),
+        PONG_WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
         1
     );
 }

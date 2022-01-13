@@ -37,8 +37,10 @@
     extern void _game_action_unknown    (TAction *, TRoom *);
     extern void _game_action_use        (TAction *, TRoom *);
 
-    extern void _game_playPong(void);
-    extern u8   _game_show_objs_in_room(TRoom *);
+    extern void _game_playPong          (void);
+    extern void _game_playBreakout      (void);
+
+    extern u8   _game_show_objs_in_room (TRoom *);
 
 // PUBLIC
     extern void man_game_init(void);

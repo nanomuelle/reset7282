@@ -15,9 +15,6 @@ const TGameHandlers pongGame = {
     pong_man_game_readInput,
     pong_man_game_update,
     pong_man_game_render,
-    // man_game_inputReaderPong,
-    // man_game_updaterPong,
-    // man_game_rendererPong
 };
 
 const TGameHandlers breakoutGame = {

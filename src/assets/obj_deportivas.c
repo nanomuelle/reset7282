@@ -1,10 +1,7 @@
 #include "obj_deportivas.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// u8* const g_tile_tileset[1] = { 
-// 	g_tile_obj_deportivas
-// };
-// Tile g_tile_obj_deportivas: 24x24 pixels, 6x24 bytes.
-const u8 g_tile_obj_deportivas[6 * 24] = {
+// Tile g_sprite_obj_deportivas: 24x24 pixels, 6x24 bytes.
+const u8 g_sprite_obj_deportivas[6 * 24] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

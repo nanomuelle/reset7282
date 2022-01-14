@@ -60,6 +60,7 @@ $(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_sprite_obj_paddel,,))
 ## breakout sprites
 $(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,8,g_sprite_breakout_paddel,,))
 $(eval $(call IMG2SP,CONVERT,assets/breakout_ball.png,4,4,g_sprite_breakout_ball,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_yellow_brick.png,24,12,g_sprite_breakout_yellow_brick,,))
 
 ##
 ## OLD MACROS (For compatibility)

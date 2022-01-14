@@ -1,5 +1,6 @@
 #ifndef RESET_SYS_DEBUG
 #define RESET_SYS_DEBUG
+#define RESET_ASSERTS_TRUE
 
 #include <cpctelera.h>
 

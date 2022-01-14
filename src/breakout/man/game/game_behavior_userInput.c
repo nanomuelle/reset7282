@@ -9,5 +9,5 @@ void breakout_man_game_behavior_userInput(void *me) {
         vx = BREAKOUT_WORLD_PADDEL_VX;
     }
 
-    ((TBreakoutEntity *) me)->vx = vx;
+    ((TEntity *) me)->world_vx = vx;
 }

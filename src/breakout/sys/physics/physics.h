@@ -3,6 +3,7 @@
 
 #include <globals.h>
 #include <breakout/breakout.h>
+#include <man/entity/entity.h>
 
 // PHYSICS WORLD
 
@@ -15,5 +16,6 @@
 // PUBLIC
 extern void breakout_sys_physics_init(void);
 extern void breakout_sys_physics_update(void);
+extern u8   breakout_sys_physics_checkCollision(TEntity *ent1, TEntity *ent2);
 
 #endif

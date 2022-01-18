@@ -24,7 +24,7 @@ void _breakout_sys_render_updateOne(TEntity *entity) {
 
         // TODO: esto no va aqui, eliminar la entidad debe hacerse en breakout_man_game
         // breakout_man_entity_delete(entity);
-        man_entity_destroy(entity);
+        // man_entity_destroy(entity);
         return;
     }
 
@@ -58,4 +58,6 @@ void _breakout_sys_render_updateOne(TEntity *entity) {
 
 void breakout_sys_render_update(void) {
     man_entity_forAll(_breakout_sys_render_updateOne);
+
+    man_entity_update();
 }

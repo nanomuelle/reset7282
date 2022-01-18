@@ -48,8 +48,8 @@ u8 _breakout_man_game_checkCollisionsVsBall(TEntity *other) {
 
         if (other->id == BREAKOUT_ENTITY_ID_BRICK) {
             // marcar ladrillo para eliminar
-            other->state = ENTITY_STATE_DEAD;
-
+            // other->state = ENTITY_STATE_DEAD;
+            man_entity_set4destroy(other);
         } else if (other->id == BREAKOUT_ENTITY_ID_PADDEL) {
             // i16 vx = ball->world_vx;
             // ball->world_vx += (vx >> 1);
@@ -87,8 +87,6 @@ void _breakout_man_game_checkCollisions(void) {
 }
 
 void breakout_man_game_update(void) {
-    // man_entity_update();
-
     breakout_sys_ai_update();
     breakout_sys_physics_update();
     _breakout_man_game_checkCollisions();

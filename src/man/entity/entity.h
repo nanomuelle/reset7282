@@ -49,13 +49,14 @@ extern TEntity  m_man_entity_buffer[MAN_ENTITY_BUFFER_SIZE];
 // extern u8       m_man_entity_reservedEntities; // num of reserved entities
 extern u8       m_man_entity_validEntities;    // num of valid entities
 extern TEntity *m_man_entity_nextFree;         // ptr to the next free entity
-extern u8       m_man_entity_nextFreeIndex;    // index of the next free entity
+// extern u8       m_man_entity_nextFreeIndex;    // index of the next free entity
 extern u8       m_man_entity_isDirty;          // flag: 1.- needs update, 0.- do not needs update
 
 // PUBLIC
-extern void     man_entity_init    (void);
-extern TEntity* man_entity_create  (void);
-extern void     man_entity_destroy (TEntity *);
-extern void     man_entity_forAll  (TEntityCallback);
+extern void     man_entity_init         (void);
+extern TEntity* man_entity_create       (void);
+extern void     man_entity_set4destroy  (TEntity *);
+extern void     man_entity_destroy      (TEntity *);
+extern void     man_entity_forAll       (TEntityCallback);
 extern void     man_entity_forEachUntil (TEntityUntilCallback);
-extern TEntity* man_entity_getById (TEntityId);
+extern TEntity* man_entity_getById      (TEntityId);

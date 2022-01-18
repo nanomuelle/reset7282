@@ -35,6 +35,7 @@ typedef struct EntityStruct {
     u8 render_w;    // render size
     u8 render_h;
     u8* sprite;     // sprite ptr
+    u8* sprite_bg;  // sprite bg ptr
 
     // AI COMPONENT
     void (*ai)(void *self);

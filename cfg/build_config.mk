@@ -49,7 +49,8 @@
 # Name of the project (without spaces, as it will be used as filename)
 #   and Z80 memory location where code will start in the generated binary
 PROJNAME   := rst7282
-Z80CODELOC := 0x4000
+# Z80CODELOC := 0x4000
+Z80CODELOC := 0x3000
 
 ##
 ## Folders 
@@ -102,7 +103,7 @@ DSKINC  := $(OBJDIR)/$(DSK).$(DSKINC_EXT)
 ##  $(DSKINC): Includes all files from DSKFILESDIR into DSK as binaries 
 ##
 ## TARGET := $(CDT) $(DSK) $(DSKINC) $(SNA)
-TARGET := $(DSK)
+TARGET := $(DSKINC)
 
 ##
 ## OBJS2CLEAN: Additional objects to be removed when running "make clean"

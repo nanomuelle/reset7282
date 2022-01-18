@@ -29,8 +29,8 @@
 
 ## 16 colours palette
 ## PALETTE=0 1 2 3 6 9 11 12 13 15 16 18 20 24 25 26
-PALETTE=0 26 25 11
-
+## PALETTE=0 26 25 11
+PALETTE=0 1 11 23
 ## Default values
 #$(eval $(call IMG2SP, SET_MODE        , 0                  ))  { 0, 1, 2 }
 #$(eval $(call IMG2SP, SET_MASK        , none               ))  { interlaced, none }
@@ -60,7 +60,8 @@ $(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_sprite_obj_paddel,,))
 ## breakout sprites
 $(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,8,g_sprite_breakout_paddel,,))
 $(eval $(call IMG2SP,CONVERT,assets/breakout_ball.png,4,4,g_sprite_breakout_ball,,))
-$(eval $(call IMG2SP,CONVERT,assets/breakout_yellow_brick.png,24,12,g_sprite_breakout_yellow_brick,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_yellow_brick.png,16,8,g_sprite_breakout_yellow_brick,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_bg.png,16,16,g_sprite_breakout_bg,,))
 
 ##
 ## OLD MACROS (For compatibility)

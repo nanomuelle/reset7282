@@ -7,7 +7,7 @@ void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen) {
     u8* pmem = cpct_getScreenPtr(CPCT_VMEM_START, x, row);
 
     while( (*msg) != 0) {
-        if ((*msg) == ASCII_RETURN || col > cols) {
+        if ((*msg) == ASCII_RETURN || col == cols) {
             col = 0;
             row += 10;
             pmem = cpct_getScreenPtr(CPCT_VMEM_START, x, row);

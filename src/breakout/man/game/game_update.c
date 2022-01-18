@@ -11,16 +11,51 @@ u8 _breakout_man_game_checkCollisionsVsBall(TEntity *other) {
     }
 
     if (breakout_sys_physics_checkCollision(ball, other)) {
-        i16 vy = ball->world_vy;
-        ball->world_vy = -vy;
+        ball->world_x -= ball->world_vx;
+        ball->world_y -= ball->world_vy;
+        ball->world_vy = -ball->world_vy;
+        // comprobar por que lado del ladrillo hemos chocado para el rebote
+        // {
+        //     // chocado por la izquierda?
+        //     i16 x = ball->world_x;
+        //     i16 w = ball->world_w;
+        //     i16 right = x + w;
+
+        //     i16 other_x = other->world_x;
+        //     i16 other_right = other_x + other->world_w;
+
+        //     if ( ball->world_vx > 0 && (right >= other_x && right <= other_x + w)) {
+        //         ball->world_vx = -ball->world_vx;
+        //     } else if ( ball->world_vx < 0 && x < other_right && x > other_right - w) {
+        //         ball->world_vx = -ball->world_vx;
+        //     }
+        // }
+
+        // {
+        //     i16 y = ball->world_y;
+        //     i16 h = ball->world_h;
+        //     i16 bottom = y + h;
+        //     i16 other_y = other->world_y;
+        //     i16 other_bottom = other_y + other->world_h;
+
+        //     if (
+        //         (bottom >= other_y && bottom <= other_y + h) ||
+        //         (y < other_bottom && y > other_bottom - h)
+        //     ) {
+        //         ball->world_vy = -ball->world_vy;
+        //     }
+        // }
 
         if (other->id == BREAKOUT_ENTITY_ID_BRICK) {
+            // marcar ladrillo para eliminar
             other->state = ENTITY_STATE_DEAD;
+
         } else if (other->id == BREAKOUT_ENTITY_ID_PADDEL) {
             // i16 vx = ball->world_vx;
             // ball->world_vx += (vx >> 1);
         }
-
+        other->world_x = other->world_x - other->world_vx;
+        other->world_y = other->world_y - other->world_vy;
         return 1;
     }
 

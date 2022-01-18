@@ -25,6 +25,8 @@ extern void _render_scroolRoomTxt(TParamGoEnum dir);
 extern void _render_updateRoom(TRoom *);
 extern void _render_updateHistory(THistory *);
 
+extern const u8 sprite_bg[ROOM_TXT_BOX_W * ROOM_TXT_BOX_H];
+// __code __at (0x7ff0)
 
 ////////// PUBLIC
 extern void sys_render_init(void);

@@ -4,15 +4,25 @@
 
 #include <breakout/breakout.h>
 
+void _breakout_sys_render_restoreBg(TEntity *entity) {
+    cpct_drawSprite(
+        entity->sprite_bg,
+        entity->pmem,
+        entity->render_w,
+        entity->render_h
+    );
+}
+
 void _breakout_sys_render_updateOne(TEntity *entity) {
     if (ENTITY_STATE_DEAD == (entity->state & ENTITY_STATE_DEAD)) {
-        cpct_drawSolidBox(
-            entity->pmem, 
-            BREAKOUT_SYS_RENDER_BG_COLOR, 
-            entity->render_w, 
+        cpct_drawSprite(
+            entity->sprite_bg,
+            entity->pmem,
+            entity->render_w,
             entity->render_h
         );
-        // TODO: esto no va aqui, elminar la entidad debe hacerse en breakout_man_game
+
+        // TODO: esto no va aqui, eliminar la entidad debe hacerse en breakout_man_game
         // breakout_man_entity_delete(entity);
         man_entity_destroy(entity);
         return;
@@ -27,18 +37,21 @@ void _breakout_sys_render_updateOne(TEntity *entity) {
 
         // delete
         if (pmem != entity->pmem) {
-            cpct_drawSolidBox(
-                entity->pmem, 
-                BREAKOUT_SYS_RENDER_BG_COLOR, 
-                entity->render_w, 
-                entity->render_h
-            );
+            u8 w = entity->render_w;
+            u8 h = entity->render_h;
+            u8* sprite_bg = entity->sprite_bg;
+
+            // restore bg
+            cpct_drawSprite(sprite_bg, entity->pmem, w, h);
+
+            // capture bg
+            cpct_getScreenToSprite(pmem, sprite_bg, w, h);
+
+            // paint
+            cpct_drawSprite(entity->sprite, pmem, w, h);
 
             // almacena la ultima pos de memoria en la que se ha pintado
             entity->pmem = pmem;
-
-            // paint
-            cpct_drawSprite(entity->sprite, pmem, entity->render_w, entity->render_h);
         }
     }
 }

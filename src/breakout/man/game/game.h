@@ -2,7 +2,6 @@
 #define BREAKOUT_MAN_GAME
 
 // PRIVATE
-#include <globals.h>
 #include <breakout/breakout.h>
 #include <man/entity/entity.h>
 

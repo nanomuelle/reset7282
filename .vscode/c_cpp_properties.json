@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceRoot}/src",
                 "/usr/local/include",
-                "/Users/fgh/Documents/fernando/cpc/cpctelera/cpctelera/src"
+                "/Users/fgh/Documents/fernando/cpc/cpctelera/cpctelera/src",
+                "${workspaceFolder}/src"
             ],
             "defines": [],
             "browse": {

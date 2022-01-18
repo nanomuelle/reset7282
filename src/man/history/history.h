@@ -7,9 +7,9 @@
 #define HISTORY_LAST_LINE (HISTORY_NUM_LINES - 1)
 #define HISTORY_LINE_SIZE 40
 
-#define MAN_HISTORY_PEN_USER_INPUT  1
-#define MAN_HISTORY_PEN_ERROR       2
-#define MAN_HISTORY_PEN_RESPONSE    3
+#define MAN_HISTORY_PEN_USER_INPUT  2
+#define MAN_HISTORY_PEN_ERROR       3
+#define MAN_HISTORY_PEN_RESPONSE    2
 
 typedef struct {
     u8 pen;

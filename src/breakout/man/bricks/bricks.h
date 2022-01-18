@@ -4,9 +4,9 @@
 #include <man/entity/entity.h>
 
 // PRIVATE
-#define MAX_BRICKS 44
+#define MAX_BRICKS 50
 
-extern const u8 m_man_bricks_bg_buffer[MAX_BRICKS * G_SPRITE_BREAKOUT_YELLOW_BRICK_W * G_SPRITE_BREAKOUT_YELLOW_BRICK_H];
+extern const u8 m_man_bricks_bg_buffer[MAX_BRICKS * G_SPRITE_BREAKOUT_MEDIUM_BRICK_W * G_SPRITE_BREAKOUT_MEDIUM_BRICK_H];
 extern u8 m_man_bricks_num;
 extern u8* m_man_bricks_next_bg_free;
 

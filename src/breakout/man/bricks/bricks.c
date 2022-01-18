@@ -2,7 +2,7 @@
 #include <breakout/sys/render/render.h>
 #include <man/entity/entity.h>
 
-const u8 m_man_bricks_bg_buffer[MAX_BRICKS * G_SPRITE_BREAKOUT_YELLOW_BRICK_W * G_SPRITE_BREAKOUT_YELLOW_BRICK_H];
+const u8 m_man_bricks_bg_buffer[MAX_BRICKS * G_SPRITE_BREAKOUT_MEDIUM_BRICK_W * G_SPRITE_BREAKOUT_MEDIUM_BRICK_H];
 u8 m_man_bricks_num;
 u8* m_man_bricks_next_bg_free;
 
@@ -24,7 +24,7 @@ const TEntity m_man_bricks_brick_template = {
     0x0000,                         // pmem
     HI(BREAKOUT_WORLD_BRICK_W),     // w render
     HI(BREAKOUT_WORLD_BRICK_H),     // h render
-    g_sprite_breakout_yellow_brick, // sprite ptr
+    g_sprite_breakout_medium_brick, // sprite ptr
     0x0000,
 
     // ai component
@@ -50,7 +50,7 @@ TEntity* man_bricks_create(i16 x, i16 y) {
     );
 
     ++m_man_bricks_num;
-    m_man_bricks_next_bg_free += G_SPRITE_BREAKOUT_YELLOW_BRICK_W * G_SPRITE_BREAKOUT_YELLOW_BRICK_H;
+    m_man_bricks_next_bg_free += G_SPRITE_BREAKOUT_MEDIUM_BRICK_W * G_SPRITE_BREAKOUT_MEDIUM_BRICK_H;
 
     return entity;
 }

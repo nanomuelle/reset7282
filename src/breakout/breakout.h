@@ -2,7 +2,7 @@
 
 #include <cpctelera.h>
 #include <globals.h>
-#include <assets/breakout_yellow_brick.h>
+#include <assets/breakout_medium_brick.h>
 #include <assets/breakout_paddel.h>
 #include <assets/breakout_ball.h>
 
@@ -46,5 +46,5 @@ typedef enum BreakoutEntityIdEnum {
 #define BREAKOUT_WORLD_PADDEL_Y     ( BREAKOUT_WORLD_MAX_Y - BREAKOUT_WORLD_PADDEL_H )
 
 // BRICKS
-#define BREAKOUT_WORLD_BRICK_W ( BREAKOUT_PX_TO_WORLD(G_SPRITE_BREAKOUT_YELLOW_BRICK_W) )
-#define BREAKOUT_WORLD_BRICK_H ( BREAKOUT_PX_TO_WORLD(G_SPRITE_BREAKOUT_YELLOW_BRICK_H) )
+#define BREAKOUT_WORLD_BRICK_W ( BREAKOUT_PX_TO_WORLD(G_SPRITE_BREAKOUT_MEDIUM_BRICK_W) )
+#define BREAKOUT_WORLD_BRICK_H ( BREAKOUT_PX_TO_WORLD(G_SPRITE_BREAKOUT_MEDIUM_BRICK_H) )

@@ -3,7 +3,7 @@
 #include <types.h>
 #include <sys/debug/debug.h>
 
-#define MAN_ENTITY_BUFFER_SIZE 50
+#define MAN_ENTITY_BUFFER_SIZE 51
 
 // state
 #define ENTITY_STATE_INVALID  ( 0b00000000 )  // invalid

@@ -89,12 +89,12 @@ void _init_breakout_entities(void) {
 
     // bricks
     {
-        i16 fromY = BREAKOUT_WORLD_MIN_Y + (1 * BREAKOUT_WORLD_BRICK_H);
-        i16 toY = fromY + (3 * BREAKOUT_WORLD_BRICK_H);
+        i16 fromY = BREAKOUT_WORLD_MIN_Y + (2 * BREAKOUT_WORLD_BRICK_H);
+        i16 toY = fromY + (2 * BREAKOUT_WORLD_BRICK_H);
 
         for (i16 y = fromY; y <= toY ; y += BREAKOUT_WORLD_BRICK_H) {
-            i16 fromX = BREAKOUT_WORLD_MIN_X + (2 * BREAKOUT_WORLD_BRICK_W);
-            i16 toX   = BREAKOUT_WORLD_MAX_X - (3 * BREAKOUT_WORLD_BRICK_W);
+            i16 fromX = BREAKOUT_WORLD_MIN_X; // + (2 * BREAKOUT_WORLD_BRICK_W);
+            i16 toX   = BREAKOUT_WORLD_MAX_X; // - (1 * BREAKOUT_WORLD_BRICK_W);
             for (i16 x = fromX; x <= toX ; x += BREAKOUT_WORLD_BRICK_W) {
                 man_bricks_create(x, y);
                 // entity = man_entity_create();

@@ -58,6 +58,4 @@ void _breakout_sys_render_updateOne(TEntity *entity) {
 
 void breakout_sys_render_update(void) {
     man_entity_forAll(_breakout_sys_render_updateOne);
-
-    man_entity_update();
 }

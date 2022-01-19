@@ -4,7 +4,6 @@
 
 #include <assets/breakout_ball.h>
 #include <assets/breakout_paddel.h>
-#include <assets/breakout_yellow_brick.h>
 
 #include <man/objs/objs.h>
 #include <sys/debug/debug.h>

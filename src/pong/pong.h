@@ -1,7 +1,9 @@
-#ifndef PONG
-#define PONG
+#pragma once
 
 #include <globals.h>
+
+// FOREGROUND PEN FOR ALL
+#define PONG_PEN 3
 
 // WORLD
 #define PONG_PX_TO_WORLD(px)    ( px << 8 ) // PX TO PHYSICS UNITS
@@ -49,4 +51,3 @@ typedef enum PongEntityIdEnum {
 #define PONG_WORLD_BALL_MAX_VY  ( 400 )
 
 #define PONG_POINTS_TO_WIN      ( 3 )
-#endif

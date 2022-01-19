@@ -14,7 +14,7 @@ void _createPongEntity(TPongEntityId id, i16 x, i16 y, u16 w, u16 h, i16 vx, i16
     entity->h = h;
     entity->vx = vx;
     entity->vy = vy;
-    entity->color = cpct_px2byteM1(1, 1, 1, 1);
+    entity->color = cpct_px2byteM1(3, 3, 3, 3);
     entity->render_w = HI(entity->w);
     entity->render_h = HI(entity->h);
     entity->pmem = cpct_getScreenPtr(

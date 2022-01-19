@@ -37,7 +37,7 @@ void _pong_sys_render_updateOne(TPongEntity *entity) {
 }
 
 void _pong_sys_render_updateNet() {
-    u8 color = cpct_px2byteM1(0, 1, 1, 0);
+    u8 color = cpct_px2byteM1(0, PONG_PEN, PONG_PEN, 0);
     u8 *pmem = cpct_getScreenPtr(
         CPCT_VMEM_START,
         PONG_WORLD_TO_SCREEN_X(0),
@@ -51,14 +51,14 @@ void _pong_sys_render_updateScore() {
         48 + pong_man_score_getLeftPlayer(),
         PONG_WORLD_TO_SCREEN_X(-(256 * 3)),
         PONG_WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
-        1
+        PONG_PEN
     );
 
     _render_printChar(
         48 + pong_man_score_getRightPlayer(),
         PONG_WORLD_TO_SCREEN_X(256 * (3 - 1)),
         PONG_WORLD_TO_SCREEN_Y(PONG_WORLD_MIN_Y + (256 * 2)),
-        1
+        PONG_PEN
     );
 }
 

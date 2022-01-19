@@ -1,24 +1,24 @@
 #include <pong/sys/render/render.h>
 #include <sys/render/render.h>
 
-#include <assets/odys.h>
-#include <assets/pong.h>
+#include <assets/pong_odyse.h>
+#include <assets/pong_title.h>
 #include <pong/pong.h>
 
 // const u8* const g_odyssey[9] = {
 const u8* const odyssey[] = {
-    g_tile_odys_0, // O
-    g_tile_odys_1, // D
-    g_tile_odys_2, // Y
-    g_tile_odys_3, // S
-    g_tile_odys_3, // S
-    g_tile_odys_4, // E
-    g_tile_odys_2, // Y
+    g_sprite_pong_odyse_0, // O
+    g_sprite_pong_odyse_1, // D
+    g_sprite_pong_odyse_2, // Y
+    g_sprite_pong_odyse_3, // S
+    g_sprite_pong_odyse_3, // S
+    g_sprite_pong_odyse_4, // E
+    g_sprite_pong_odyse_2, // Y
 };
 
 void _pong_sys_render_pong(u8 x, u8 y) {
     u8* pmem = cpct_getScreenPtr(CPCT_VMEM_START, x, y);
-    cpct_drawSprite(g_tile_pong, pmem, G_TILE_PONG_W, G_TILE_PONG_H);
+    cpct_drawSprite(g_sprite_pong_title, pmem, G_SPRITE_PONG_TITLE_W, G_SPRITE_PONG_TITLE_H);
 }
 
 void _pong_sys_render_odyssey(u8 x, u8 y) {
@@ -36,21 +36,21 @@ void _pong_sys_render_menu(void) {
         "Q - move up", 
         PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
         PONG_WORLD_TO_SCREEN_Y((i16) 256 * 0),
-        1
+        PONG_PEN
     );
 
     _render_printMsg(
         "A - move down", 
         PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 7),
         PONG_WORLD_TO_SCREEN_Y((i16) 256 * 10),
-        1
+        PONG_PEN
     );
 
     _render_printMsg(
         "PRESS ANY KEY TO START", 
         PONG_WORLD_TO_SCREEN_X((i16) -256 * 2 * 11),
         PONG_WORLD_TO_SCREEN_Y((i16) 256 * 30),
-        1
+        PONG_PEN
     );
 
 }
@@ -65,7 +65,7 @@ void pong_sys_render_init(void) {
         _render_clearRoomTxt();
         _pong_sys_render_odyssey(x, y);
     };
-    x = PONG_WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_TILE_PONG_W)) >> 1);
+    x = PONG_WORLD_TO_SCREEN_X((PONG_WORLD_MAX_X - PONG_PX_TO_WORLD(G_SPRITE_PONG_TITLE_W)) >> 1);
     _pong_sys_render_pong(x, y);
 
     _pong_sys_render_menu();

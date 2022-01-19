@@ -3,8 +3,8 @@
 // Tile g_sprite_breakout_ball: 4x4 pixels, 1x4 bytes.
 const u8 g_sprite_breakout_ball[1 * 4] = {
 	0x66,
-	0xff,
-	0xff,
+	0xdf,
+	0x9f,
 	0x66
 };
 

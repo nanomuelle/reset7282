@@ -89,11 +89,11 @@ void m_pong_man_game_checkCollisionsVsBall(TEntity *other) {
 }
 
 void m_pong_man_game_checkCollisions() {
-    man_entity_forAll(m_pong_man_game_checkCollisionsVsBall);
+    cme_forAll(m_pong_man_game_checkCollisionsVsBall);
 }
 
 void pong_man_game_update(void) {
-    m_pong_man_game_ball = man_entity_getById(PONG_ENTITY_ID_BALL);
+    m_pong_man_game_ball = cme_getById(PONG_ENTITY_ID_BALL);
 
     pong_sys_ai_update();
     csp_update();

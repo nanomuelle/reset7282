@@ -7,5 +7,5 @@ void _breakout_sys_ai_updateOne(TEntity *entity) {
 }
 
 void breakout_sys_ai_update() {
-    man_entity_forAll(_breakout_sys_ai_updateOne);
+    cme_forAll(_breakout_sys_ai_updateOne);
 }

@@ -3,7 +3,7 @@
 void m_csp_updateOne(TEntity *entity) {
     u8 state = entity->state;
 
-    if (state & ENTITY_STATE_DEAD) {
+    if (state & CME_ENTITY_STATE_DEAD) {
         return;
     }
 
@@ -54,5 +54,5 @@ void csp_update(void) {
         m_csp_updateOne(*entity);
         ++entity;
     }
-    // man_entity_forAll(m_csp_updateOne);
+    // cme_forAll(m_csp_updateOne);
 }

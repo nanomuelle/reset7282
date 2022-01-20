@@ -1,6 +1,6 @@
 #include "entity.h"
 
-void man_entity_set4destroy(TEntity* entity) {
-    entity->state |= ENTITY_STATE_DEAD;
-    m_man_entity_isDirty = 1;
+void cme_set4destroy(TEntity* entity) {
+    entity->state |= CME_ENTITY_STATE_DEAD;
+    m_cme_isDirty = 1;
 }

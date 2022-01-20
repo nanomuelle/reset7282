@@ -80,7 +80,7 @@ void _breakout_man_game_checkCollisionsVsBall(TEntity *other) {
             m_breakout_man_game_manage_y_axis_collision(other);
 
             if (other->id == BREAKOUT_ENTITY_ID_BRICK) {
-                man_entity_set4destroy(other);
+                cme_set4destroy(other);
             } else if (other->id == BREAKOUT_ENTITY_ID_PADDEL) {
                 other->world_x = other->world_x - other->world_vx;
                 other->world_y = other->world_y - other->world_vy;
@@ -92,8 +92,8 @@ void _breakout_man_game_checkCollisionsVsBall(TEntity *other) {
 }
 
 void _breakout_man_game_checkCollisions(void) {
-    ball = man_entity_getById(BREAKOUT_ENTITY_ID_BALL);
-    man_entity_forAll(_breakout_man_game_checkCollisionsVsBall);
+    ball = cme_getById(BREAKOUT_ENTITY_ID_BALL);
+    cme_forAll(_breakout_man_game_checkCollisionsVsBall);
 }
 
 void breakout_man_game_update(void) {

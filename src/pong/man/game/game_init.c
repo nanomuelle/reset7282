@@ -16,8 +16,8 @@
 const TEntity m_pong_man_game_ball_template = {
     PONG_ENTITY_ID_BALL,
 
-    ENTITY_STATE_DEFAULT,
-    ENTITY_COMPONENT_PHYSICS | ENTITY_COMPONENT_RENDER,
+    CME_ENTITY_STATE_DEFAULT,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER,
 
     // Physics component
     PONG_WORLD_BALL_X,
@@ -40,8 +40,8 @@ const TEntity m_pong_man_game_ball_template = {
 const TEntity m_pong_man_game_paddel_template = {
     PONG_ENTITY_ID_LEFT_PADDEL,
 
-    ENTITY_STATE_DEFAULT,
-    ENTITY_COMPONENT_PHYSICS | ENTITY_COMPONENT_RENDER | ENTITY_COMPONENT_AI,
+    CME_ENTITY_STATE_DEFAULT,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
 
     // physics component
     0,
@@ -63,7 +63,7 @@ const TEntity m_pong_man_game_paddel_template = {
 };
 
 TEntity *m_pong_man_game_createEntityFromTemplate(TEntity* template) {
-    TEntity *entity = man_entity_create();
+    TEntity *entity = cme_create();
     cpct_memcpy(entity, template, sizeof(TEntity));
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START,
@@ -107,7 +107,7 @@ void pong_man_game_init(void) {
     pong_sys_ai_init();     // init ai system
 
     // init managers
-    man_entity_init();      // init entity manager
+    cme_init();      // init entity manager
     pong_man_score_init();  // init score manager
 
     // create initial entities

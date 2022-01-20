@@ -7,14 +7,14 @@
 #include <man/objs/objs.h>
 #include <breakout/man/bricks/bricks.h>
 
-const u8 _breakout_man_game_ball_bg[G_SPRITE_BREAKOUT_BALL_W * G_SPRITE_BREAKOUT_BALL_H];
+const u8 _breakout_man_game_ball_bg[G_SPRITE_BREAKOUT_BALL_0_W * G_SPRITE_BREAKOUT_BALL_0_H];
 const u8 _breakout_man_game_paddel_bg[G_SPRITE_BREAKOUT_PADDEL_W * G_SPRITE_BREAKOUT_PADDEL_H];
 
 const TEntity m_breakout_entity_ballTemplate = {
     BREAKOUT_ENTITY_ID_BALL,
 
-    ENTITY_STATE_DEFAULT,
-    ENTITY_COMPONENT_PHYSICS | ENTITY_COMPONENT_RENDER | ENTITY_COMPONENT_AI,
+    CME_ENTITY_STATE_DEFAULT,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
 
     // physics component
     BREAKOUT_WORLD_BALL_X,
@@ -28,7 +28,7 @@ const TEntity m_breakout_entity_ballTemplate = {
     0xc000,                     // pmem
     HI(BREAKOUT_WORLD_BALL_W),  // w render
     HI(BREAKOUT_WORLD_BALL_H),  // h render
-    g_sprite_breakout_ball,     // sprite ptr
+    g_sprite_breakout_ball_0,     // sprite ptr
     _breakout_man_game_ball_bg,
 
     // ai component
@@ -38,8 +38,8 @@ const TEntity m_breakout_entity_ballTemplate = {
 const TEntity m_breakout_entity_paddelTemplate = {
     BREAKOUT_ENTITY_ID_PADDEL,
 
-    ENTITY_STATE_DEFAULT,
-    ENTITY_COMPONENT_PHYSICS | ENTITY_COMPONENT_RENDER | ENTITY_COMPONENT_AI,
+    CME_ENTITY_STATE_DEFAULT,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
 
     // physics component
     BREAKOUT_WORLD_PADDEL_X,
@@ -67,7 +67,7 @@ void m_breakout_man_game_create_entities(void) {
     //
     // ball
     //
-    entity = man_entity_create();
+    entity = cme_create();
     cpct_memcpy(entity, &m_breakout_entity_ballTemplate, sizeof(TEntity));
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START, 
@@ -79,7 +79,7 @@ void m_breakout_man_game_create_entities(void) {
     //
     // paddel
     //
-    entity = man_entity_create();
+    entity = cme_create();
     cpct_memcpy(entity, &m_breakout_entity_paddelTemplate, sizeof(TEntity));
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START, 
@@ -113,7 +113,7 @@ void breakout_man_game_init(void) {
     csr_init();
 
     // init managers
-    man_entity_init();
+    cme_init();
     man_bricks_init();
 
     // create initial entities

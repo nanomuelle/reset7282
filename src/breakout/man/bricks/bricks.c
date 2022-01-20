@@ -8,8 +8,8 @@ u8* m_man_bricks_next_bg_free;
 const TEntity m_man_bricks_brick_template = {
     BREAKOUT_ENTITY_ID_BRICK,
 
-    ENTITY_STATE_DEFAULT,
-    ENTITY_COMPONENT_PHYSICS | ENTITY_COMPONENT_RENDER | ENTITY_COMPONENT_AI,
+    CME_ENTITY_STATE_DEFAULT,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
 
     // physics component
     0,  // x
@@ -36,7 +36,7 @@ void man_bricks_init(void) {
 }
 
 TEntity* man_bricks_create(i16 x, i16 y) {
-    TEntity *entity = man_entity_create();
+    TEntity *entity = cme_create();
     cpct_memcpy(entity, &m_man_bricks_brick_template, sizeof(TEntity));
 
     entity->world_x = x;

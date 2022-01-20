@@ -1,7 +1,7 @@
 #include "entity.h"
 
-TEntity *man_entity_getById(TEntityId id) {
-    TEntity *entity = m_man_entity_buffer;
+TEntity *cme_getById(TEntityId id) {
+    TEntity *entity = m_cme_buffer;
     while (entity->id != id) {
         ++entity;
     };

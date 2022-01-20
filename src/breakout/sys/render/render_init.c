@@ -45,6 +45,6 @@ void m_breakout_sys_render_one(TEntity *entity) {
 
 void breakout_sys_render_init(void) {
     m_breakout_sys_render_bg();
-    man_entity_forAll(m_breakout_sys_render_capture_one_bg);
-    man_entity_forAll(m_breakout_sys_render_one);
+    cme_forAll(m_breakout_sys_render_capture_one_bg);
+    cme_forAll(m_breakout_sys_render_one);
 }

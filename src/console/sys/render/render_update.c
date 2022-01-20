@@ -14,7 +14,7 @@ void m_csr_restoreBackground(TEntity *entity) {
 }
 
 void m_csr_updateOne(TEntity *entity) {
-    if (entity->state & ENTITY_STATE_DEAD) {
+    if (entity->state & CME_ENTITY_STATE_DEAD) {
         m_csr_restoreBackground(entity);
         return;
     }
@@ -48,5 +48,5 @@ void m_csr_updateOne(TEntity *entity) {
 }
 
 void csr_update(void) {
-    man_entity_forAll(m_csr_updateOne);
+    cme_forAll(m_csr_updateOne);
 }

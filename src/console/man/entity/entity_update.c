@@ -1,15 +1,15 @@
 #include "entity.h"
 
 void man_entity_update(void) {
-    if (m_man_entity_isDirty) {
-        TEntity *entity = m_man_entity_buffer;
-        while (entity->state != ENTITY_STATE_INVALID) {
-            if (entity->state & ENTITY_STATE_DEAD) {
-                man_entity_destroy(entity);
+    if (m_cme_isDirty) {
+        TEntity *entity = m_cme_buffer;
+        while (entity->state != CME_ENTITY_STATE_INVALID) {
+            if (entity->state & CME_ENTITY_STATE_DEAD) {
+                cme_destroy(entity);
             } else {
                 ++entity;
             }
         }
-        m_man_entity_isDirty = 0;
+        m_cme_isDirty = 0;
     }
 }

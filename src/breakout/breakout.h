@@ -23,7 +23,7 @@
 // #define BREAKOUT_WORLD_MAX_Y        ((i16) ( BREAKOUT_WORLD_H >> 1) + CSP_PX_TO_WORLD(1) )
 
 // ENTITIES
-// #define BREAKOUT_MAN_ENTITY_BUFFER_SIZE 46
+// #define BREAKOUT_CME_BUFFER_SIZE 46
 
 typedef enum BreakoutEntityIdEnum {
     BREAKOUT_ENTITY_ID_NULL = 0,

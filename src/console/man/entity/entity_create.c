@@ -1,19 +1,19 @@
 #include "entity.h"
 
 // TEntity* _man_entity_calculateNextFree() {
-//     TEntity *entity = m_man_entity_nextFree + 1;
-//     u8 index = m_man_entity_nextFreeIndex + 1;
-//     u8 count = MAN_ENTITY_BUFFER_SIZE;
+//     TEntity *entity = m_cme_nextFree + 1;
+//     u8 index = m_cme_nextFreeIndex + 1;
+//     u8 count = CME_BUFFER_SIZE;
 
 //     while (count > 0) {
-//         if (index == MAN_ENTITY_BUFFER_SIZE) {
+//         if (index == CME_BUFFER_SIZE) {
 //             index = 0;
-//             entity = m_man_entity_buffer;
+//             entity = m_cme_buffer;
 //         }
 
-//         if (entity->state == ENTITY_STATE_INVALID) {
-//             m_man_entity_nextFreeIndex = index;
-//             m_man_entity_nextFree = entity;
+//         if (entity->state == CME_ENTITY_STATE_INVALID) {
+//             m_cme_nextFreeIndex = index;
+//             m_cme_nextFree = entity;
 //             return;
 //         }
 
@@ -26,10 +26,10 @@
 // }
 
 // [E1][E2][f][.]
-TEntity* man_entity_create(void) {
-    TEntity *entity = m_man_entity_nextFree;
-    ++m_man_entity_nextFree;
-    ++m_man_entity_validEntities;
+TEntity* cme_create(void) {
+    TEntity *entity = m_cme_nextFree;
+    ++m_cme_nextFree;
+    ++m_cme_validEntities;
 
 //    _man_entity_calculateNextFree();
 

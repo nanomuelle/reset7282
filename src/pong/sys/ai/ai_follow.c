@@ -1,10 +1,10 @@
-#include <pong/sys/ai/ai.h>
+#include "ai.h"
 
-void pong_sys_ai_follow(TPongEntity *me, TPongEntity *target) {
-    i16 y = me->y + (me->h >> 1);
-    i16 target_y = target->vx < 0 
-        ? target->y + (target->h >> 1)
-        : - (me->h >> 1);
+void pong_sys_ai_follow(TEntity *me, TEntity *target) {
+    i16 y = me->world_y + (me->world_h >> 1);
+    i16 target_y = target->world_vx < 0 
+        ? target->world_y + (target->world_h >> 1)
+        : - (me->world_h >> 1);
 
     i16 distance = y - target_y;
 
@@ -12,14 +12,14 @@ void pong_sys_ai_follow(TPongEntity *me, TPongEntity *target) {
         distance = -distance;
     }
 
-    if (distance < target->h) {
-        me->vy = 0;
+    if (distance < target->world_h) {
+        me->world_vy = 0;
         return;
     }
 
     if (y > target_y) {
-        me->vy = -PONG_WORLD_PADDEL_VY;
+        me->world_vy = -PONG_WORLD_PADDEL_VY;
     } else {
-        me->vy = PONG_WORLD_PADDEL_VY;
+        me->world_vy = PONG_WORLD_PADDEL_VY;
     }
 }

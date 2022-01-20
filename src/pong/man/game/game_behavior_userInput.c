@@ -9,5 +9,5 @@ void pong_man_game_behavior_userInput(void *me) {
         vy = PONG_WORLD_PADDEL_VY;
     }
 
-    ((TPongEntity *) me)->vy = vy;
+    ((TEntity *) me)->world_vy = vy;
 }

@@ -2,8 +2,8 @@
 #define BREAKOUT_MAN_GAME
 
 // PRIVATE
+#include <globals.h>
 #include <breakout/breakout.h>
-#include <man/entity/entity.h>
 
 // PUBLIC
 extern void breakout_man_game_init(void);

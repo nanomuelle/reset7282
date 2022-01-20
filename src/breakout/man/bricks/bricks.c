@@ -1,6 +1,5 @@
 #include "bricks.h"
 #include <breakout/sys/render/render.h>
-#include <man/entity/entity.h>
 
 const u8 m_man_bricks_bg_buffer[MAX_BRICKS * G_SPRITE_BREAKOUT_MEDIUM_BRICK_W * G_SPRITE_BREAKOUT_MEDIUM_BRICK_H];
 u8 m_man_bricks_num;
@@ -45,8 +44,8 @@ TEntity* man_bricks_create(i16 x, i16 y) {
     entity->sprite_bg = m_man_bricks_next_bg_free;
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START,
-        BREAKOUT_WORLD_TO_SCREEN_X(x),
-        BREAKOUT_WORLD_TO_SCREEN_Y(y)
+        CSR_WORLD_TO_SCREEN_X(x),
+        CSR_WORLD_TO_SCREEN_Y(y)
     );
 
     ++m_man_bricks_num;

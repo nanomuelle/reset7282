@@ -1,12 +1,11 @@
-#ifndef RESET_MAN_GAME
-#define RESET_MAN_GAME
+#pragma once
 
     #include <cpctelera.h>
 
     #include <sys/parser/parser.h>
     #include <man/rooms/rooms.h>
     #include <sys/render/render.h>
-    
+
     #include <sys/debug/debug.h>
 
     #define KEY_DEL   (0x7F)
@@ -58,5 +57,3 @@
     // extern void man_game_inputReaderPong(void);
     // extern void man_game_rendererPong(void);
     // extern void man_game_updaterPong(void);
-
-#endif

@@ -1,8 +1,12 @@
-#ifndef PONG_MAN_GAME
-#define PONG_MAN_GAME
+#pragma once
 
 #include <cpctelera.h>
-#include <pong/man/entity/entity.h>
+#include <console/man/entity/entity.h>
+#include <console/sys/render/render.h>
+#include <console/sys/physics/physics.h>
+#include <pong/pong.h>
+
+// #include <pong/man/entity/entity.h>
 
 // PRIVATE
 extern u8   _pong_man_game_playing;
@@ -18,4 +22,3 @@ extern void pong_man_game_render(void);
 
 extern void pong_man_game_behavior_followBall(void *selfEntity);
 extern void pong_man_game_behavior_userInput(void *selfEntity);
-#endif

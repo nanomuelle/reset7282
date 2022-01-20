@@ -1,7 +1,5 @@
 #include <breakout/man/game/game.h>
 #include <breakout/sys/ai/ai.h>
-#include <breakout/sys/physics/physics.h>
-#include <man/entity/entity.h>
 
 TEntity *ball;
 
@@ -77,7 +75,7 @@ void m_breakout_man_game_manage_y_axis_collision(TEntity *other) {
 
 void _breakout_man_game_checkCollisionsVsBall(TEntity *other) {
     if (other != ball) {
-        if (breakout_sys_physics_checkCollision(ball, other)) {
+        if (csp_checkCollision(ball, other)) {
             m_breakout_man_game_manage_x_axis_collision(other);
             m_breakout_man_game_manage_y_axis_collision(other);
 
@@ -100,6 +98,6 @@ void _breakout_man_game_checkCollisions(void) {
 
 void breakout_man_game_update(void) {
     breakout_sys_ai_update();
-    breakout_sys_physics_update();
+    csp_update();
     _breakout_man_game_checkCollisions();
 }

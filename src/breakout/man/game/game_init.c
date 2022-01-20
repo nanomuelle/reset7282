@@ -1,12 +1,10 @@
-#include <breakout/man/game/game.h>
-#include <man/entity/entity.h>
+#include "game.h"
 #include <breakout/sys/render/render.h>
 
 #include <assets/breakout_ball.h>
 #include <assets/breakout_paddel.h>
 
 #include <man/objs/objs.h>
-#include <sys/debug/debug.h>
 #include <breakout/man/bricks/bricks.h>
 
 const u8 _breakout_man_game_ball_bg[G_SPRITE_BREAKOUT_BALL_W * G_SPRITE_BREAKOUT_BALL_H];
@@ -62,52 +60,46 @@ const TEntity m_breakout_entity_paddelTemplate = {
     breakout_man_game_behavior_userInput, // user input
 };
 
-void _init_breakout_entities(void) {
+void m_breakout_man_game_create_entities(void) {
     TEntity* entity;
     u8* pmem;
 
-    man_entity_init();
-
+    //
     // ball
+    //
     entity = man_entity_create();
     cpct_memcpy(entity, &m_breakout_entity_ballTemplate, sizeof(TEntity));
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START, 
-        BREAKOUT_WORLD_TO_SCREEN_X(entity->world_x), 
-        BREAKOUT_WORLD_TO_SCREEN_Y(entity->world_y)
+        CSR_WORLD_TO_SCREEN_X(entity->world_x), 
+        CSR_WORLD_TO_SCREEN_Y(entity->world_y)
     );
+    csp_addEntity(entity); // add entity to physics system
 
+    //
     // paddel
+    //
     entity = man_entity_create();
     cpct_memcpy(entity, &m_breakout_entity_paddelTemplate, sizeof(TEntity));
     entity->pmem = cpct_getScreenPtr(
         CPCT_VMEM_START, 
-        BREAKOUT_WORLD_TO_SCREEN_X(entity->world_x), 
-        BREAKOUT_WORLD_TO_SCREEN_Y(entity->world_y)
+        CSR_WORLD_TO_SCREEN_X(entity->world_x), 
+        CSR_WORLD_TO_SCREEN_Y(entity->world_y)
     );
+    csp_addEntity(entity); // add entity to physics system
 
+    //
     // bricks
+    //
     {
-        i16 fromY = BREAKOUT_WORLD_MIN_Y + (2 * BREAKOUT_WORLD_BRICK_H);
+        i16 fromY = CSP_WORLD_MIN_Y + (2 * BREAKOUT_WORLD_BRICK_H);
         i16 toY = fromY + (2 * BREAKOUT_WORLD_BRICK_H);
 
         for (i16 y = fromY; y <= toY ; y += BREAKOUT_WORLD_BRICK_H) {
-            i16 fromX = BREAKOUT_WORLD_MIN_X + (2 * BREAKOUT_WORLD_BRICK_W);
-            i16 toX   = BREAKOUT_WORLD_MAX_X - (2 * BREAKOUT_WORLD_BRICK_W);
+            i16 fromX = CSP_WORLD_MIN_X + (2 * BREAKOUT_WORLD_BRICK_W);
+            i16 toX   = CSP_WORLD_MAX_X - (2 * BREAKOUT_WORLD_BRICK_W);
             for (i16 x = fromX; x <= toX ; x += BREAKOUT_WORLD_BRICK_W) {
                 man_bricks_create(x, y);
-                // entity = man_entity_create();
-                // cpct_memcpy(entity, &m_breakout_entity_brickTemplate, sizeof(TEntity));
-                // entity->world_x = x;
-                // entity->world_y = y;
-                // entity->sprite_bg = bg;
-                // entity->pmem = cpct_getScreenPtr(
-                //     CPCT_VMEM_START, 
-                //     BREAKOUT_WORLD_TO_SCREEN_X(x), 
-                //     BREAKOUT_WORLD_TO_SCREEN_Y(y)
-                // );
-
-                // bg += BREAKOUT_WORLD_BRICK_W * BREAKOUT_WORLD_BRICK_H;
             }
         }
     }
@@ -116,13 +108,15 @@ void _init_breakout_entities(void) {
 void breakout_man_game_init(void) {
     TEntity *entity;
 
+    // init systems
+    csp_init();
+    csr_init();
+
+    // init managers
+    man_entity_init();
     man_bricks_init();
-    _init_breakout_entities();
 
-    // breakout_man_score_init();
-
+    // create initial entities
+    m_breakout_man_game_create_entities();
     breakout_sys_render_init();
-    // breakout_sys_input_init();
-    // breakout_sys_ai_init();
-    // breakout_sys_physics_init();
 }

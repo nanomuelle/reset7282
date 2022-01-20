@@ -1,9 +1,9 @@
-#include <breakout/sys/physics/physics.h>
-#include <man/entity/entity.h>
+#include "physics.h"
 
-void _breakout_sys_physics_updateOne(TEntity *entity) {
+void m_csp_updateOne(TEntity *entity) {
     u8 state = entity->state;
-    if (ENTITY_STATE_DEAD == state & ENTITY_STATE_DEAD) {
+
+    if (state & ENTITY_STATE_DEAD) {
         return;
     }
 
@@ -13,11 +13,11 @@ void _breakout_sys_physics_updateOne(TEntity *entity) {
             i16 x = entity->world_x + vx;
 
             // crop x to bounds
-            if (x < BREAKOUT_WORLD_MIN_X) {
-                x = BREAKOUT_WORLD_MIN_X;
+            if (x < CSP_WORLD_MIN_X) {
+                x = CSP_WORLD_MIN_X;
                 entity->world_vx = -vx;
             } else {
-                i16 max_x = BREAKOUT_WORLD_MAX_X - entity->world_w;
+                i16 max_x = CSP_WORLD_MAX_X - entity->world_w;
                 if (x > max_x) {
                     x = max_x;
                     entity->world_vx = -vx;
@@ -33,11 +33,11 @@ void _breakout_sys_physics_updateOne(TEntity *entity) {
             i16 y = entity->world_y + vy;
 
             // crop y to bounds
-            if (y < BREAKOUT_WORLD_MIN_Y) {
-                y = BREAKOUT_WORLD_MIN_Y;
+            if (y < CSP_WORLD_MIN_Y) {
+                y = CSP_WORLD_MIN_Y;
                 entity->world_vy = -vy;
             } else {
-                i16 max_y = BREAKOUT_WORLD_MAX_Y - entity->world_h;
+                i16 max_y = CSP_WORLD_MAX_Y - entity->world_h;
                 if (y > max_y) {
                     y = max_y;
                     entity->world_vy = -vy;
@@ -48,6 +48,11 @@ void _breakout_sys_physics_updateOne(TEntity *entity) {
     }
 }
 
-void breakout_sys_physics_update(void) {
-    man_entity_forAll(_breakout_sys_physics_updateOne);
+void csp_update(void) {
+    TEntity **entity = m_csp_entities;
+    while( *entity != CSP_INVALID_ENTITY) {
+        m_csp_updateOne(*entity);
+        ++entity;
+    }
+    // man_entity_forAll(m_csp_updateOne);
 }

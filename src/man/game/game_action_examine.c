@@ -40,7 +40,6 @@ void _game_action_examine(TAction* action, TRoom* room) {
         TObj *obj = man_objs_getObj(action->param1.obj_param);
         msg = &ACTION_EXAMINE_MSG[2];
         msg->txt = obj->description;
-        sys_debug_info(msg->txt, 0, 0);
         man_history_addMsg(msg);
     }
 }

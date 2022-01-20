@@ -1,6 +1,6 @@
-#include <breakout/sys/physics/physics.h>
+#include "physics.h"
 
-u8 breakout_sys_physics_checkCollision(TEntity *ent1, TEntity *ent2) {
+u8 csp_checkCollision(TEntity *ent1, TEntity *ent2) {
     {
         i16 x1 = ent1->world_x;
         i16 w1 = ent1->world_w;

@@ -8,6 +8,9 @@
         "typeinfo": "c",
         "parser.h": "c",
         "types.h": "c",
-        "breakout_paddel.h": "c"
+        "breakout_paddel.h": "c",
+        "sstream": "c",
+        "strstream": "c",
+        "entity.h": "c"
     }
 }

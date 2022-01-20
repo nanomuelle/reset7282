@@ -1,7 +1,6 @@
 #pragma once
 
 #include <breakout/breakout.h>
-#include <man/entity/entity.h>
 
 // PRIVATE
 #define MAX_BRICKS 50

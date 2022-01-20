@@ -1,11 +1,11 @@
 #include <pong/sys/ai/ai.h>
 
-void _pong_sys_ai_updateOne(TPongEntity *entity) {
+void m_pong_sys_ai_updateOne(TEntity *entity) {
     if (entity->ai) {
         entity->ai(entity);
     }
 }
 
 void pong_sys_ai_update() {
-    pong_man_entity_forEach(_pong_sys_ai_updateOne);
+    man_entity_forAll(m_pong_sys_ai_updateOne);
 }

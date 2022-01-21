@@ -1,9 +1,7 @@
 #pragma once
 
 #include <globals.h>
-#include <console/man/entity/entity.h>
-#include <console/sys/physics/physics.h>
-#include <console/sys/render/render.h>
+#include <console/console.h>
 
 // FOREGROUND PEN FOR ALL
 #define PONG_PEN 3
@@ -46,7 +44,7 @@ typedef enum PongEntityIdEnum {
 
 #define PONG_WORLD_BALL_W       ( CSP_PX_TO_WORLD(1) )
 #define PONG_WORLD_BALL_H       ( CSP_PX_TO_WORLD(4) )
-#define PONG_WORLD_BALL_X       ( 0 )
+#define PONG_WORLD_BALL_X       ( CSP_PX_TO_WORLD(10) )
 #define PONG_WORLD_BALL_Y       ( 0 )
 #define PONG_WORLD_BALL_VX      ( -100 )
 #define PONG_WORLD_BALL_VY      (  48 )

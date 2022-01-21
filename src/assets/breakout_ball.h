@@ -3,6 +3,8 @@
 #define _ASSETS_BREAKOUT_BALL_H_
 
 #include <types.h>
+extern u8* const g_sprite_breakout_ball_anim[4];
+
 #define G_SPRITE_BREAKOUT_BALL_0_W 1
 #define G_SPRITE_BREAKOUT_BALL_0_H 4
 extern const u8 g_sprite_breakout_ball_0[1 * 4];

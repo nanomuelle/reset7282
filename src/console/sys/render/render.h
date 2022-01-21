@@ -17,3 +17,6 @@
 // PUBLIC
 extern void csr_init(void);
 extern void csr_update(void);
+extern void csr_capture_one_bg(TEntity *e);
+extern void csr_restore_bg_one(TEntity *entity);
+extern void csr_draw_one(TEntity *entity);

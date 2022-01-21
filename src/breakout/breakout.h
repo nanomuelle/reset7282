@@ -3,9 +3,7 @@
 #include <cpctelera.h>
 #include <globals.h>
 
-#include <console/man/entity/entity.h>
-#include <console/sys/physics/physics.h>
-#include <console/sys/render/render.h>
+#include <console/console.h>
 
 #include <assets/breakout_medium_brick.h>
 #include <assets/breakout_paddel.h>

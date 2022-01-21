@@ -3,15 +3,6 @@
 #include <breakout/breakout.h>
 #include <assets/breakout_bg.h>
 
-void m_breakout_sys_render_capture_one_bg(TEntity *e) {
-    cpct_getScreenToSprite(
-        e->pmem,
-        e->sprite_bg,
-        e->render_w,
-        e->render_h
-    );
-}
-
 void m_breakout_sys_render_bg() {
     i16 y = CSR_WORLD_TO_SCREEN_Y(CSP_WORLD_MIN_Y);
 
@@ -29,22 +20,8 @@ void m_breakout_sys_render_bg() {
     }
 }
 
-void m_breakout_sys_render_one(TEntity *entity) {
-    u8* pmem = cpct_getScreenPtr(
-        CPCT_VMEM_START, 
-        CSR_WORLD_TO_SCREEN_X(entity->world_x),
-        CSR_WORLD_TO_SCREEN_Y(entity->world_y)
-    );
-
-    // almacena la ultima pos de memoria en la que se ha pintado
-    entity->pmem = pmem;
-
-    // draw
-    cpct_drawSprite(entity->sprite, pmem, entity->render_w, entity->render_h);
-}
-
 void breakout_sys_render_init(void) {
     m_breakout_sys_render_bg();
-    cme_forAll(m_breakout_sys_render_capture_one_bg);
-    cme_forAll(m_breakout_sys_render_one);
+    cme_forAll(csr_capture_one_bg);
+    cme_forAll(csr_draw_one);
 }

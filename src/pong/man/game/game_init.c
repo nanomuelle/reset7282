@@ -13,6 +13,7 @@
 #include <assets/pong_ball.h>
 #include <assets/pong_paddel.h>
 
+const u8 m_pong_man_game_ball_bg[G_SPRITE_PONG_BALL_W * G_SPRITE_PONG_BALL_H];
 const TEntity m_pong_man_game_ball_template = {
     PONG_ENTITY_ID_BALL,
 
@@ -28,11 +29,16 @@ const TEntity m_pong_man_game_ball_template = {
     PONG_WORLD_BALL_VY,
 
     // render component
-    0xc000,                 // pmem
-    HI(PONG_WORLD_BALL_W),  // w render
-    HI(PONG_WORLD_BALL_H),  // h render
-    g_sprite_pong_ball,     // sprite ptr
-    0x0000,                 // sprite bg null => use solid box
+    0xc000,                  // pmem
+    HI(PONG_WORLD_BALL_W),   // w render
+    HI(PONG_WORLD_BALL_H),   // h render
+    g_sprite_pong_ball,      // sprite ptr
+    m_pong_man_game_ball_bg, // sprite bg null => use solid box to clear
+
+    // anim component
+    0,          // total num of frames
+    0,          // index of the current frame
+    0x0000,     // array of ptr to sprite ptrs
 
     // ai component
     0x0000 // no ai
@@ -57,6 +63,11 @@ const TEntity m_pong_man_game_paddel_template = {
     HI(PONG_WORLD_PADDEL_H),    // render h
     g_sprite_pong_paddel,       // sprite ptr
     0x0000,                     // sprite bg null => use solid box
+
+    // anim component
+    0,          // total num of frames
+    0,          // index of the current frame
+    0x0000,     // array of ptr to sprite ptrs
 
     // ai component
     0x0000
@@ -99,6 +110,17 @@ void m_pong_man_game_create_entities(void) {
     }
 }
 
+void m_pong_man_game_render_bg() {
+    u8 color = cpct_px2byteM1(0, PONG_PEN, PONG_PEN, 0);
+    u8 *pmem = cpct_getScreenPtr(
+        CPCT_VMEM_START,
+        CSR_WORLD_TO_SCREEN_X(0),
+        CSR_WORLD_TO_SCREEN_Y(CSP_WORLD_MIN_Y)
+    );
+    cpct_drawSolidBox(pmem, color, 1, CSR_PHY_TO_PX(CSP_WORLD_H));
+}
+
+
 void pong_man_game_init(void) {
     // init systems
     csp_init();             // console system physics
@@ -107,9 +129,16 @@ void pong_man_game_init(void) {
     pong_sys_ai_init();     // init ai system
 
     // init managers
-    cme_init();      // init entity manager
+    cme_init();             // init entity manager
     pong_man_score_init();  // init score manager
 
     // create initial entities
     m_pong_man_game_create_entities();
+
+    // render bg
+    m_pong_man_game_render_bg();
+
+    // capture bg and first render
+    cme_forAll(csr_capture_one_bg);
+    cme_forAll(csr_draw_one);
 }

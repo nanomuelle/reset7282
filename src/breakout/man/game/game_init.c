@@ -14,7 +14,7 @@ const TEntity m_breakout_entity_ballTemplate = {
     BREAKOUT_ENTITY_ID_BALL,
 
     CME_ENTITY_STATE_DEFAULT,
-    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
+    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_ANIM | CME_ENTITY_COMPONENT_AI,
 
     // physics component
     BREAKOUT_WORLD_BALL_X,
@@ -31,10 +31,14 @@ const TEntity m_breakout_entity_ballTemplate = {
     g_sprite_breakout_ball_0,     // sprite ptr
     _breakout_man_game_ball_bg,
 
+    // anim component
+    4,          // total num of frames
+    0,          // index of the current frame
+    g_sprite_breakout_ball_anim,     // array of ptr to sprite ptrs
+
     // ai component
     0x0000, // no ai
 };
-
 const TEntity m_breakout_entity_paddelTemplate = {
     BREAKOUT_ENTITY_ID_PADDEL,
 
@@ -55,6 +59,11 @@ const TEntity m_breakout_entity_paddelTemplate = {
     HI(BREAKOUT_WORLD_PADDEL_H),    // h render
     g_sprite_breakout_paddel,       // sprite ptr
     _breakout_man_game_paddel_bg,
+
+    // anim component
+    0,          // total num of frames
+    0,          // index of the current frame
+    0x0000,     // array of ptr to sprite ptrs
 
     // ai component
     breakout_man_game_behavior_userInput, // user input
@@ -109,12 +118,13 @@ void breakout_man_game_init(void) {
     TEntity *entity;
 
     // init systems
-    csp_init();
-    csr_init();
+    csp_init(); // physics system
+    csr_init(); // render system
+    csa_init(); // anim system
 
     // init managers
-    cme_init();
-    man_bricks_init();
+    cme_init();         // entity manager
+    man_bricks_init();  // bricks manager
 
     // create initial entities
     m_breakout_man_game_create_entities();

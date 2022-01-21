@@ -1,21 +1,9 @@
 #include "render.h"
 #include <sys/render/render.h>
 
-void m_csr_restoreBackground(TEntity *entity) {
-    u8* sprite_bg = entity->sprite_bg;
-    u8 w = entity->render_w;
-    u8 h = entity->render_h;
-    u8* pmem = entity->pmem;
-    if (sprite_bg) {
-        cpct_drawSprite(sprite_bg, pmem, w, h);
-    } else {
-        cpct_drawSolidBox(pmem, 0, w, h);
-    }
-}
-
 void m_csr_updateOne(TEntity *entity) {
     if (entity->state & CME_ENTITY_STATE_DEAD) {
-        m_csr_restoreBackground(entity);
+        csr_restore_bg_one(entity);
         return;
     }
 
@@ -33,16 +21,19 @@ void m_csr_updateOne(TEntity *entity) {
             u8* sprite_bg = entity->sprite_bg;
 
             // restore bg
-            m_csr_restoreBackground(entity);
+            csr_restore_bg_one(entity);
+
+            // actualiza la pos de memoria para pintar
+            entity->pmem = pmem;
 
             // capture bg
-            cpct_getScreenToSprite(pmem, sprite_bg, w, h);
+            csr_capture_one_bg(entity);
+            // cpct_getScreenToSprite(pmem, sprite_bg, w, h);
 
             // paint
-            cpct_drawSprite(entity->sprite, pmem, w, h);
+            csr_draw_one(entity);
+            // cpct_drawSprite(entity->sprite, pmem, w, h);
 
-            // almacena la ultima pos de memoria en la que se ha pintado
-            entity->pmem = pmem;
         }
     }
 }

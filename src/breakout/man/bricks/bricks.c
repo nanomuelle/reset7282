@@ -26,6 +26,11 @@ const TEntity m_man_bricks_brick_template = {
     g_sprite_breakout_medium_brick, // sprite ptr
     0x0000,
 
+    // anim component
+    0,          // total num of frames
+    0,          // index of the current frame
+    0x0000,     // array of ptr to sprite ptrs
+
     // ai component
     0x0000, // no ai
 };

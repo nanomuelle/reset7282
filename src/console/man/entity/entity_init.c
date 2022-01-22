@@ -6,4 +6,5 @@ void cme_init(void) {
     m_cme_nextFree = entity;
     cpct_memset(entity, 0, sizeof(m_cme_buffer));
     m_cme_validEntities = 0;
+    m_cme_buffer_eof = CME_ENTITY_STATE_INVALID;
 }

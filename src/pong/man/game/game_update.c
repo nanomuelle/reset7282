@@ -20,16 +20,16 @@ void m_pong_man_game_bounceBall(TEntity *other) {
 
     // manage x axis => increase vx
     if (vx > 0) {
-        vx += PONG_WORLD_BALL_IVX;
+        vx += PONG_BALL_WORLD_IVX;
     } else {
-        vx -= PONG_WORLD_BALL_IVX;
+        vx -= PONG_BALL_WORLD_IVX;
     }
 
     // crop vx
-    if (vx > PONG_WORLD_BALL_MAX_VX) {
-        vx = PONG_WORLD_BALL_MAX_VX;
-    } else if (vx < PONG_WORLD_BALL_MIN_VX) {
-        vx = PONG_WORLD_BALL_MIN_VX;
+    if (vx > PONG_BALL_WORLD_MAX_VX) {
+        vx = PONG_BALL_WORLD_MAX_VX;
+    } else if (vx < PONG_BALL_WORLD_MIN_VX) {
+        vx = PONG_BALL_WORLD_MIN_VX;
     }
 
     m_pong_man_game_ball->world_vx = -vx;
@@ -38,26 +38,29 @@ void m_pong_man_game_bounceBall(TEntity *other) {
     vy += other->world_vy >> 2;
 
     // crop vy
-    if (vy > PONG_WORLD_BALL_MAX_VY) {
-        vy = PONG_WORLD_BALL_MAX_VY;
-    } else if (vy < PONG_WORLD_BALL_MIN_VY) {
-        vy = PONG_WORLD_BALL_MIN_VY;
+    if (vy > PONG_BALL_WORLD_MAX_VY) {
+        vy = PONG_BALL_WORLD_MAX_VY;
+    } else if (vy < PONG_BALL_WORLD_MIN_VY) {
+        vy = PONG_BALL_WORLD_MIN_VY;
     }
 
     m_pong_man_game_ball->world_vy = vy;
 }
 
+#define PONG_BALL_WORLD_X (CSP_WORLD_W / 2)
+#define PONG_BALL_WORLD_Y (CSP_WORLD_H / 2)
+
 void m_pong_man_game_checkScore() {
     if (m_pong_man_game_ball->world_x < (CSP_WORLD_MIN_X + 128)) {
         pong_man_score_incRightPlayer();
-        m_pong_man_game_ball->world_x = PONG_WORLD_BALL_X;
-        m_pong_man_game_ball->world_y = PONG_WORLD_BALL_Y;
+        m_pong_man_game_ball->world_x = PONG_BALL_WORLD_X;
+        m_pong_man_game_ball->world_y = PONG_BALL_WORLD_Y;
     }
 
     if ((m_pong_man_game_ball->world_x + m_pong_man_game_ball->world_w) > (CSP_WORLD_MAX_X - 128)) {
         pong_man_score_incLeftPlayer();
-        m_pong_man_game_ball->world_x = PONG_WORLD_BALL_X;
-        m_pong_man_game_ball->world_y = PONG_WORLD_BALL_Y;
+        m_pong_man_game_ball->world_x = PONG_BALL_WORLD_X;
+        m_pong_man_game_ball->world_y = PONG_BALL_WORLD_Y;
     }
 }
 
@@ -99,7 +102,7 @@ void pong_man_game_update(void) {
     csp_update();
 
     m_pong_man_game_checkCollisions();
-    m_pong_man_game_checkScore();
+    // m_pong_man_game_checkScore();
 
-    m_pong_man_game_checkGameOver();
+    // m_pong_man_game_checkGameOver();
 }

@@ -11,6 +11,7 @@
         "breakout_paddel.h": "c",
         "sstream": "c",
         "strstream": "c",
-        "entity.h": "c"
+        "entity.h": "c",
+        "console.h": "c"
     }
 }

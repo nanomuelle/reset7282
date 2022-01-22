@@ -9,11 +9,12 @@ void sys_debug_waitKey() {
 }
 
 u8 buffer[40];
+u8 str_buffer[40];
 
 void sys_debug_info_at(const u8* str, u8 x, u8 y) {
     cpct_memset(buffer, ' ', 40);
     buffer[39] = 0;
-
+    
     _render_printMsg(buffer, 0, y, 0);
     _render_printMsg(str, x, y, 2);
 
@@ -25,9 +26,9 @@ void sys_debug_char_at(u16 ascii, u8 x, u8 y) {
     sys_debug_waitKey();
 }
 
-void sys_debug_number_at(u8 num, u8 x, u8 y) {
-   sprintf(buffer, "%d", num);
-   sys_debug_info_at(buffer, x, y);
+void sys_debug_number_at(u16 num, u8 x, u8 y) {
+   sprintf(str_buffer, "%u", num);
+   sys_debug_info_at(str_buffer, x, y);
 }
 
 void sys_debug_info(const u8* str) {
@@ -38,6 +39,6 @@ void sys_debug_char(u16 ascii) {
     sys_debug_char_at(ascii, 0, 0);
 }
 
-void sys_debug_number(u8 num) {
+void sys_debug_number(u16 num) {
    sys_debug_number_at(num, 0, 0);
 }

@@ -60,8 +60,8 @@ $(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_sprite_obj_paddel,,))
 ## pong sprites
 $(eval $(call IMG2SP,CONVERT,assets/pong_odyse.png,16,24,g_sprite_pong_odyse,,))
 $(eval $(call IMG2SP,CONVERT,assets/pong_title.png,80,24,g_sprite_pong_title,,))
-$(eval $(call IMG2SP,CONVERT,assets/pong_ball.png,4,4,g_sprite_pong_ball,,))
-$(eval $(call IMG2SP,CONVERT,assets/pong_paddel.png,4,16,g_sprite_pong_paddel,,))
+$(eval $(call IMG2SP,CONVERT,assets/pong_paddel_m1.png,8,16,g_sprite_pong_paddel_m1,,g_sprite_pong_paddel_m1_frames))
+$(eval $(call IMG2SP,CONVERT,assets/pong_ball_m1.png,8,4,g_sprite_pong_ball_m1,,g_sprite_pong_ball_m1_frames))
 
 ## breakout sprites
 $(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,6,g_sprite_breakout_paddel,,))

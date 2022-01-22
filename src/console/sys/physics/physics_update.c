@@ -2,57 +2,64 @@
 
 void m_csp_updateOne(TEntity *entity) {
     u8 state = entity->state;
-
-    if (state & CME_ENTITY_STATE_DEAD) {
-        return;
-    }
-
-    {
+    if ((state & CME_ENTITY_STATE_DEAD) == 0) {
         i16 vx = entity->world_vx;
-        if (vx != 0) {
-            i16 x = entity->world_x + vx;
-
-            // crop x to bounds
-            if (x < CSP_WORLD_MIN_X) {
-                x = CSP_WORLD_MIN_X;
-                entity->world_vx = -vx;
-            } else {
-                i16 max_x = CSP_WORLD_MAX_X - entity->world_w;
-                if (x > max_x) {
-                    x = max_x;
-                    entity->world_vx = -vx;
-                }
-            }
-            entity->world_x = x;
-        }
-    }
-
-    {
         i16 vy = entity->world_vy;
-        if (vy != 0) {
-            i16 y = entity->world_y + vy;
 
-            // crop y to bounds
-            if (y < CSP_WORLD_MIN_Y) {
-                y = CSP_WORLD_MIN_Y;
-                entity->world_vy = -vy;
-            } else {
-                i16 max_y = CSP_WORLD_MAX_Y - entity->world_h;
-                if (y > max_y) {
-                    y = max_y;
-                    entity->world_vy = -vy;
+        if (vx == 0 && vy == 0) {
+            cme_resetStateMoved(entity);
+            return;
+        }
+
+        cme_setStateMoved(entity);
+        {
+            if (vx != 0) {
+                u16 old_x = entity->world_x;
+                u16 x = old_x + vx;
+
+                // crop x to bounds
+                if (vx < 0) {
+                    if (x > old_x) {
+                        x = CSP_WORLD_MIN_X;
+                        entity->world_vx = -vx;
+                    }
+                } else {
+                    u16 max_x = CSP_WORLD_MAX_X - entity->world_w;
+                    if (x > max_x || x < old_x) {
+                        x = max_x;
+                        entity->world_vx = -vx;
+                    }
                 }
+                entity->world_x = x;
             }
-            entity->world_y = y;
+        }
+
+        {
+            if (vy != 0) {
+                u16 old_y = entity->world_y;
+                u16 y = old_y + vy;
+                if (vy < 0) {
+                    if (y > old_y) {
+                        y = CSP_WORLD_MIN_Y;
+                        entity->world_vy = -vy;
+                    }
+                } else {
+                    u16 max_y = CSP_WORLD_MAX_Y - entity->world_h;
+                    if (y > max_y || y < old_y) {
+                        y = max_y;
+                        entity->world_vy = -vy;
+                    }
+                }
+                entity->world_y = y;
+            }
         }
     }
 }
 
 void csp_update(void) {
     TEntity **entity = m_csp_entities;
-    while( *entity != CSP_INVALID_ENTITY) {
+    while(*entity != CSP_INVALID_ENTITY) {
         m_csp_updateOne(*entity);
         ++entity;
     }
-    // cme_forAll(m_csp_updateOne);
 }

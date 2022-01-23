@@ -3,8 +3,8 @@
 #define _ASSETS_BREAKOUT_PADDEL_H_
 
 #include <types.h>
-#define G_SPRITE_BREAKOUT_PADDEL_W 6
-#define G_SPRITE_BREAKOUT_PADDEL_H 6
-extern const u8 g_sprite_breakout_paddel[6 * 6];
+#define G_SPR_BRK_PADDEL_W 6
+#define G_SPR_BRK_PADDEL_H 6
+extern const u8 g_spr_brk_paddel[6 * 6];
 
 #endif

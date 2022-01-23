@@ -97,7 +97,9 @@ void _breakout_man_game_checkCollisions(void) {
 }
 
 void breakout_man_game_update(void) {
-    breakout_sys_ai_update();
-    csp_update();
-    _breakout_man_game_checkCollisions();
+    eps_update();
+
+    // breakout_sys_ai_update();   // ai system
+    // csp_update();               // physics system
+    // _breakout_man_game_checkCollisions(); // collisions
 }

@@ -1,7 +1,7 @@
 #include "pong_odyse.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// Tile g_sprite_pong_odyse_0: 16x24 pixels, 4x24 bytes.
-const u8 g_sprite_pong_odyse_0[4 * 24] = {
+// Tile g_spr_pong_odyse_0: 16x24 pixels, 4x24 bytes.
+const u8 g_spr_pong_odyse_0[4 * 24] = {
 	0x77, 0xff, 0xff, 0xcc,
 	0xff, 0xff, 0xff, 0xee,
 	0xff, 0x00, 0x11, 0xee,
@@ -28,8 +28,8 @@ const u8 g_sprite_pong_odyse_0[4 * 24] = {
 	0x77, 0xff, 0xff, 0xcc
 };
 
-// Tile g_sprite_pong_odyse_1: 16x24 pixels, 4x24 bytes.
-const u8 g_sprite_pong_odyse_1[4 * 24] = {
+// Tile g_spr_pong_odyse_1: 16x24 pixels, 4x24 bytes.
+const u8 g_spr_pong_odyse_1[4 * 24] = {
 	0x77, 0xff, 0xff, 0x00,
 	0xff, 0xff, 0xff, 0x88,
 	0xff, 0xcc, 0x11, 0xcc,
@@ -56,8 +56,8 @@ const u8 g_sprite_pong_odyse_1[4 * 24] = {
 	0x77, 0xff, 0xff, 0x00
 };
 
-// Tile g_sprite_pong_odyse_2: 16x24 pixels, 4x24 bytes.
-const u8 g_sprite_pong_odyse_2[4 * 24] = {
+// Tile g_spr_pong_odyse_2: 16x24 pixels, 4x24 bytes.
+const u8 g_spr_pong_odyse_2[4 * 24] = {
 	0x88, 0x00, 0x00, 0x22,
 	0xcc, 0x00, 0x00, 0x66,
 	0xcc, 0x00, 0x00, 0x66,
@@ -84,8 +84,8 @@ const u8 g_sprite_pong_odyse_2[4 * 24] = {
 	0x00, 0x33, 0x88, 0x00
 };
 
-// Tile g_sprite_pong_odyse_3: 16x24 pixels, 4x24 bytes.
-const u8 g_sprite_pong_odyse_3[4 * 24] = {
+// Tile g_spr_pong_odyse_3: 16x24 pixels, 4x24 bytes.
+const u8 g_spr_pong_odyse_3[4 * 24] = {
 	0x77, 0xff, 0xff, 0xcc,
 	0xff, 0xff, 0xff, 0xee,
 	0xff, 0x00, 0x11, 0xee,
@@ -112,8 +112,8 @@ const u8 g_sprite_pong_odyse_3[4 * 24] = {
 	0x77, 0xff, 0xff, 0xcc
 };
 
-// Tile g_sprite_pong_odyse_4: 16x24 pixels, 4x24 bytes.
-const u8 g_sprite_pong_odyse_4[4 * 24] = {
+// Tile g_spr_pong_odyse_4: 16x24 pixels, 4x24 bytes.
+const u8 g_spr_pong_odyse_4[4 * 24] = {
 	0x77, 0xff, 0xff, 0xee,
 	0xff, 0xff, 0xff, 0xcc,
 	0xee, 0x00, 0x00, 0x00,

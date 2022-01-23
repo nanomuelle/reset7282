@@ -1,7 +1,8 @@
 #include <sys/render/render.h>
 
 void _render_clearRoomTxt(void) {
-    _render_clearBox( ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y, ROOM_TXT_BOX_W, ROOM_TXT_BOX_H);
+    u8 color = cpct_px2byteM1(0, 0, 0, 0);
+    _render_clearBox( ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y, ROOM_TXT_BOX_W, ROOM_TXT_BOX_H, color);
 }
 
 void sys_render_clearRoom(TAction *action) {

@@ -17,7 +17,7 @@ extern void _render_typeInBox(const char* msg, u8 x, u8 y, u8 cols, u8 pen);
 extern void _render_printObjsInRoom(const TRoom *room);
 extern void _render_printObjsInInventory(void);
 
-extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h);
+extern void _render_clearBox(u8 x, u8 y, u8 w, u8 h, u8 pen);
 
 extern void _render_clearRoomTxt();
 extern void _render_scroolRoomTxt(TParamGoEnum dir);

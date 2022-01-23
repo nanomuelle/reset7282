@@ -52,22 +52,22 @@ $(eval $(call IMG2SP,SET_PALETTE_FW,$(PALETTE)))
 $(eval $(call IMG2SP,CONVERT_PALETTE,$(PALETTE),g_palette))
 
 ## room objects
-$(eval $(call IMG2SP,CONVERT,assets/lightbulb.png,24,24,g_sprite_lightbulb,,))
-$(eval $(call IMG2SP,CONVERT,assets/obj_consola.png,24,24,g_sprite_obj_consola,,))
-$(eval $(call IMG2SP,CONVERT,assets/obj_deportivas.png,24,24,g_sprite_obj_deportivas,,))
-$(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_sprite_obj_paddel,,))
+$(eval $(call IMG2SP,CONVERT,assets/lightbulb.png,24,24,g_spr_lightbulb,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_consola.png,24,24,g_spr_obj_consola,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_deportivas.png,24,24,g_spr_obj_deportivas,,))
+$(eval $(call IMG2SP,CONVERT,assets/obj_paddel.png,24,24,g_spr_obj_paddel,,))
 
 ## pong sprites
-$(eval $(call IMG2SP,CONVERT,assets/pong_odyse.png,16,24,g_sprite_pong_odyse,,))
-$(eval $(call IMG2SP,CONVERT,assets/pong_title.png,80,24,g_sprite_pong_title,,))
-$(eval $(call IMG2SP,CONVERT,assets/pong_paddel_m1.png,8,16,g_sprite_pong_paddel_m1,,g_sprite_pong_paddel_m1_frames))
-$(eval $(call IMG2SP,CONVERT,assets/pong_ball_m1.png,8,4,g_sprite_pong_ball_m1,,g_sprite_pong_ball_m1_frames))
+$(eval $(call IMG2SP,CONVERT,assets/pong_odyse.png,16,24,g_spr_pong_odyse,,))
+$(eval $(call IMG2SP,CONVERT,assets/pong_title.png,80,24,g_spr_pong_title,,))
+$(eval $(call IMG2SP,CONVERT,assets/pong_paddel_m1.png,8,16,g_spr_pong_paddel_m1,,g_spr_pong_paddel_m1_frames))
+$(eval $(call IMG2SP,CONVERT,assets/pong_ball_m1.png,8,4,g_spr_pong_ball_m1,,g_spr_pong_ball_m1_frames))
 
 ## breakout sprites
-$(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,6,g_sprite_breakout_paddel,,))
-$(eval $(call IMG2SP,CONVERT,assets/breakout_ball.png,4,4,g_sprite_breakout_ball,,g_sprite_breakout_ball_anim))
-$(eval $(call IMG2SP,CONVERT,assets/breakout_medium_brick.png,16,8,g_sprite_breakout_medium_brick,,))
-$(eval $(call IMG2SP,CONVERT,assets/breakout_bg.png,16,16,g_sprite_breakout_bg,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,6,g_spr_brk_paddel,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_ball_m1.png,8,4,g_spr_brk_ball_m1,,g_spr_brk_ball_m1_frames))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_medium_brick_m1.png,20,8,g_spr_brk_brick_m1,,g_spr_brk_brick_m1_frames))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_bg.png,16,16,g_spr_brk_bg,,))
 
 ##
 ## OLD MACROS (For compatibility)

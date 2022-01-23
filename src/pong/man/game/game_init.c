@@ -13,7 +13,7 @@
 #include <assets/pong_paddel_m1.h>
 #include <assets/pong_ball_m1.h>
 
-const u8 m_pong_man_game_ball_bg[G_SPRITE_PONG_BALL_M1_0_W * G_SPRITE_PONG_BALL_M1_0_H];
+const u8 m_pong_man_game_ball_bg[G_SPR_PONG_BALL_M1_0_W * G_SPR_PONG_BALL_M1_0_H];
 const TEntity m_pong_man_game_ball_template = {
     PONG_ENTITY_ID_BALL,
 
@@ -23,16 +23,16 @@ const TEntity m_pong_man_game_ball_template = {
     // Physics component
     3 * CSP_WORLD_W / 4,
     CSP_WORLD_H / 2,
-    CSP_PX_TO_WORLD( M1_BYTES_TO_PX(G_SPRITE_PONG_BALL_M1_0_W - 1) ),
-    CSP_PX_TO_WORLD( G_SPRITE_PONG_BALL_M1_0_H ),
+    CSP_PX_TO_WORLD( M1_BYTES_TO_PX(G_SPR_PONG_BALL_M1_0_W - 1) ),
+    CSP_PX_TO_WORLD( G_SPR_PONG_BALL_M1_0_H ),
     CSP_PX_TO_WORLD(3),
     CSP_PX_TO_WORLD(2),
 
     // render component
     0x0000,                       // pmem
-    G_SPRITE_PONG_BALL_M1_0_W,    // w render in bytes
-    G_SPRITE_PONG_BALL_M1_0_H,    // h render in px
-    g_sprite_pong_ball_m1_frames, // sprite ptrs
+    G_SPR_PONG_BALL_M1_0_W,    // w render in bytes
+    G_SPR_PONG_BALL_M1_0_H,    // h render in px
+    g_spr_pong_ball_m1_frames, // sprite ptrs
     m_pong_man_game_ball_bg,      // sprite bg null => use solid box to clear
 
     // anim component
@@ -44,7 +44,7 @@ const TEntity m_pong_man_game_ball_template = {
     0x0000 // no ai
 };
 
-const u8 m_pong_man_game_paddel_bg[2 * G_SPRITE_PONG_PADDEL_M1_0_W * G_SPRITE_PONG_PADDEL_M1_0_H];
+const u8 m_pong_man_game_paddel_bg[2 * G_SPR_PONG_PADDEL_M1_0_W * G_SPR_PONG_PADDEL_M1_0_H];
 const TEntity m_pong_man_game_paddel_template = {
     PONG_ENTITY_ID_LEFT_PADDEL,
 
@@ -54,16 +54,16 @@ const TEntity m_pong_man_game_paddel_template = {
     // physics component
     0,
     0,
-    CSP_PX_TO_WORLD(G_SPRITE_PONG_PADDEL_M1_0_W - 1),
-    CSP_PX_TO_WORLD(G_SPRITE_PONG_PADDEL_M1_0_H),
+    CSP_PX_TO_WORLD(G_SPR_PONG_PADDEL_M1_0_W - 1),
+    CSP_PX_TO_WORLD(G_SPR_PONG_PADDEL_M1_0_H),
     0,
     0,
 
     // render component
     0x0000,                      // pmem
-    G_SPRITE_PONG_PADDEL_M1_0_W,   // render w
-    G_SPRITE_PONG_PADDEL_M1_0_H,   // render h
-    g_sprite_pong_paddel_m1_frames,       // sprite ptr
+    G_SPR_PONG_PADDEL_M1_0_W,   // render w
+    G_SPR_PONG_PADDEL_M1_0_H,   // render h
+    g_spr_pong_paddel_m1_frames,       // sprite ptr
     0x0000,            // sprite bg null => use solid box
 
     // anim component
@@ -109,7 +109,7 @@ void m_pong_man_game_create_entities(void) {
         entity = m_pong_man_game_createEntityFromTemplate(&m_pong_man_game_paddel_template);
         entity->world_x = PONG_WORLD_RIGHT_PADDEL_X;
         entity->world_y = PONG_WORLD_RIGHT_PADDEL_Y;
-        entity->sprite_bg = m_pong_man_game_paddel_bg + (G_SPRITE_PONG_PADDEL_M1_0_W * G_SPRITE_PONG_PADDEL_M1_0_H);
+        entity->sprite_bg = m_pong_man_game_paddel_bg + (G_SPR_PONG_PADDEL_M1_0_W * G_SPR_PONG_PADDEL_M1_0_H);
         entity->ai = pong_man_game_behavior_userInput;
         csp_addEntity(entity); // add ball to physics system
 // //   }

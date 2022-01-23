@@ -9,7 +9,8 @@ void _render_printObjsInInventory(void) {
     TObj *(*obj) = man_objs_getInRoom(inventory);
     u8 x = 80;
 
-    _render_clearBox(80 - (3 * 6), 200 - 24, (3 * 6), 24);
+    u8 color = cpct_px2byteM1(0, 0, 0, 0);
+    _render_clearBox(80 - (3 * 6), 200 - 24, (3 * 6), 24, color);
 
     while ( (*obj) != 0) {
         x -= 6;

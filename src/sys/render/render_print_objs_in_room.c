@@ -16,11 +16,13 @@ void _render_printObjsInRoom(const TRoom *room) {
     u8 y_sprite = OBJS_IN_ROOM_Y + OBJS_IN_ROOM_H - OBJ_IN_ROOM_H;
 
     // borra zona de sprites de objetos
+    u8 color = cpct_px2byteM1(0, 0, 0, 0);
     _render_clearBox(
         OBJS_IN_ROOM_X,
         OBJS_IN_ROOM_Y,
         OBJS_IN_ROOM_W,
-        OBJS_IN_ROOM_H
+        OBJS_IN_ROOM_H,
+        color
     );
 
     if (man_rooms_isExplored(room) && !man_rooms_isDark(room)) {

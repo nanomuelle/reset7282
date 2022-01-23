@@ -1,7 +1,7 @@
 #include "breakout_bg.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// Tile g_sprite_breakout_bg_0: 16x16 pixels, 4x16 bytes.
-const u8 g_sprite_breakout_bg_0[4 * 16] = {
+// Tile g_spr_brk_bg_0: 16x16 pixels, 4x16 bytes.
+const u8 g_spr_brk_bg_0[4 * 16] = {
 	0x00, 0x48, 0x00, 0x12,
 	0x00, 0xc0, 0x00, 0x30,
 	0x00, 0x5a, 0x48, 0x12,
@@ -20,8 +20,8 @@ const u8 g_sprite_breakout_bg_0[4 * 16] = {
 	0x00, 0xc0, 0xe0, 0x30
 };
 
-// Tile g_sprite_breakout_bg_1: 16x16 pixels, 4x16 bytes.
-const u8 g_sprite_breakout_bg_1[4 * 16] = {
+// Tile g_spr_brk_bg_1: 16x16 pixels, 4x16 bytes.
+const u8 g_spr_brk_bg_1[4 * 16] = {
 	0x00, 0x48, 0x00, 0x12,
 	0x00, 0xc0, 0x00, 0x30,
 	0x00, 0x48, 0x52, 0x5a,

@@ -14,31 +14,31 @@
 //     cpct_drawSprite(entity->sprite, pmem, entity->render_w, entity->render_h);
 // }
 
-void csr_draw_sprite(TEntity *entity) {
-    u16 x = CSR_WORLD_TO_SCREEN_X(entity->world_x);
-    u8 frame = x & 0b00000011;
-    u8 w = entity->render_w; // bytes
-    u8* pmem = csr_getScreenPtr(
-        x,
-        CSR_WORLD_TO_SCREEN_Y(entity->world_y)
-    );
+// void csr_draw_sprite(TEntity *entity) {
+//     u8 x = CSR_PHY_TO_PX(entity->world_x);
+//     u8 shift = x & 0b00000011;
 
-    // almacena la ultima pos de memoria en la que se ha pintado
-    entity->pmem = pmem;
-
-    // if (frame == 0) {
-    //     --w;
-    // }
-    // draw
-    // cpct_drawSprite(entity->sprite[frame], pmem, entity->render_w, entity->render_h);
-    // cpct_drawSprite(entity->sprite[frame], pmem, 2, 4);
-    // cpct_drawSprite(entity->sprite[frame], pmem, w, entity->render_h);
-    cpct_drawSpriteBlended(pmem, entity->render_h, w, entity->sprite[frame]);
-}
+//     csr_pp_drawSprite(
+//         entity->pmem,
+//         (u8 *)entity->sprite,
+//         shift,
+//         entity->render_w, // bytes
+//         entity->render_h
+//     );
+// }
 
 void csr_draw_one(TEntity *entity) {
     if (entity->sprite) {
-        csr_draw_sprite(entity);
+        u8 x = CSR_PHY_TO_PX(entity->world_x);
+        u8 shift = x & 0b00000011;
+
+        csr_pp_drawSprite(
+            entity->pmem,
+            (u8 *)entity->sprite,
+            shift,
+            entity->render_w, // bytes
+            entity->render_h
+        );
     } else {
         csr_draw_box(entity, 2);
     }

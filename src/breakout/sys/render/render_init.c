@@ -4,24 +4,19 @@
 #include <assets/breakout_bg.h>
 
 void m_breakout_sys_render_bg() {
-    i16 y = CSR_WORLD_TO_SCREEN_Y(CSP_WORLD_MIN_Y);
-
-    for (u8 row = ROOM_TXT_BOX_H / G_SPRITE_BREAKOUT_BG_0_H; row > 0; --row) {
-        u8 x = CSR_WORLD_TO_SCREEN_X(CSP_WORLD_MIN_X);
-        u8* pmem = cpct_getScreenPtr(CPCT_VMEM_START, x, y);
-
-        for (u8 col = ROOM_TXT_BOX_W / G_SPRITE_BREAKOUT_BG_0_W; col > 0; --col) {
-            u8* bg = (row + col) & 0x03 ? g_sprite_breakout_bg_1 : g_sprite_breakout_bg_0;
-            cpct_drawSprite(bg, pmem, G_SPRITE_BREAKOUT_BG_0_W, G_SPRITE_BREAKOUT_BG_0_H);
-            pmem += G_SPRITE_BREAKOUT_BG_0_W;
+    for (i16 y = 0; y < ERS_SCREEN_H; y += G_SPR_BRK_BG_0_H) {
+        for (i16 x = 0; x < ERS_SCREEN_W; x += ERS_BYTES_TO_PX(G_SPR_BRK_BG_0_W)) {
+            u8* bg = (cpct_rand8() > 127) ? g_spr_brk_bg_1 : g_spr_brk_bg_0;
+            u8* pmem = ers_get_screen_ptr(x, y);
+            cpct_drawSprite(bg, pmem, G_SPR_BRK_BG_0_W, G_SPR_BRK_BG_0_H);
         }
-
-        y += G_SPRITE_BREAKOUT_BG_0_H;
     }
 }
 
 void breakout_sys_render_init(void) {
     m_breakout_sys_render_bg();
-    cme_forAll(csr_capture_one_bg);
-    cme_forAll(csr_draw_one);
+    eem_forAll(ers_capture_one_bg);
+    eem_forAll(ers_update_one);
+    // cme_forAll(csr_capture_one_bg);
+    // cme_forAll(csr_draw_one);
 }

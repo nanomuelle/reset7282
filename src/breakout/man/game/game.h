@@ -1,5 +1,4 @@
-#ifndef BREAKOUT_MAN_GAME
-#define BREAKOUT_MAN_GAME
+#pragma once
 
 // PRIVATE
 #include <globals.h>
@@ -14,4 +13,3 @@ extern void breakout_man_game_update(void);
 extern void breakout_man_game_render(void);
 
 extern void breakout_man_game_behavior_userInput(void *me);
-#endif

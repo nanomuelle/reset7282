@@ -1,7 +1,7 @@
 #include "breakout_paddel.h"
 // Data created with Img2CPC - (c) Retroworks - 2007-2017
-// Tile g_sprite_breakout_paddel: 24x6 pixels, 6x6 bytes.
-const u8 g_sprite_breakout_paddel[6 * 6] = {
+// Tile g_spr_brk_paddel: 24x6 pixels, 6x6 bytes.
+const u8 g_spr_brk_paddel[6 * 6] = {
 	0x00, 0x07, 0x0f, 0x0f, 0x1e, 0x00,
 	0x16, 0xff, 0xff, 0xff, 0xff, 0x96,
 	0x7e, 0xf0, 0xf0, 0xf0, 0xf0, 0xf6,

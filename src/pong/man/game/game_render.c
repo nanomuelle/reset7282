@@ -23,8 +23,8 @@ void m_pong_man_game_render_updateScore() {
 void pong_man_game_render(void) {
     m_pong_man_game_render_updateScore();
 
-    cpct_waitVSYNCStart();
-    cpct_waitHalts(4);
+    cpct_waitVSYNC();
+    // cpct_waitHalts(4);
 
     csr_update();
 }

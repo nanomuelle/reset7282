@@ -1,7 +1,7 @@
 #include "bricks.h"
 
 const TEEM_entity m_man_bricks_brick_template = {
-    BREAKOUT_ENTITY_ID_BRICK,
+    BRK_ENTITY_ID_BRICK,
 
     EEM_STATE_DEFAULT,
     EEM_COMPONENT_RENDER,

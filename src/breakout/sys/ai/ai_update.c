@@ -1,11 +1,11 @@
 #include <breakout/sys/ai/ai.h>
 
-void _breakout_sys_ai_updateOne(TEntity *entity) {
-    if (entity->ai) {
-        entity->ai(entity);
+void _breakout_sys_ai_updateOne(TEEM_entity *e) {
+    if (e->ai) {
+        e->ai(e);
     }
 }
 
 void breakout_sys_ai_update() {
-    cme_forAll(_breakout_sys_ai_updateOne);
+    eem_for_all(_breakout_sys_ai_updateOne);
 }

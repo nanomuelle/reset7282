@@ -96,10 +96,10 @@ extern u8           m_eem_needs_update;       // flag: 1.- needs update, 0.- do 
 extern void         eem_init          (void);
 extern TEEM_entity* eem_create        (void);
 extern void         eem_destroy           (TEEM_entity *);
-extern void         eem_forAll            (TEEM_callback);
-extern void         eem_forAllReversed    (TEEM_callback);
-extern TEEM_entity* eem_getById           (u8);
+extern void         eem_for_all            (TEEM_callback);
+extern void         eem_for_all_reversed    (TEEM_callback);
+extern TEEM_entity* eem_get_by_id           (u8);
 
 extern  void         eem_kill              (TEEM_entity *);
-#define eem_setStateMoved(entity_ptr)      (entity_ptr)->state |= EEM_STATE_MOVED
-#define eem_resetStateMoved(entity_ptr)    (entity_ptr)->state ^= EEM_STATE_MOVED
+#define eem_set_state_moved(entity_ptr)      (entity_ptr)->state |= EEM_STATE_MOVED
+#define eem_reset_state_moved(entity_ptr)    (entity_ptr)->state &= EEM_STATE_MOVED_MASK

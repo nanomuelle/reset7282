@@ -7,11 +7,11 @@ void m_eps_update_one(TEEM_entity *e) {
         i16 vy = e->ph.vy;
 
         if (vx == 0 && vy == 0) {
-            eem_resetStateMoved(e);
+            eem_reset_state_moved(e);
             return;
         }
 
-        eem_setStateMoved(e);
+        eem_set_state_moved(e);
         {
             if (vx != 0) {
                 u16 old_x = e->tr.world.x;
@@ -45,7 +45,7 @@ void m_eps_update_one(TEEM_entity *e) {
                     }
                 } else {
                     u16 max_y = EPS_WORLD_MAX_Y - e->tr.world.h;
-                    if (y > max_y || y < old_y) {
+                    if (y > max_y) {
                         y = max_y;
                         e->ph.vy = -vy;
                     }

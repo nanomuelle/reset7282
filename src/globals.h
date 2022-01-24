@@ -44,7 +44,7 @@
 #define ROOM_TXT_BOX_X  (  8 ) // (ROOM_TXT_X - ROOM_TXT_BOX_PADDING)
 #define ROOM_TXT_BOX_Y  ( 16 ) // (ROOM_TXT_Y - 4) // (ROOM_TXT_Y - (2 * ROOM_TXT_BOX_PADDING))
 #define ROOM_TXT_BOX_W  ( 64 ) // (ROOM_TXT_W + (2 * ROOM_TXT_BOX_PADDING)) // 54 + 8 = 62 // 18 x 16
-#define ROOM_TXT_BOX_H  ( 96 ) // (ROOM_TXT_H + (4 * ROOM_TXT_BOX_PADDING))
+#define ROOM_TXT_BOX_H  ( 128 ) // (ROOM_TXT_H + (4 * ROOM_TXT_BOX_PADDING))
 
 #define PROMPT_X            0
 #define PROMPT_Y            (200 - (2 * LINE_HEIGHT))

@@ -15,8 +15,8 @@ void m_breakout_sys_render_bg() {
 
 void breakout_sys_render_init(void) {
     m_breakout_sys_render_bg();
-    eem_forAll(ers_capture_one_bg);
-    eem_forAll(ers_update_one);
+    eem_for_all(ers_capture_one_bg);
+    eem_for_all(ers_update_one);
     // cme_forAll(csr_capture_one_bg);
     // cme_forAll(csr_draw_one);
 }

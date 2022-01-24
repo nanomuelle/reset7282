@@ -64,7 +64,7 @@ $(eval $(call IMG2SP,CONVERT,assets/pong_paddel_m1.png,8,16,g_spr_pong_paddel_m1
 $(eval $(call IMG2SP,CONVERT,assets/pong_ball_m1.png,8,4,g_spr_pong_ball_m1,,g_spr_pong_ball_m1_frames))
 
 ## breakout sprites
-$(eval $(call IMG2SP,CONVERT,assets/breakout_paddel.png,24,6,g_spr_brk_paddel,,))
+$(eval $(call IMG2SP,CONVERT,assets/breakout_paddel_m1.png,28,6,g_spr_brk_paddel_m1,,g_spr_brk_paddel_m1_frames))
 $(eval $(call IMG2SP,CONVERT,assets/breakout_ball_m1.png,8,4,g_spr_brk_ball_m1,,g_spr_brk_ball_m1_frames))
 $(eval $(call IMG2SP,CONVERT,assets/breakout_medium_brick_m1.png,20,8,g_spr_brk_brick_m1,,g_spr_brk_brick_m1_frames))
 $(eval $(call IMG2SP,CONVERT,assets/breakout_bg.png,16,16,g_spr_brk_bg,,))

@@ -14,8 +14,8 @@ void m_ers_restore_one(TEEM_entity* e) {
 }
 
 void ers_update(void) {
-    eem_forAllReversed(m_ers_restore_one);
-    eem_forAll(ers_update_one);
+    eem_for_all_reversed(m_ers_restore_one);
+    eem_for_all(ers_update_one);
 }
 
 // // ;; HL = screen address

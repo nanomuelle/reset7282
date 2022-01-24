@@ -25,6 +25,6 @@ void ers_update_one(TEEM_entity *e) {
             e->render.h
         );
 
-        eem_resetStateMoved(e);
+        eem_reset_state_moved(e);
     }
 }

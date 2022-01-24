@@ -4,94 +4,101 @@
 #include <breakout/sys/render/render.h>
 
 #include <assets/breakout_ball_m1.h>
-#include <assets/breakout_paddel.h>
+#include <assets/breakout_paddel_m1.h>
 
 #include <man/objs/objs.h>
 #include <breakout/man/bricks/bricks.h>
 
 const u8 _breakout_man_game_ball_bg[G_SPR_BRK_BALL_M1_0_W * G_SPR_BRK_BALL_M1_0_H];
-const u8 _breakout_man_game_paddel_bg[G_SPR_BRK_PADDEL_W * G_SPR_BRK_PADDEL_H];
+const u8 _breakout_man_game_paddel_bg[G_SPR_BRK_PADDEL_M1_0_W * G_SPR_BRK_PADDEL_M1_0_H];
 
-const TEntity m_breakout_entity_ballTemplate = {
-    BREAKOUT_ENTITY_ID_BALL,
+const TEEM_entity m_breakout_entity_ballTemplate = {
+    BRK_ENTITY_ID_BALL,
 
-    CME_ENTITY_STATE_DEFAULT,
-    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
+    EEM_STATE_DEFAULT,
+    EEM_COMPONENT_PHYSICS | EEM_COMPONENT_RENDER,
 
-    // physics component
-    BREAKOUT_WORLD_BALL_X,
-    BREAKOUT_WORLD_BALL_Y,
-    BREAKOUT_WORLD_BALL_W,
-    BREAKOUT_WORLD_BALL_H,
-    0, // CSP_PX_TO_WORLD(1), //  BREAKOUT_WORLD_BALL_VX,
-    0, // BREAKOUT_WORLD_BALL_VY,
+    {
+        .world = {
+            // physics component
+            BREAKOUT_WORLD_BALL_X,
+            BREAKOUT_WORLD_BALL_Y,
+            BREAKOUT_WORLD_BALL_W,
+            BREAKOUT_WORLD_BALL_H
+        }
+    },
 
-    // render component
-    0xc000,                     // pmem
-    HI(BREAKOUT_WORLD_BALL_W),  // w render
-    HI(BREAKOUT_WORLD_BALL_H),  // h render
-    g_spr_brk_ball_m1_frames,     // sprite ptr
-    _breakout_man_game_ball_bg,
+    {
+        (i16) EPS_PX_TO_WORLD(1), //  BREAKOUT_WORLD_BALL_VX,
+        (i16) -EPS_PX_TO_WORLD(1), // BREAKOUT_WORLD_BALL_VY,
+    },
 
-    // anim component
-    4,          // total num of frames
-    0,          // index of the current frame
-    0x0000,     // g_spr_brk_ball_anim,     // array of ptr to sprite ptrs
+    {
+        // render component
+        0x0000,                 // pmem
+        G_SPR_BRK_BALL_M1_0_W,  // w render
+        G_SPR_BRK_BALL_M1_1_H,  // h render
+        g_spr_brk_ball_m1_frames,     // sprite ptr
+        _breakout_man_game_ball_bg,
+    },
 
-    // ai component
-    breakout_man_game_behavior_userInput, // 0x0000, // no ai
-};
-
-const TEntity m_breakout_entity_paddelTemplate = {
-    BREAKOUT_ENTITY_ID_PADDEL,
-
-    CME_ENTITY_STATE_DEFAULT,
-    CME_ENTITY_COMPONENT_PHYSICS | CME_ENTITY_COMPONENT_RENDER | CME_ENTITY_COMPONENT_AI,
-
-    // physics component
-    BREAKOUT_WORLD_PADDEL_X,
-    BREAKOUT_WORLD_PADDEL_Y,
-    BREAKOUT_WORLD_PADDEL_W,
-    BREAKOUT_WORLD_PADDEL_H,
-    0,
-    0,
-
-    // render component
-    0xc000,                         // pmem
-    HI(BREAKOUT_WORLD_PADDEL_W),    // w render
-    HI(BREAKOUT_WORLD_PADDEL_H),    // h render
-    g_spr_brk_paddel,       // sprite ptr
-    _breakout_man_game_paddel_bg,
-
-    // anim component
-    0,          // total num of frames
-    0,          // index of the current frame
-    0x0000,     // array of ptr to sprite ptrs
+    // // anim component
+    // 4,          // total num of frames
+    // 0,          // index of the current frame
+    // 0x0000,     // g_spr_brk_ball_anim,     // array of ptr to sprite ptrs
 
     // ai component
-    breakout_man_game_behavior_userInput, // user input
+    { 0x0000 } // no ai
 };
 
-void m_breakout_man_game_create_ball(void) {
-    TEntity* entity;
-    entity = cme_create();
-    cpct_memcpy(entity, &m_breakout_entity_ballTemplate, sizeof(TEntity));
-    entity->pmem = csr_getScreenPtr(
-        CSR_PHY_TO_PX(entity->world_x),
-        CSR_PHY_TO_PX(entity->world_y)
-    );
-    csp_addEntity(entity); // add entity to physics system
-}
+const TEEM_entity m_breakout_entity_paddelTemplate = {
+    BRK_ENTITY_ID_PADDEL,
 
-void m_breakout_man_game_create_paddel(void) {
-    TEntity* entity = cme_create();
-    cpct_memcpy(entity, &m_breakout_entity_paddelTemplate, sizeof(TEntity));
-    entity->pmem = cpct_getScreenPtr(
-        CPCT_VMEM_START, 
-        CSR_WORLD_TO_SCREEN_X(entity->world_x), 
-        CSR_WORLD_TO_SCREEN_Y(entity->world_y)
-    );
-    csp_addEntity(entity); // add entity to physics system
+    EEM_STATE_DEFAULT,
+    EEM_COMPONENT_PHYSICS | EEM_COMPONENT_RENDER | EEM_COMPONENT_AI,
+
+    {
+        .world = {
+            // physics component
+            BREAKOUT_WORLD_PADDEL_X,
+            BREAKOUT_WORLD_PADDEL_Y,
+            BREAKOUT_WORLD_PADDEL_W,
+            BREAKOUT_WORLD_PADDEL_H,
+
+        }
+    },
+
+    {
+        (i16) 0, // vx
+        (i16) 0, // vy
+    },
+
+    {
+        // render component
+        0x0000,                         // pmem
+        G_SPR_BRK_PADDEL_M1_0_W,    // w render
+        G_SPR_BRK_PADDEL_M1_0_H,    // h render
+        g_spr_brk_paddel_m1_frames,       // sprite ptr
+        _breakout_man_game_paddel_bg,
+    },
+
+    // // anim component
+    // 0,          // total num of frames
+    // 0,          // index of the current frame
+    // 0x0000,     // array of ptr to sprite ptrs
+
+    // ai component
+    {
+        breakout_man_game_behavior_userInput, // user input
+    }
+};
+
+
+void m_breakout_man_game_create_entity(TEEM_entity *template) {
+    TEEM_entity* e = eem_create();
+    cpct_memcpy(e, template, sizeof(TEEM_entity));
+    e->render.pmem = ers_get_screen_ptr(e->tr.screen.x, e->tr.screen.y);
+    eps_add_entity(e); // add entity to physics system
 }
 
 void m_breakout_man_game_create_bricks(void) {
@@ -111,12 +118,12 @@ void m_breakout_man_game_create_entities(void) {
     //
     // ball
     //
-    // m_breakout_man_game_create_ball();
+    m_breakout_man_game_create_entity(&m_breakout_entity_ballTemplate);
 
     //
     // paddel
     //
-    // m_breakout_man_game_create_paddel();
+    m_breakout_man_game_create_entity(&m_breakout_entity_paddelTemplate);
 
     //
     // bricks
@@ -125,8 +132,6 @@ void m_breakout_man_game_create_entities(void) {
 }
 
 void breakout_man_game_init(void) {
-    TEEM_entity *e;
-
     ers_init(); // render system
     eps_init(); // physics system
 

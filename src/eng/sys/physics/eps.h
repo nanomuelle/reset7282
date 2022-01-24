@@ -11,13 +11,13 @@
 
 #define EPS_PX_TO_WORLD(px)    ((u16) (px) << 8 ) // RENDER TO WORLD UNITS
 
-#define EPS_WORLD_W            ((u16) EPS_PX_TO_WORLD(256))
-#define EPS_WORLD_H            ((u16) EPS_PX_TO_WORLD(128))
+// #define EPS_WORLD_W            ( 65536 ) // EPS_PX_TO_WORLD(256))
+// #define EPS_WORLD_H            ( 32768 ) // EPS_PX_TO_WORLD(128))
 
-#define EPS_WORLD_MIN_X        ((u16) 0 )
-#define EPS_WORLD_MAX_X        ((u16) EPS_WORLD_W - 1 )
-#define EPS_WORLD_MIN_Y        ((u16) 0 )
-#define EPS_WORLD_MAX_Y        ((u16) EPS_WORLD_H - 1 )
+#define EPS_WORLD_MIN_X        ( 0 )
+#define EPS_WORLD_MAX_X        ( 65535 )
+#define EPS_WORLD_MIN_Y        ( 0 )
+#define EPS_WORLD_MAX_Y        ( 32767 )
 
 #define EPS_MAX_ENTITIES       ((u8) 10)
 #define EPS_INVALID_ENTITY     ((TEEM_entity*) 0x0000 )

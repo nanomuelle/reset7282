@@ -29,8 +29,8 @@ const TEEM_entity m_breakout_entity_ballTemplate = {
     },
 
     {
-        (i16) EPS_PX_TO_WORLD(1), //  BREAKOUT_WORLD_BALL_VX,
-        (i16) -EPS_PX_TO_WORLD(1), // BREAKOUT_WORLD_BALL_VY,
+        (i16) EPS_PX_TO_WORLD(2), //  BREAKOUT_WORLD_BALL_VX,
+        (i16) -EPS_PX_TO_WORLD(2), // BREAKOUT_WORLD_BALL_VY,
     },
 
     {
@@ -102,13 +102,13 @@ void m_breakout_man_game_create_entity(TEEM_entity *template) {
 }
 
 void m_breakout_man_game_create_bricks(void) {
-    i16 fromY = 2 * BRK_BRICK_WORLD_H;
-    i16 toY = 4 * BRK_BRICK_WORLD_H;
+    u16 fromY = 2 * BRK_BRICK_WORLD_H;
+    u16 toY = fromY + (4 * BRK_BRICK_WORLD_H);
 
-    for (i16 y = fromY; y <= toY ; y += BRK_BRICK_WORLD_H) {
-        i16 fromX = 2 * BRK_BRICK_WORLD_W;
-        i16 toX   = 4 * BRK_BRICK_WORLD_W;
-        for (i16 x = fromX; x <= toX ; x += BRK_BRICK_WORLD_W) {
+    for (u16 y = fromY; y < toY ; y += BRK_BRICK_WORLD_H) {
+        u16 fromX = 3 * BRK_BRICK_WORLD_W;
+        u16 toX   = fromX + (8 * BRK_BRICK_WORLD_W);
+        for (u16 x = fromX; x < toX ; x += BRK_BRICK_WORLD_W) {
             man_bricks_create(x, y);
         }
     }

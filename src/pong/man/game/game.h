@@ -1,9 +1,6 @@
 #pragma once
 
 #include <cpctelera.h>
-#include <console/man/entity/entity.h>
-#include <console/sys/render/render.h>
-#include <console/sys/physics/physics.h>
 #include <pong/pong.h>
 
 // #include <pong/man/entity/entity.h>

@@ -2,9 +2,7 @@
 
 #include <globals.h>
 #include <breakout/breakout.h>
-
-// PRIVATE
-extern TEEM_entity* m_breakout_man_game_ball;
+#include <breakout/sys/collisions/collisions.h>
 
 // PUBLIC
 extern void breakout_man_game_init(void);

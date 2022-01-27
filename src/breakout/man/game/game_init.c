@@ -33,8 +33,8 @@ const TEEM_entity m_breakout_entity_ballTemplate = {
     },
 
     {
-        (i16) EPS_PX_TO_WORLD(2), //  BREAKOUT_WORLD_BALL_VX,
-        (i16) -EPS_PX_TO_WORLD(2), // BREAKOUT_WORLD_BALL_VY,
+        BREAKOUT_WORLD_BALL_VX,
+        BREAKOUT_WORLD_BALL_VY,
     },
 
     {
@@ -136,7 +136,6 @@ void m_breakout_man_game_create_entities(void) {
 void breakout_man_game_init(void) {
     ers_init(); // render system
     eps_init(); // physics system
-
     eem_init(); // entity manager
 
     man_bricks_init();
@@ -155,5 +154,6 @@ void breakout_man_game_init(void) {
 
     // // create initial entities
     // m_breakout_man_game_create_entities();
+    breakout_sys_collisions_init();
     breakout_sys_render_init();
 }

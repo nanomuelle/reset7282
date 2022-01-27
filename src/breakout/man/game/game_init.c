@@ -36,6 +36,7 @@ const TEEM_entity m_breakout_entity_ballTemplate = {
     {
         // render component
         0x0000,                 // pmem
+        0,                      // shift
         G_SPR_BRK_BALL_M1_0_W,  // w render
         G_SPR_BRK_BALL_M1_1_H,  // h render
         g_spr_brk_ball_m1_frames,     // sprite ptr
@@ -76,6 +77,7 @@ const TEEM_entity m_breakout_entity_paddelTemplate = {
     {
         // render component
         0x0000,                         // pmem
+        0,                          // shift
         G_SPR_BRK_PADDEL_M1_0_W,    // w render
         G_SPR_BRK_PADDEL_M1_0_H,    // h render
         g_spr_brk_paddel_m1_frames,       // sprite ptr
@@ -102,7 +104,7 @@ void m_breakout_man_game_create_entity(TEEM_entity *template) {
 }
 
 void m_breakout_man_game_create_bricks(void) {
-    u16 fromY = 2 * BRK_BRICK_WORLD_H;
+    u16 fromY = 2 * BRK_BRICK_WORLD_H + EPS_PX_TO_WORLD(1);
     u16 toY = fromY + (4 * BRK_BRICK_WORLD_H);
 
     for (u16 y = fromY; y < toY ; y += BRK_BRICK_WORLD_H) {

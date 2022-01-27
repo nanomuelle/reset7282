@@ -23,6 +23,7 @@ const TEEM_entity m_man_bricks_brick_template = {
     {
         // render component
         0x0000,                                     // pmem
+        0,
         G_SPR_BRK_BRICK_M1_0_W,      // w render
         G_SPR_BRK_BRICK_M1_0_H,      // h render
         g_spr_brk_brick_m1_frames,   // sprite ptr

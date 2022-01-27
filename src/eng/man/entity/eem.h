@@ -56,6 +56,7 @@ typedef struct EEM_ph_struct {
 
 typedef struct EEM_render_struct {
     u8 *pmem;       // PTR a ultima posición de memoria en que se pinto
+    u8 shift;       // ultimo pixel offset (necesario para restaurar el bg)
     u8 w;           // render width  in bytes! (1 byte = 4 px in MODE 1)
     u8 h;           // render height in bytes! (coincide con px)
     u8** sprite;    // preshifted sprite ptr

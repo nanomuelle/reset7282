@@ -3,13 +3,24 @@
 
 void m_ers_restore_one(TEEM_entity* e) {
     if (e->state & (EEM_STATE_MOVED | EEM_STATE_DEAD)) {
-        // ers_restore_bg_one(e);
-        u8* sprite_bg = e->render.sprite_bg;
-        u8 w = e->render.w;
-        u8 h = e->render.h;
-        u8* pmem = e->render.pmem;
+        // ers_restore_one_bg_exp(
+        //     e->render.pmem,
+        //     e->render.sprite_bg,
+        //     e->render.w,
+        //     e->render.h,
+        //     e->tr.screen.x & 0b00000011
+        // );
 
-        cpct_drawSprite(sprite_bg, pmem, w, h);
+        u8 w = e->render.w;
+        if (e->render.shift == 0) {
+            --w;
+        }
+        cpct_drawSprite(
+            e->render.sprite_bg,
+            e->render.pmem,
+            w,
+            e->render.h
+        );
     }
 }
 

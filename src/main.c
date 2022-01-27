@@ -82,7 +82,7 @@
 #include <man/game/game.h>
 
 void main(void) {
-    TAction *action = 0x00;
+    // TAction *action = 0x00;
     man_game_init();
     man_game_new();
 

@@ -18,5 +18,4 @@ void breakout_sys_render_init(void) {
     eem_for_all(ers_capture_one_bg);
     // eem_for_all(ers_update_one);
     // cme_forAll(csr_capture_one_bg);
-    // cme_forAll(csr_draw_one);
 }

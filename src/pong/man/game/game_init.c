@@ -31,6 +31,7 @@ const TEEM_entity m_pong_man_game_ball_template = {
     {
         // render component
         0x0000,                       // pmem
+        0,                         // shift
         G_SPR_PONG_BALL_M1_0_W,    // w render in bytes
         G_SPR_PONG_BALL_M1_0_H,    // h render in px
         g_spr_pong_ball_m1_frames, // sprite ptrs
@@ -71,6 +72,7 @@ const TEEM_entity m_pong_man_game_paddel_template = {
     {
         // render component
         0x0000,                      // pmem
+        0,                          // shift
         G_SPR_PONG_PADDEL_M1_0_W,   // render w
         G_SPR_PONG_PADDEL_M1_0_H,   // render h
         g_spr_pong_paddel_m1_frames,       // sprite ptr

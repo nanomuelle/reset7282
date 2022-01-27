@@ -21,5 +21,7 @@ extern void ers_update              (void);
 extern void ers_update_one          (TEEM_entity *);
 extern void ers_capture_one_bg      (TEEM_entity *);
 
-extern void ers_pp_init_mask_table  (void);
+extern void ers_pp_init_mask_table   (void);
 extern void ers_pp_draw_sprite       (u8* pmem, u8 **sprite, u16 shift, u8 w, u8 h) __z88dk_callee;
+extern void ers_restore_one_bg_exp   (u8* pmem, u8 *sprite, u8 w, u8 h, u16 shift) __z88dk_callee;
+extern void ers_capture_one_bg_exp   (u8* pmem, u8 *sprite, u8 w, u8 h, u16 shift) __z88dk_callee;

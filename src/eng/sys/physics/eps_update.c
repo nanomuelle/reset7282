@@ -30,6 +30,7 @@ void m_eps_update_one(TEEM_entity *e) {
                     }
                 }
                 e->tr.world.x = x;
+                e->tr.world.x2 = x + e->tr.world.w;
             }
         }
 
@@ -50,6 +51,7 @@ void m_eps_update_one(TEEM_entity *e) {
                     }
                 }
                 e->tr.world.y = y;
+                e->tr.world.y2 = y + e->tr.world.h;
             }
         }
     }

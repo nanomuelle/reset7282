@@ -8,10 +8,12 @@ const TEEM_entity m_man_bricks_brick_template = {
 
     {
         .world = {
-            (u16) 0, // world x
-            (u16) 0, // world y
-            (u16) BRK_BRICK_WORLD_W, // world w
-            (u16) BRK_BRICK_WORLD_H, // world h
+            0, // world x
+            0, // world y
+            BRK_BRICK_WORLD_W, // world w
+            BRK_BRICK_WORLD_H, // world h,
+            0 + BRK_BRICK_WORLD_W, // x2
+            0 + BRK_BRICK_WORLD_H  // y2
         }
     },
 

@@ -36,3 +36,17 @@ typedef enum BreakoutEntityIdEnum {
 #define BREAKOUT_WORLD_PADDEL_VY    ((i16)  0  )
 #define BREAKOUT_WORLD_PADDEL_X     ( (EPS_WORLD_MAX_X + BREAKOUT_WORLD_PADDEL_W) / 2 )
 #define BREAKOUT_WORLD_PADDEL_Y     ( EPS_WORLD_MAX_Y - BREAKOUT_WORLD_PADDEL_H - 1)
+
+// BRICK ENTITY
+#define BRK_BRICK_WORLD_W (EPS_PX_TO_WORLD(ERS_BYTES_TO_PX(G_SPR_BRK_BRICK_M1_0_W - 1)))
+#define BRK_BRICK_WORLD_H (EPS_PX_TO_WORLD(G_SPR_BRK_BRICK_M1_0_H) )
+
+// BRICKS ZONE BOUNDING BOX (used to quick discard collisions)
+    // m_breakout_man_game_bricks_bb.x1 = 3 * BRK_BRICK_WORLD_W;
+    // m_breakout_man_game_bricks_bb.x2 = m_breakout_man_game_bricks_bb.x1 + (8 * BRK_BRICK_WORLD_W);
+    // m_breakout_man_game_bricks_bb.y1= fromY;
+    // m_breakout_man_game_bricks_bb.y2 = toY + BRK_BRICK_WORLD_H;
+#define BRK_WORLD_BRICKS_X1         ( 3 * BRK_BRICK_WORLD_W )
+#define BRK_WORLD_BRICKS_X2         ( BRK_WORLD_BRICKS_X1 + (8 * BRK_BRICK_WORLD_W) )
+#define BRK_WORLD_BRICKS_Y1         ( 2 * BRK_BRICK_WORLD_H )
+#define BRK_WORLD_BRICKS_Y2         ( BRK_WORLD_BRICKS_Y1 + (5 * BRK_BRICK_WORLD_H) )

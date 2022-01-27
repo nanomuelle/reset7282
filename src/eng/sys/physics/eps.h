@@ -1,9 +1,9 @@
 #pragma once
 
+// EPS => ENGINE PHYSICS SYSTEM
 #include <types.h>
 #include <eng/eng.h>
 
-// EPS => ENGINE PHYSICS SYSTEM
 
 // PHYSICS WORLD SIZE
 // 0 <= x < 65536 (256 * 256)
@@ -21,6 +21,14 @@
 
 #define EPS_MAX_ENTITIES       ((u8) 10)
 #define EPS_INVALID_ENTITY     ((TEEM_entity*) 0x0000 )
+
+
+typedef struct EpsBBStruct {
+    u16 x1;
+    u16 x2;
+    u16 y1;
+    u16 y2;
+} TEpsBBStruct;
 
 // PRIVATE
 extern TEEM_entity*  m_eps_entities[EPS_MAX_ENTITIES];

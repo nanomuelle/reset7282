@@ -26,7 +26,9 @@ const TEEM_entity m_breakout_entity_ballTemplate = {
             BREAKOUT_WORLD_BALL_X,
             BREAKOUT_WORLD_BALL_Y,
             BREAKOUT_WORLD_BALL_W,
-            BREAKOUT_WORLD_BALL_H
+            BREAKOUT_WORLD_BALL_H,
+            BREAKOUT_WORLD_BALL_X + BREAKOUT_WORLD_BALL_W,
+            BREAKOUT_WORLD_BALL_Y + BREAKOUT_WORLD_BALL_H
         }
     },
 
@@ -67,7 +69,8 @@ const TEEM_entity m_breakout_entity_paddelTemplate = {
             BREAKOUT_WORLD_PADDEL_Y,
             BREAKOUT_WORLD_PADDEL_W,
             BREAKOUT_WORLD_PADDEL_H,
-
+            BREAKOUT_WORLD_PADDEL_X + BREAKOUT_WORLD_PADDEL_W,
+            BREAKOUT_WORLD_PADDEL_Y + BREAKOUT_WORLD_PADDEL_H
         }
     },
 
@@ -97,7 +100,6 @@ const TEEM_entity m_breakout_entity_paddelTemplate = {
     }
 };
 
-
 void m_breakout_man_game_create_entity(TEEM_entity *template) {
     TEEM_entity* e = eem_create();
     cpct_memcpy(e, template, sizeof(TEEM_entity));
@@ -106,13 +108,8 @@ void m_breakout_man_game_create_entity(TEEM_entity *template) {
 }
 
 void m_breakout_man_game_create_bricks(void) {
-    u16 fromY = 2 * BRK_BRICK_WORLD_H + EPS_PX_TO_WORLD(1);
-    u16 toY = fromY + (4 * BRK_BRICK_WORLD_H);
-
-    for (u16 y = fromY; y < toY ; y += BRK_BRICK_WORLD_H) {
-        u16 fromX = 3 * BRK_BRICK_WORLD_W;
-        u16 toX   = fromX + (8 * BRK_BRICK_WORLD_W);
-        for (u16 x = fromX; x < toX ; x += BRK_BRICK_WORLD_W) {
+    for (u16 y = BRK_WORLD_BRICKS_Y1; y < BRK_WORLD_BRICKS_Y2 ; y += BRK_BRICK_WORLD_H) {
+        for (u16 x = BRK_WORLD_BRICKS_X1; x < BRK_WORLD_BRICKS_X2 ; x += BRK_BRICK_WORLD_W) {
             man_bricks_create(x, y);
         }
     }

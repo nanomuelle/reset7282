@@ -31,6 +31,8 @@ typedef struct EEM_world_tr_struct {
     u16 y;
     u16 w;
     u16 h;
+    u16 x2;
+    u16 y2;
 } TEEM_world_tr;
 
 typedef struct EEM_screen_tr_struct {
@@ -42,6 +44,10 @@ typedef struct EEM_screen_tr_struct {
     u8 w;
     u8 _screen_tr_unused4;
     u8 h;
+    u8 _screen_tr_unused5;
+    u8 x2;
+    u8 _screen_tr_unused6;
+    u8 y2;
 } TEEM_screen_tr;
 
 typedef union EEM_tr_struct {

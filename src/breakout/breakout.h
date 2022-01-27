@@ -42,11 +42,7 @@ typedef enum BreakoutEntityIdEnum {
 #define BRK_BRICK_WORLD_H (EPS_PX_TO_WORLD(G_SPR_BRK_BRICK_M1_0_H) )
 
 // BRICKS ZONE BOUNDING BOX (used to quick discard collisions)
-    // m_breakout_man_game_bricks_bb.x1 = 3 * BRK_BRICK_WORLD_W;
-    // m_breakout_man_game_bricks_bb.x2 = m_breakout_man_game_bricks_bb.x1 + (8 * BRK_BRICK_WORLD_W);
-    // m_breakout_man_game_bricks_bb.y1= fromY;
-    // m_breakout_man_game_bricks_bb.y2 = toY + BRK_BRICK_WORLD_H;
-#define BRK_WORLD_BRICKS_X1         ( 3 * BRK_BRICK_WORLD_W )
+#define BRK_WORLD_BRICKS_X1         ( 4 * BRK_BRICK_WORLD_W )
 #define BRK_WORLD_BRICKS_X2         ( BRK_WORLD_BRICKS_X1 + (8 * BRK_BRICK_WORLD_W) )
 #define BRK_WORLD_BRICKS_Y1         ( 2 * BRK_BRICK_WORLD_H )
 #define BRK_WORLD_BRICKS_Y2         ( BRK_WORLD_BRICKS_Y1 + (4 * BRK_BRICK_WORLD_H) )

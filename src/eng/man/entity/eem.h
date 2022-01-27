@@ -86,7 +86,7 @@ typedef struct EEM_entity_struct {
     TEEM_render render;
 
     // AI COMPONENT
-    TEEM_ai ai;              // void (*ai)(void *self);
+    TEEM_ai ai;
 } TEEM_entity;
 
 typedef void (*TEEM_callback)(TEEM_entity *);

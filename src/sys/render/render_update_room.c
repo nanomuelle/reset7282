@@ -67,29 +67,16 @@ void _render_drawBox(u8 x, u8 y, u8 w, u8 h, u8 color) {
 void _update_roomTxtBox(TRoom *room) {
     u8 *pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X, ROOM_TXT_BOX_Y);
     u8 ch = cpct_px2byteM1(3, 3, 3, 3);
-
-    // u8 cvl = cpct_px2byteM1(0, 0, 3, 3);
-    // u8 cvr = cpct_px2byteM1(3, 3, 0, 0);
     u8 cvl = cpct_px2byteM1(1, 1, 3, 3);
     u8 cvr = cpct_px2byteM1(3, 3, 1, 1);
 
     // horizontal lines
     _render_drawBox(ROOM_TXT_BOX_X - 1, ROOM_TXT_BOX_Y - 4, ROOM_TXT_BOX_W + 2, 4, ch);
     _render_drawBox(ROOM_TXT_BOX_X - 1, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H, ROOM_TXT_BOX_W + 2, 4, ch);
-    // cpct_drawSolidBox(pmem                     , ch, ROOM_TXT_BOX_W / 2, 1);
-    // cpct_drawSolidBox(pmem + ROOM_TXT_BOX_W / 2, ch, ROOM_TXT_BOX_W / 2, 1);
 
     // // vertical lines
     _render_drawBox(ROOM_TXT_BOX_X - 1, ROOM_TXT_BOX_Y, 1, ROOM_TXT_BOX_H, ch);
     _render_drawBox(ROOM_TXT_BOX_X + ROOM_TXT_BOX_W, ROOM_TXT_BOX_Y, 1, ROOM_TXT_BOX_H, ch);
-    // cpct_drawSolidBox(pmem, cvl, 1, ROOM_TXT_BOX_H);
-
-    // pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X + ROOM_TXT_BOX_W - 1, ROOM_TXT_BOX_Y);
-    // cpct_drawSolidBox(pmem, cvr, 1, ROOM_TXT_BOX_H);
-
-    // pmem = cpct_getScreenPtr(CPCT_VMEM_START, ROOM_TXT_BOX_X - 3, ROOM_TXT_BOX_Y + ROOM_TXT_BOX_H);
-    // cpct_drawSolidBox(pmem                     , ch, (ROOM_TXT_BOX_W + 6) / 2, 2);
-    // cpct_drawSolidBox(pmem + (ROOM_TXT_BOX_W + 6) / 2, ch, (ROOM_TXT_BOX_W + 6) / 2, 2);
 }
 
 void _update_roomObjs(TRoom *room) {
@@ -113,7 +100,7 @@ void _render_updateRoom(TRoom *room) {
 
     // txt
     _update_roomTxt(room);
-    _update_roomTxtBox(room);
+    // _update_roomTxtBox(room);
 
     // objs
     _update_roomObjs(room);

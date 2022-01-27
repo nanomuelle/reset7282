@@ -17,7 +17,7 @@
 #define EPS_WORLD_MIN_X        ( 0 )
 #define EPS_WORLD_MAX_X        ( 65535 )
 #define EPS_WORLD_MIN_Y        ( 0 )
-#define EPS_WORLD_MAX_Y        ( 32767 )
+#define EPS_WORLD_MAX_Y        ( 40959 ) //32767 )
 
 #define EPS_MAX_ENTITIES       ((u8) 10)
 #define EPS_INVALID_ENTITY     ((TEEM_entity*) 0x0000 )

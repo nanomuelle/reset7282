@@ -9,7 +9,7 @@
 #define ERS_WORLD_TO_PX(px)  ( HI(px) ) // WORLD TO PX UNITS
 
 #define ERS_SCREEN_W         ( 256 )
-#define ERS_SCREEN_H         ( 128 )
+#define ERS_SCREEN_H         ( 160 ) // 128 )
 
 #define ERS_OFFSET_X_BYTES   ( 8 )  // ROOM_TXT_BOX_X bytes
 #define ERS_OFFSET_Y_BYTES   ( 16 ) // ROOM_TXT_BOX_Y lines

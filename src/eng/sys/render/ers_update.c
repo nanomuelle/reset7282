@@ -25,7 +25,9 @@ void m_ers_restore_one(TEEM_entity* e) {
 }
 
 void ers_update(void) {
-    eem_for_all_reversed(m_ers_restore_one);
+    // eem_for_all_reversed(m_ers_restore_one);
+    eem_for_all(m_ers_restore_one);
+
     eem_for_all(ers_update_one);
 }
 

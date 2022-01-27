@@ -125,6 +125,7 @@ include $(CPCT_PATH)/cfg/global_paths.mk
 ##   Flags used to configure the compilation of your code. They are usually 
 ##   fine for most of the projects, but you may change them for special uses.
 #####
+#    --allow-unsafe-read -opt-code-speed --max-allocs-per-node200000
 Z80CCFLAGS    :=
 Z80ASMFLAGS   := -l -o -s
 Z80CCINCLUDE  := -I$(CPCT_SRC) -I$(SRCDIR) -Wa -I$(CPCT_SRC),-I$(SRCDIR)

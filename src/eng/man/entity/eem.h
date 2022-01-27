@@ -93,10 +93,11 @@ extern u8           m_eem_num_valid_entities; // num of valid entities
 extern TEEM_entity* m_eem_next_free;          // ptr to the next free entity
 extern u8           m_eem_needs_update;       // flag: 1.- needs update, 0.- do not needs update
 
+extern void         eem_destroy           (TEEM_entity *);
+
 // PUBLIC
 extern void         eem_init          (void);
 extern TEEM_entity* eem_create        (void);
-extern void         eem_destroy           (TEEM_entity *);
 extern void         eem_for_all            (TEEM_callback);
 extern void         eem_for_all_reversed    (TEEM_callback);
 extern TEEM_entity* eem_get_by_id           (u8);

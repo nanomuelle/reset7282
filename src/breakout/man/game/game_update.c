@@ -9,96 +9,69 @@
 //       a entidad a otra es diferente provocando rebotes extraños
 //
 
-TEEM_entity *ball;
 i16 flip_vx;
 i16 flip_vy;
 i16 next_vx;
 
 void m_breakout_man_game_crop_ball_velocity() {
-    if (ball->ph.vx > BREAKOUT_WORLD_BALL_MAX_VX) {
-        ball->ph.vx = BREAKOUT_WORLD_BALL_MAX_VX;
-    } else if (ball->ph.vx < BREAKOUT_WORLD_BALL_MIN_VX) {
-        ball->ph.vx = BREAKOUT_WORLD_BALL_MIN_VX;
+    if (m_breakout_man_game_ball->ph.vx > BREAKOUT_WORLD_BALL_MAX_VX) {
+        m_breakout_man_game_ball->ph.vx = BREAKOUT_WORLD_BALL_MAX_VX;
+    } else if (m_breakout_man_game_ball->ph.vx < BREAKOUT_WORLD_BALL_MIN_VX) {
+        m_breakout_man_game_ball->ph.vx = BREAKOUT_WORLD_BALL_MIN_VX;
     }
 
-    if (ball->ph.vy > BREAKOUT_WORLD_BALL_MAX_VY) {
-        ball->ph.vy = BREAKOUT_WORLD_BALL_MAX_VY;
-    } else if (ball->ph.vy < BREAKOUT_WORLD_BALL_MIN_VY) {
-        ball->ph.vy = BREAKOUT_WORLD_BALL_MIN_VY;
+    if (m_breakout_man_game_ball->ph.vy > BREAKOUT_WORLD_BALL_MAX_VY) {
+        m_breakout_man_game_ball->ph.vy = BREAKOUT_WORLD_BALL_MAX_VY;
+    } else if (m_breakout_man_game_ball->ph.vy < BREAKOUT_WORLD_BALL_MIN_VY) {
+        m_breakout_man_game_ball->ph.vy = BREAKOUT_WORLD_BALL_MIN_VY;
     }
 }
 
 void m_breakout_man_game_manage_x_axis_collision(TEEM_entity *other) {
-    i16 x1 = ball->tr.world.x;
-    i16 vx = ball->ph.vx;
-    i16 x2 = other->tr.world.x;
+    u16 x1 = m_breakout_man_game_ball->tr.world.x;
 
     // collision vs left border ?
-    if (vx > 0) {
-        i16 right1 = x1 + ball->tr.world.w;
-        u8 is_collision_vs_left_border = x1 < x2 && right1 >= x2;
-
-        if (is_collision_vs_left_border) {         // reverse vx
-            // vx = -vx;
+    if (m_breakout_man_game_ball->ph.vx > 0) {
+        u16 x2 = other->tr.world.x;
+        u16 right1 = x1 + m_breakout_man_game_ball->tr.world.w;
+        if (x2 >= x1 && x2 <= right1) {
+            flip_vx = 1;
+        }
+    } else { // collision vs right border ?
+        u16 right1 = x1 + m_breakout_man_game_ball->tr.world.w;
+        u16 right2 = other->tr.world.x + other->tr.world.w;
+        if (right2 >= x1 && right2 <= right1) {
             flip_vx = 1;
         }
     }
-
-    // collision vs right border ?
-    else if (vx < 0) {
-        i16 right2 = x2 + other->tr.world.w;
-        u8 is_collision_vs_right_border = x2 < x1 && right2 <= x1;
-        if (is_collision_vs_right_border) {
-            flip_vx = 1;
-            // vx = -vx;
-        }
-    }
-
-    // ball->tr.world.x -= ball->ph.vx;    // restore x pos
-    // ball->ph.vx = vx;                // set new vx
 }
 
 void m_breakout_man_game_manage_y_axis_collision(TEEM_entity *other) {
-    i16 y1 = ball->tr.world.y;
-    i16 vy = ball->ph.vy;
-    i16 y2 = other->tr.world.y;
+    u16 y2 = other->tr.world.y;
 
     // collision vs bottom border ?
-    if (vy < 0) {
-        i16 bottom2 = y2 + other->tr.world.h;
-        u8 is_collision_vs_bottom_border = y2 < y1;
-        if (is_collision_vs_bottom_border) {
-            // vy = -vy;
+    if (m_breakout_man_game_ball->ph.vy < 0) {
+        u16 bottom2 = y2 + other->tr.world.h;
+        if (y2 < m_breakout_man_game_ball->tr.world.y) {
+            flip_vy = 1;
+        }
+    } else {
+        u16 bottom1 = m_breakout_man_game_ball->tr.world.y + m_breakout_man_game_ball->tr.world.h;
+        if (bottom1 >= y2) {
             flip_vy = 1;
         }
     }
-
-    // collision vs top border ?
-    else if (vy > 0) {
-        i16 bottom1 = y1 + ball->tr.world.h;
-        u8 is_collision_vs_top_border = bottom1 >= y2;
-        if (is_collision_vs_top_border) {
-            // vy = -vy;
-            flip_vy = 1;
-        }
-    }
-
-    // y1 -= ball->ph.vy;
-    // ball->tr.world.y  = y1;    // restore y pos
-    // ball->ph.vy = vy;    // set new vy
 }
 
 void _breakout_man_game_checkCollisionsVsBall(TEEM_entity *other) {
-    if (other != ball) {
-        if (eps_check_collision(ball, other)) {
+    if (other != m_breakout_man_game_ball) {
+        if (eps_check_collision(m_breakout_man_game_ball, other)) {
             m_breakout_man_game_manage_x_axis_collision(other);
             m_breakout_man_game_manage_y_axis_collision(other);
 
             if (other->id == BRK_ENTITY_ID_BRICK) {
                 eem_kill(other);
             } else if (other->id == BRK_ENTITY_ID_PADDEL) {
-                // other->tr.world.x = other->tr.world.x - other->ph.vx;
-                // other->tr.world.y = other->tr.world.y - other->ph.vy;
                 next_vx += (other->ph.vx >> 2);
             }
         }
@@ -106,18 +79,18 @@ void _breakout_man_game_checkCollisionsVsBall(TEEM_entity *other) {
 }
 
 void _breakout_man_game_checkCollisions(void) {
-    ball = eem_get_by_id(BRK_ENTITY_ID_BALL);
+    // ball = eem_get_by_id(BRK_ENTITY_ID_BALL);
     flip_vx = 0;
     flip_vy = 0;
-    next_vx = ball->ph.vx;
+    next_vx = m_breakout_man_game_ball->ph.vx;
     eem_for_all(_breakout_man_game_checkCollisionsVsBall);
     if (flip_vx) {
-        ball->tr.world.x -= ball->ph.vx; // restore pos
-        ball->ph.vx = -next_vx;          // flip vx
+        m_breakout_man_game_ball->tr.world.x -= m_breakout_man_game_ball->ph.vx; // restore pos
+        m_breakout_man_game_ball->ph.vx = -next_vx;          // flip vx
     }
     if (flip_vy) {
-        ball->tr.world.y -= ball->ph.vy; // restore pos
-        ball->ph.vy = -ball->ph.vy;
+        m_breakout_man_game_ball->tr.world.y -= m_breakout_man_game_ball->ph.vy; // restore pos
+        m_breakout_man_game_ball->ph.vy = -m_breakout_man_game_ball->ph.vy;
     }
     m_breakout_man_game_crop_ball_velocity();
 }

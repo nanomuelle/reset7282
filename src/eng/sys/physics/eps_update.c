@@ -1,8 +1,7 @@
 #include "eps.h"
 
 void m_eps_update_one(TEEM_entity *e) {
-    u8 state = e->state;
-    if ((state & EEM_STATE_DEAD) == 0) {
+    if ((e->state & EEM_STATE_DEAD) == 0) {
         i16 vx = e->ph.vx;
         i16 vy = e->ph.vy;
 

@@ -1,5 +1,5 @@
 #include "eem.h"
-
+#include <string.h>
 // FROM
 //          v
 // [E1][E2][E3][E4][E5[f][.]
@@ -10,7 +10,7 @@
 void eem_destroy(TEEM_entity* e) {
     TEEM_entity *last = m_eem_next_free - 1;
     if (e != last) {
-        cpct_memcpy(e, last, sizeof(TEEM_entity));
+        memcpy(e, last, sizeof(TEEM_entity));
     }
     last->state = EEM_STATE_INVALID;
     m_eem_next_free = last;

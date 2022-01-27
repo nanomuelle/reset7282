@@ -9,6 +9,8 @@
 #include <man/objs/objs.h>
 #include <breakout/man/bricks/bricks.h>
 
+TEEM_entity* m_breakout_man_game_ball;
+
 const u8 _breakout_man_game_ball_bg[G_SPR_BRK_BALL_M1_0_W * G_SPR_BRK_BALL_M1_0_H];
 const u8 _breakout_man_game_paddel_bg[G_SPR_BRK_PADDEL_M1_0_W * G_SPR_BRK_PADDEL_M1_0_H];
 
@@ -121,6 +123,7 @@ void m_breakout_man_game_create_entities(void) {
     // ball
     //
     m_breakout_man_game_create_entity(&m_breakout_entity_ballTemplate);
+    m_breakout_man_game_ball = eem_get_by_id(BRK_ENTITY_ID_BALL);
 
     //
     // paddel

@@ -9,7 +9,6 @@
 #include <man/objs/objs.h>
 #include <breakout/man/bricks/bricks.h>
 
-TEEM_entity* m_breakout_man_game_ball;
 
 const u8 _breakout_man_game_ball_bg[G_SPR_BRK_BALL_M1_0_W * G_SPR_BRK_BALL_M1_0_H];
 const u8 _breakout_man_game_paddel_bg[G_SPR_BRK_PADDEL_M1_0_W * G_SPR_BRK_PADDEL_M1_0_H];
@@ -17,7 +16,7 @@ const u8 _breakout_man_game_paddel_bg[G_SPR_BRK_PADDEL_M1_0_W * G_SPR_BRK_PADDEL
 const TEEM_entity m_breakout_entity_ballTemplate = {
     BRK_ENTITY_ID_BALL,
 
-    EEM_STATE_DEFAULT,
+    EEM_STATE_DEFAULT | EEM_STATE_SOLID,
     EEM_COMPONENT_PHYSICS | EEM_COMPONENT_RENDER,
 
     {
@@ -59,7 +58,7 @@ const TEEM_entity m_breakout_entity_ballTemplate = {
 const TEEM_entity m_breakout_entity_paddelTemplate = {
     BRK_ENTITY_ID_PADDEL,
 
-    EEM_STATE_DEFAULT,
+    EEM_STATE_DEFAULT | EEM_STATE_SOLID,
     EEM_COMPONENT_PHYSICS | EEM_COMPONENT_RENDER | EEM_COMPONENT_AI,
 
     {
@@ -100,11 +99,12 @@ const TEEM_entity m_breakout_entity_paddelTemplate = {
     }
 };
 
-void m_breakout_man_game_create_entity(TEEM_entity *template) {
+TEEM_entity* m_breakout_man_game_create_entity(TEEM_entity *template) {
     TEEM_entity* e = eem_create();
     cpct_memcpy(e, template, sizeof(TEEM_entity));
     e->render.pmem = ers_get_screen_ptr(e->tr.screen.x, e->tr.screen.y);
     eps_add_entity(e); // add entity to physics system
+    return e;
 }
 
 void m_breakout_man_game_create_bricks(void) {
@@ -116,16 +116,19 @@ void m_breakout_man_game_create_bricks(void) {
 }
 
 void m_breakout_man_game_create_entities(void) {
+    TEEM_entity* e;
+
     //
     // ball
     //
-    m_breakout_man_game_create_entity(&m_breakout_entity_ballTemplate);
-    m_breakout_man_game_ball = eem_get_by_id(BRK_ENTITY_ID_BALL);
+    e = m_breakout_man_game_create_entity(&m_breakout_entity_ballTemplate);
+    eem_set_state_moved(e);
 
     //
     // paddel
     //
-    m_breakout_man_game_create_entity(&m_breakout_entity_paddelTemplate);
+    e = m_breakout_man_game_create_entity(&m_breakout_entity_paddelTemplate);
+    eem_set_state_moved(e);
 
     //
     // bricks

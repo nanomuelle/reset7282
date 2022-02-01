@@ -4,6 +4,7 @@
 
 // PRIVATE
 extern TEEM_entity* m_breakout_sys_collisions_ball;
+extern TEEM_entity* m_breakout_sys_collisions_paddel;
 
 // PUBLIC
 extern void breakout_sys_collisions_init(void);

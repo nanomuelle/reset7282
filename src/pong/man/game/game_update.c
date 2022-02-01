@@ -84,7 +84,7 @@ void m_pong_man_game_checkCollisionsVsBall(TEEM_entity *other) {
         return;
     }
 
-    if (eps_check_collision(ball, other)) {
+    if (ecs_check_pair(ball, other)) {
         ball->tr.world.x -= ball->ph.vx;
         ball->tr.world.y -= ball->ph.vy;
         ball->ph.vx = -ball->ph.vx;

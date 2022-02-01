@@ -10,6 +10,7 @@
 #include <assets/breakout_medium_brick_m1.h>
 #include <assets/breakout_paddel_m1.h>
 #include <assets/breakout_ball_m1.h>
+#include <assets/breakout_bg.h>
 
 typedef enum BreakoutEntityIdEnum {
     BRK_ENTITY_ID_NULL = 0,
@@ -46,3 +47,9 @@ typedef enum BreakoutEntityIdEnum {
 #define BRK_WORLD_BRICKS_X2         ( BRK_WORLD_BRICKS_X1 + (8 * BRK_BRICK_WORLD_W) )
 #define BRK_WORLD_BRICKS_Y1         ( 4 * BRK_BRICK_WORLD_H )
 #define BRK_WORLD_BRICKS_Y2         ( BRK_WORLD_BRICKS_Y1 + (4 * BRK_BRICK_WORLD_H) )
+
+// PLAY ZONE LIMITS
+#define BRK_LIMIT_LEFT   ( EPS_PX_TO_WORLD(16) )
+#define BRK_LIMIT_TOP    ( EPS_PX_TO_WORLD(16) )
+#define BRK_LIMIT_RIGHT  ( EPS_WORLD_MAX_X - EPS_PX_TO_WORLD(ERS_BYTES_TO_PX(G_SPR_BRK_BG_0_W) ))
+#define BRK_LIMIT_BOTTOM ( EPS_WORLD_MAX_Y - EPS_PX_TO_WORLD(G_SPR_BRK_BALL_M1_0_H) )

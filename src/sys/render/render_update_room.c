@@ -100,7 +100,7 @@ void _render_updateRoom(TRoom *room) {
 
     // txt
     _update_roomTxt(room);
-    // _update_roomTxtBox(room);
+    _update_roomTxtBox(room);
 
     // objs
     _update_roomObjs(room);

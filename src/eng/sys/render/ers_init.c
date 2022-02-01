@@ -2,7 +2,7 @@
 #include <sys/render/render.h>
 
 void ers_init(void) {
-    u8 bg_color = cpct_px2byteM1(1, 1, 1, 1);
+    u8 bg_color = cpct_px2byteM1(0, 0, 0, 0);
 
     ers_init_mask_table();
 

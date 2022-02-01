@@ -18,7 +18,6 @@
 extern void ers_init                (void);
 extern u8*  ers_get_screen_ptr      (u8 x, u8 y);
 extern void ers_update              (void);
-extern void ers_update_one          (TEEM_entity *);
 extern void ers_capture_one_bg      (TEEM_entity *);
 
 extern void ers_pp_init_mask_table   (void);

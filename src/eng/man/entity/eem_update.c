@@ -1,7 +1,19 @@
 #include "eem.h"
 
+void m_eem_update_reset_moved_one(TEEM_moved_entity* me) {
+    me->e->state &= EEM_STATE_MOVED_MASK;
+}
+
+void m_eem_update_reset_redraw_one(TEEM_redraw_entity* me) {
+    me->e->state &= EEM_STATE_REDRAW_MASK;
+}
+
 void eem_update(void) {
-    if (m_eem_needs_update) {
+    // reset moved and redraw states
+    eem_forEachMoved(m_eem_update_reset_moved_one);
+    eem_forEachRedraw(m_eem_update_reset_redraw_one);
+
+    if (m_eem_dead_num > 0) {
         TEEM_entity *e = m_eem_buffer;
         while (e->state != EEM_STATE_INVALID) {
             if (e->state & EEM_STATE_DEAD) {
@@ -10,6 +22,9 @@ void eem_update(void) {
                 ++e;
             }
         }
-        m_eem_needs_update = 0;
     }
+
+    eem_resetRedraw();
+    eem_resetMoved();
+    eem_resetDead();
 }

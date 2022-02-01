@@ -12,6 +12,7 @@
         "sstream": "c",
         "strstream": "c",
         "entity.h": "c",
-        "console.h": "c"
+        "console.h": "c",
+        "ecs.h": "c"
     }
 }

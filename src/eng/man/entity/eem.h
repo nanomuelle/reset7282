@@ -13,17 +13,29 @@
 // components
 #define EEM_COMPONENT_PHYSICS  ( 0b00000001 )  // has physics component
 #define EEM_COMPONENT_RENDER   ( 0b00000010 )  // has render component
-#define EEM_COMPONENT_ANIM     ( 0b00000100 )  // has render component
-#define EEM_COMPONENT_AI       ( 0b00001000 )  // has render component
+#define EEM_COMPONENT_ANIM     ( 0b00000100 )  // has anim component
+#define EEM_COMPONENT_AI       ( 0b00001000 )  // has ai component
+
+// states
+#define EEM_STATE_INVALID     ( 0b00000000 )  // invalid
+#define EEM_STATE_DEAD        ( 0b10000000 )  // dead (set for destroy)
+#define EEM_STATE_VALID       ( 0b00000001 )  // valid entity
+#define EEM_STATE_SOLID       ( 0b00000010 )  // can be collided against
+#define EEM_STATE_MOVED       ( 0b00000100 )  // entity has change its position
+#define EEM_STATE_REDRAW      ( 0b00001000 )  // needs redraw
+// #define EEM_STATE_COLLISION   ( 0b00010000 )  // has collide
+
+#define EEM_STATE_DEFAULT           ( EEM_STATE_VALID )     // default
+
+#define EEM_STATE_VALID_MASK        ( ~EEM_STATE_VALID )    //
+#define EEM_STATE_SOLID_MASK        ( ~EEM_STATE_SOLID )    //
+#define EEM_STATE_MOVED_MASK        ( ~EEM_STATE_MOVED )    //
+#define EEM_STATE_REDRAW_MASK       ( ~EEM_STATE_REDRAW )   //
+// #define EEM_STATE_COLLISION_MASK    ( ~EEM_STATE_COLLISION )//
+
 
 // state
-typedef enum EEM_state_enum {
-    EEM_STATE_INVALID    = 0b00000000,  // invalid
-    EEM_STATE_DEAD       = 0b10000000,  // dead (set for destroy)
-    EEM_STATE_MOVED      = 0b01000000,  // entity has change its position
-    EEM_STATE_MOVED_MASK = 0b10111111,  // entity has change its position
-    EEM_STATE_DEFAULT    = 0b01111111   // default
-} TEEM_state;
+typedef u8 TEEM_state;
 
 // world 
 typedef struct EEM_world_tr_struct {
@@ -90,24 +102,66 @@ typedef struct EEM_entity_struct {
 } TEEM_entity;
 
 typedef void (*TEEM_callback)(TEEM_entity *);
-// typedef u8   (*TEntityUntilCallback)(TEntity *);
+typedef void (*TEEM_callback_pair)(TEEM_entity*, TEEM_entity*);
+
+typedef struct EEM_moved_entity_struct {
+    TEEM_entity* e;
+} TEEM_moved_entity;
+typedef void (*TEEM_movedCallback)(TEEM_moved_entity *);
+
+typedef struct EEM_redraw_entity_struct {
+    TEEM_entity* e;
+} TEEM_redraw_entity;
+typedef void (*TEEM_redrawCallback)(TEEM_redraw_entity *);
+
+typedef struct EEM_dead_entity_struct {
+    TEEM_entity* e;
+} TEEM_dead_entity;
+typedef void (*TEEM_deadCallback)(TEEM_dead_entity *);
 
 // PRIVATE
 extern TEEM_entity  m_eem_buffer[EEM_BUFFER_SIZE];
 extern TEEM_state   m_eem_buffer_eof;         // marca de final del buffer
 extern u8           m_eem_num_valid_entities; // num of valid entities
 extern TEEM_entity* m_eem_next_free;          // ptr to the next free entity
-extern u8           m_eem_needs_update;       // flag: 1.- needs update, 0.- do not needs update
 
-extern void         eem_destroy           (TEEM_entity *);
+// LIST OF ENTITIES BY STATE. THEY ARE FILLED AND RESET EACH FRAME.
+extern TEEM_moved_entity    m_eem_moved_buffer[EEM_BUFFER_SIZE];    // TODO: adjust buffer size for moved entities
+extern TEEM_moved_entity*   m_eem_moved_next_free;
+extern u8                   m_eem_moved_num;
+
+extern TEEM_redraw_entity   m_eem_redraw_buffer[EEM_BUFFER_SIZE];   // TODO: adjust buffer size for redraw entities
+extern TEEM_redraw_entity*  m_eem_redraw_next_free;
+extern u8                   m_eem_redraw_num;
+
+extern TEEM_dead_entity     m_eem_dead_buffer[EEM_BUFFER_SIZE];     // TODO: adjust buffer size for dead entities
+extern TEEM_dead_entity*    m_eem_dead_next_free;
+extern u8                   m_eem_dead_num;
 
 // PUBLIC
-extern void         eem_init          (void);
-extern TEEM_entity* eem_create        (void);
-extern void         eem_for_all            (TEEM_callback);
+extern void         eem_init                (void);
+extern TEEM_entity* eem_create              (void);
+extern void         eem_for_all             (TEEM_callback);
 extern void         eem_for_all_reversed    (TEEM_callback);
+extern void         eem_for_pairs           (TEEM_callback_pair callback, u8 state_mask1, u8 state_mask2);
 extern TEEM_entity* eem_get_by_id           (u8);
+extern void         eem_destroy             (TEEM_entity *);
+// #define eem_reset_state_moved(entity_ptr)   (entity_ptr)->state &= EEM_STATE_MOVED_MASK
 
-extern  void         eem_kill              (TEEM_entity *);
-#define eem_set_state_moved(entity_ptr)      (entity_ptr)->state |= EEM_STATE_MOVED
-#define eem_reset_state_moved(entity_ptr)    (entity_ptr)->state &= EEM_STATE_MOVED_MASK
+// moved entities
+extern void               eem_resetMoved        (void);
+extern TEEM_moved_entity* eem_createMoved       (void);
+extern void               eem_forEachMoved      (TEEM_movedCallback);
+extern void               eem_set_state_moved   (TEEM_entity *);
+
+// redraw entities
+extern void                eem_resetRedraw      (void);
+extern TEEM_redraw_entity* eem_createRedraw     (void);
+extern void                eem_forEachRedraw    (TEEM_redrawCallback);
+extern void                eem_set_state_redraw (TEEM_entity *);
+
+// dead entities
+extern void                eem_resetDead        (void);
+extern TEEM_dead_entity*   eem_createDead       (void);
+extern void                eem_forEachDead      (TEEM_deadCallback);
+extern void                eem_set_state_dead   (TEEM_entity *);

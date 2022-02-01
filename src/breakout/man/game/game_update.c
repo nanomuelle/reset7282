@@ -8,8 +8,7 @@
 //       a entidad a otra es diferente provocando rebotes extraños
 //
 void breakout_man_game_update(void) {
-    breakout_sys_ai_update();           // ai system
-    eps_update();                       // physics system
-    breakout_sys_collisions_update();   // collision system update
-    // _breakout_man_game_checkCollisions(); // collisions
+    breakout_sys_ai_update();           // update ai system
+    eps_update();                       // update engine physics system
+    breakout_sys_collisions_update();   // process collisions
 }

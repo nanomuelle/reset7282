@@ -3,7 +3,7 @@
 const TEEM_entity m_man_bricks_brick_template = {
     BRK_ENTITY_ID_BRICK,
 
-    EEM_STATE_DEFAULT,
+    EEM_STATE_DEFAULT | EEM_STATE_SOLID | EEM_STATE_REDRAW,
     EEM_COMPONENT_RENDER,
 
     {

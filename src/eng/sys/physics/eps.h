@@ -40,6 +40,6 @@ extern void eps_init(void);
 
 extern void eps_add_entity      (TEEM_entity*);
 extern void eps_remove_entity   (TEEM_entity*);
-
-extern void eps_update(void);
-extern u8   eps_check_collision(TEEM_entity *e1, TEEM_entity *e2);
+extern void eps_update_one      (TEEM_entity *e);
+extern void eps_update          (void);
+// extern u8   eps_check_collision(TEEM_entity *e1, TEEM_entity *e2);

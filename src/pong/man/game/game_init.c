@@ -104,8 +104,6 @@ TEEM_entity *m_pong_man_game_createEntityFromTemplate(TEEM_entity* template) {
 void m_pong_man_game_create_entities(void) {
     TEEM_entity* entity;
 
-    // sys_debug_number(EPS_WORLD_MAX_X); //entity->tr.screen.x);
-
     // ai player
     entity = m_pong_man_game_createEntityFromTemplate(&m_pong_man_game_paddel_template);
     entity->tr.world.x = PONG_WORLD_LEFT_PADDEL_X;
